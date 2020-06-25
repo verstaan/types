@@ -1,0 +1,16 @@
+{
+    "name": "types",
+    "version": "0.1.0",
+    "description": "Arcturus Asset Management Program",
+    "main": "index.ts",
+    "dependencies": {
+        "@types/geojson": "^7946.0.7"
+    },
+    "engines": {
+        "node": "10.x"
+    },
+    "repository": {
+        "url": "https://github.com/verstaan/types.git"
+    },
+    "private": true
+}
