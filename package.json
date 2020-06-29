@@ -1,10 +1,11 @@
 {
     "name": "types",
     "version": "0.1.0",
-    "description": "Arcturus Asset Management Program",
+    "description": "Arcturus Types",
     "main": "index.ts",
     "dependencies": {
-        "@types/geojson": "^7946.0.7"
+        "@types/geojson": "^7946.0.7",
+        "@types/restify": "^8.4.2"
     },
     "engines": {
         "node": "10.x"
