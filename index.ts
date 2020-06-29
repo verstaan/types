@@ -764,7 +764,14 @@ export interface ClientReportLandIncidentSection {
 
 export interface ClientReportSeaPerpSection {
     number_of_perps?: number;
-    perp_details_AH?: perpDetails;
+    perp_age?: string;
+    perp_build?: string;
+    perp_clothes?: string;
+    perp_distinguishing_marks?: string;
+    perp_elevation?: string;
+    perp_face?: string;
+    perp_gait?: string;
+    perp_hair?: string;
     language?: string;
     ship_craft_used?: string;
     closest_point_approach?: string;
@@ -775,7 +782,14 @@ export interface ClientReportSeaPerpSection {
 
 export interface ClientReportLandPerpSection {
     number_of_perps?: number;
-    perp_details_AH?: perpDetails;
+    perp_age?: string;
+    perp_build?: string;
+    perp_clothes?: string;
+    perp_distinguishing_marks?: string;
+    perp_elevation?: string;
+    perp_face?: string;
+    perp_gait?: string;
+    perp_hair?: string;
     language?: string;
     vehicle_craft_used?: string;
     closest_point_approach?: string;
@@ -817,17 +831,6 @@ export interface ClientReportLandOtherSection {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
-}
-
-export interface perpDetails {
-    perp_age?: string;
-    perp_build?: string;
-    perp_clothes?: string;
-    perp_distinguishing_marks?: string;
-    perp_elevation?: string;
-    perp_face?: string;
-    perp_gait?: string;
-    perp_hair?: string;
 }
 
 export type ReportNotificationType = "Public" | "Quick" | "Alert" | "Alert-Update" | "Alert-Cancel" | "Alert-Confirm";
