@@ -1,4 +1,5 @@
 import { GeoJsonObject, Point } from "geojson";
+import { Request } from "restify";
 import { AdminPrivileges } from "./adminPrivileges";
 
 export type ClientReportType =
@@ -126,6 +127,8 @@ export interface Device {
     token: string | null;
     device_type: DeviceType;
     device_fingerprint: string;
+    point?: Point;
+    modified_at?: Date;
 }
 
 export type DeviceType = "Web" | "Mobile";
@@ -134,6 +137,8 @@ export interface DeviceSubscription {
     token: string;
     device_type: DeviceType;
     device_fingerprint: string;
+    point?: Point;
+    modified_at?: Date;
 }
 
 export interface Container {
@@ -825,11 +830,18 @@ export interface perpDetails {
     perp_hair?: string;
 }
 
-export type ReportNotificationType = "Public" | "Quick" | "Alert";
+export type ReportNotificationType = "Public" | "Quick" | "Alert" | "Alert-Update" | "Alert-Cancel" | "Alert-Confirm";
 
 export interface ReportNotificationData {
     type: ReportNotificationType;
     id: string;
+}
+
+export interface CombinedClientReportItem {
+    id: number;
+    type: "Quick" | "Alert";
+    report: ClientReport | ClientAlertReport;
+    full_report?: FullClientReport;
 }
 
 /**
