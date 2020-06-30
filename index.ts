@@ -172,7 +172,6 @@ export interface Container {
 
 export interface DefaultRegion {
     id: number;
-    area: GeoJsonObject;
     name: string;
     container_id: number;
 }
