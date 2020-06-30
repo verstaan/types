@@ -43,6 +43,14 @@ export type ViolentCategory =
 export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft";
 export type HazardCategory = "Dangerous Terrain" | "Roadblock/checkpoint";
 export type OtherCategory = "Other";
+export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
+
+export interface Categories {
+    Violent: Array<ViolentCategory>;
+    "Non-Violent": Array<NonViolentCategory>;
+    Hazard: Array<HazardCategory>;
+    Other: Array<OtherCategory>;
+}
 
 export const ReportCategories: Record<
     CategoryTypes,
@@ -121,6 +129,14 @@ export interface Client {
     created_at: Date;
 }
 
+export interface ClientProfile {
+    id: number;
+    name: string;
+    primary_email: string;
+    licenses: number;
+    created_at: Date;
+}
+
 export interface Device {
     user_id: number;
     client_id: number;
@@ -141,6 +157,13 @@ export interface DeviceSubscription {
     modified_at?: Date;
 }
 
+export interface NewClient {
+    name: string;
+    primary_email: string;
+    licenses: number;
+    containers: string[];
+}
+
 export interface Container {
     id: number;
     area: GeoJsonObject;
@@ -157,6 +180,11 @@ export interface DefaultRegion {
 export interface GeoAttribution {
     container_id?: number;
     default_region_id?: number;
+}
+
+export interface ContainerResponseItem {
+    containers: Container[];
+    default_regions: DefaultRegion[];
 }
 
 /**
@@ -403,6 +431,17 @@ export interface ClientAlertReportToInsert {
     photo_url?: string;
 }
 
+export interface ClientAlertReportToInsertPartial {
+    date_time: Date;
+    point: Point;
+}
+
+export interface Login {
+    iat: number;
+    exp: number;
+    token: string;
+}
+
 /**
  * Abstract interface that all session classes implement
  */
@@ -416,8 +455,8 @@ export interface ISession {
 export interface FullClientReport {
     id: number;
     setting: Setting;
-    quick_report_id?: number;
-    alert_report_id?: number;
+    quick_report_id: number | null;
+    alert_report_id: number | null;
     modified_at: Date;
     client_id: number;
     //Part A: Transportation Details (based on setting)
@@ -509,8 +548,8 @@ export interface FullClientReport {
 export interface FullClientReportToInsert {
     //MUST PASS IN SETTING, A QUICK REPORT ID, AND TIME OF MODIFICATION
     setting: Setting;
-    quick_report_id?: number;
-    alert_report_id?: number;
+    quick_report_id: number | null;
+    alert_report_id: number | null;
     modified_at: Date;
     client_id: number;
     //Part A: Transportation Details (based on setting)
@@ -948,5 +987,13 @@ export class Analytics {
             this.thirtyDayCount !== undefined
         )
     }
+}
+
+export interface Viewport {
+    width: string;
+    height: string;
+    latitude: number;
+    longitude: number;
+    zoom: number;
 }
 
