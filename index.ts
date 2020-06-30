@@ -450,6 +450,90 @@ export interface ISession {
     session_type: string;
 }
 
+export interface ReportBase {
+    //Part A: Transportation Details (based on setting)
+    ship_name?: string;
+    ship_IMO_number?: number;
+    ship_flag?: string;
+    ship_type?: string;
+    ship_tonnages_GRT?: number;
+    ship_tonnages_NRT?: number;
+    ship_tonnages_DWT?: number;
+    ship_owner_name?: string;
+    ship_owner_contact?: string;
+    ship_manager_name?: string;
+    ship_manager_contact?: string;
+    ship_last_port?: string;
+    ship_next_port?: string;
+    ship_cargo_type?: string;
+    ship_cargo_quantity?: number;
+    vehicle_shape?: string;
+    vehicle_color?: string;
+    vehicle_registration?: string;
+    vehicle_identifiers?: string;
+    vehicle_makemodel?: string;
+    //Part B: Incident Details
+    nearest_landmark?: string;
+    ship_port_town?: string;
+    vehicle_town?: string;
+    country?: string;
+    ship_status?: number;
+    ship_speed?: number;
+    ship_freeboard?: string;
+    weather_conditions?: string;
+    weather_wind_speed?: number;
+    weather_wind_direction?: string;
+    ship_weather_sea?: string;
+    ship_weather_swell?: string;
+    crew_injuries?: string;
+    items_stolen?: string;
+    ship_area_attacked?: string;
+    enemy_situation_description?: string;
+    personal_situation_description?: string;
+    admin_points?: string;
+    other_details?: string;
+    //Part C: Details of Raiding Party
+    number_of_perps?: number;
+    perp_age?: string;
+    perp_build?: string;
+    perp_clothes?: string;
+    perp_distinguishing_marks?: string;
+    perp_elevation?: string;
+    perp_face?: string;
+    perp_gait?: string;
+    perp_hair?: string;
+    language?: string;
+    ship_craft_used?: string;
+    vehicle_craft_used?: string;
+    closest_point_approach?: string;
+    method_approach?: string;
+    attack_duration?: number;
+    aggression?: string;
+    //Part D: Details Weapons and Damage
+    weapons_sighted?: number;
+    weapons_used?: number;
+    weapons_type?: WeaponType;
+    weapons_description?: string;
+    damage_caused?: number;
+    damage_details?: string;
+    ladders_sighted?: number;
+    other_equipment?: string;
+    //Part E: Other Details
+    ship_action_taken?: string;
+    vehicle_action_taken?: string;
+    incident_reported_authorities?: string;
+    action_by_authorities?: string;
+    priv_security_embarked?: number;
+    priv_security_armed?: number;
+    ship_crew_amount?: number;
+    ship_crew_nationality?: string;
+    vehicle_crew_amount?: number;
+    vehicle_crew_nationality?: string;
+    actor?: Actor;
+    target?: Target;
+}
+
+
 // From the db
 export interface FullClientReport {
     id: number;
