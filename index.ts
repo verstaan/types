@@ -114,7 +114,6 @@ export interface UserProfile {
 export interface AdminUserProfile {
     id: number;
     email: string;
-    password: string;
     privileges: AdminPrivileges;
     first_name: string;
     last_name: string;
