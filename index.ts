@@ -253,8 +253,8 @@ export interface NewClientReport {
     point: Point;
     address?: string;
     report_type: ClientReportType;
-    report_actions?: ClientReportActions;
-    report_needs?: ClientReportNeeds;
+    report_actions: ClientReportActions;
+    report_needs: ClientReportNeeds;
 }
 
 export interface NewClientAlertReport {
