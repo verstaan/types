@@ -406,8 +406,8 @@ export interface ClientReportToInsert {
     point: Point;
     address?: string;
     report_type: ClientReportType;
-    report_actions: ClientReportActions;
-    report_needs: ClientReportNeeds;
+    report_actions?: ClientReportActions;
+    report_needs?: ClientReportNeeds;
     container_id?: number;
     default_region_id?: number;
     custom_region_ids?: number;
