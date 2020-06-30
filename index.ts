@@ -104,7 +104,6 @@ export type AutoVerificationFailure = "photo-metadata-location" | "photo-metadat
 export interface UserProfile {
     id: number;
     email: string;
-    password: string;
     first_name: string;
     last_name: string;
     role: number;
