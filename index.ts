@@ -1,11 +1,25 @@
 import { GeoJsonObject, Point } from "geojson";
 import { AdminPrivileges } from "./adminPrivileges";
 
-export type ClientReportType =
-    | "Shooting"
+export type reportType = | "Shooting"
     | "Theft"
     | "Protest"
-    | "Emergency Response";
+    | "Emergency Response"
+    | "Gang Activity"
+    | "Dangerous Terrain"
+    | "Roadblock/checkpoint"
+    | "Violent Crime"
+    | "Assault"
+    | "Murder"
+    | "Hijacking"
+    | "Smash and Grab"
+    | "Being Followed"
+    | "Home Invasion"
+    | "Police Bribes"
+    | "Phone Theft"
+    | "Drug Deal"
+    | "Vigilante Activity"
+    | "Other";
 
 export type ClientReportActions =
     | "Assisting"
@@ -21,25 +35,17 @@ export type ClientReportNeeds =
     | "Police"
     | "Fire";
 
-export type PublicReportType =
-    | "Protest"
-    | "Gang Activity"
-    | "Dangerous Terrain"
-    | "Roadblock/checkpoint"
-    | "Emergency Response"
-    | "Theft"
-    | "Violent Crime"
-    | "Shooting"
-    | "Assault"
-    | "Other";
-
 export type CategoryTypes = "Violent" | "Non-Violent" | "Hazard" | "Other";
 export type ViolentCategory =
     | "Gang Activity"
     | "Assault"
     | "Shooting"
-    | "Violent Crime";
-export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft";
+    | "Violent Crime"
+    | "Murder"
+    | "Hijacking"
+    | "Being Followed"
+    | "Vigilante Activity";
+export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft" | "Smash and Grab" | "Home Invasion" | "Police Bribes" | "Phone Theft" | "Drug Deal";
 export type HazardCategory = "Dangerous Terrain" | "Roadblock/checkpoint";
 export type OtherCategory = "Other";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
@@ -55,8 +61,8 @@ export const ReportCategories: Record<
     CategoryTypes,
     Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
 > = {
-    Violent: ["Gang Activity", "Assault", "Shooting", "Violent Crime"],
-    "Non-Violent": ["Protest", "Emergency Response", "Theft"],
+    Violent: ["Gang Activity", "Assault", "Shooting", "Violent Crime", "Murder", "Hijacking", "Being Followed", "Vigilante Activity"],
+    "Non-Violent": ["Protest", "Emergency Response", "Theft", "Smash and Grab", "Home Invasion", "Police Bribes", "Phone Theft", "Drug Deal"],
     Hazard: ["Dangerous Terrain", "Roadblock/checkpoint"],
     Other: ["Other"],
 };
@@ -194,7 +200,7 @@ export interface NewOsReport {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: PublicReportType;
+    report_type: reportType;
     description: string;
     photo_url?: string;
     verified?: number;
@@ -206,7 +212,7 @@ export interface NewOsReport {
 export interface AampReportFieldsSpecification {
     aamp_report_type: {
         optional?: false,
-        values: Record<PublicReportType, string[]>
+        values: Record<reportType, string[]>
     };
     [key: string]: {
         optional?: boolean,
@@ -226,7 +232,7 @@ export interface NewVampReport {
     point: Point;
     address?: string;
     description: string;
-    report_type: PublicReportType;
+    report_type: reportType;
     verified: number;
 }
 
@@ -251,7 +257,7 @@ export interface NewClientReport {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: ClientReportType;
+    report_type: reportType;
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
 }
@@ -263,7 +269,7 @@ export interface NewClientAlertReport {
 }
 
 export interface AlertReportUpdate {
-    report_type?: ClientReportType;
+    report_type?: reportType;
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
 }
@@ -277,7 +283,7 @@ export interface PublicReport {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: PublicReportType;
+    report_type: reportType;
     source_type: PublicReportSourceType;
     client_id?: number;
     source?: string;
@@ -301,7 +307,7 @@ export interface ClientReport {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: ClientReportType;
+    report_type: reportType;
     report_actions: ClientReportActions;
     report_needs: ClientReportNeeds;
     container_id?: number;
@@ -322,7 +328,7 @@ export interface ClientAlertReport {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: ClientReportType;
+    report_type: reportType;
     report_actions?: ClientReportActions;
     report_needs: ClientReportNeeds;
     confirmed: number;
@@ -383,7 +389,7 @@ export interface PublicReportToInsert {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: PublicReportType;
+    report_type: reportType;
     source_type: PublicReportSourceType;
     description?: string;
     verified?: number;
@@ -404,7 +410,7 @@ export interface ClientReportToInsert {
     date_time: Date;
     point: Point;
     address?: string;
-    report_type: ClientReportType;
+    report_type: reportType;
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
     container_id?: number;

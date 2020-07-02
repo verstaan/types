@@ -1,12 +1,12 @@
-import {Point} from "geojson";
-import {ClientReportActions, ClientReportNeeds, ClientReportType, PublicReportType, PublicReportSourceType} from "./index";
+import { Point } from "geojson";
+import { ClientReportActions, ClientReportNeeds, reportType, PublicReportSourceType } from "./index";
 
 export class PublicReport {
   created_at: Date | undefined;
   date_time: Date | undefined;
   point: Point | undefined;
   address: string | undefined;
-  report_type: PublicReportType | undefined;
+  report_type: reportType | undefined;
   source_type: PublicReportSourceType | undefined;
   description: string | undefined;
   verified: number | undefined;
