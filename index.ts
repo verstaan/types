@@ -1,5 +1,4 @@
 import { GeoJsonObject, Point } from "geojson";
-import { Request } from "restify";
 import { AdminPrivileges } from "./adminPrivileges";
 
 export type ClientReportType =
