@@ -10,15 +10,15 @@ export type reportType = | "Shooting"
     | "Roadblock/checkpoint"
     | "Violent Crime"
     | "Assault"
-    | "Murder"
-    | "Hijacking"
-    | "Smash and Grab"
-    | "Being Followed"
-    | "Home Invasion"
-    | "Police Bribes"
-    | "Phone Theft"
-    | "Drug Deal"
-    | "Vigilante Activity"
+    | "Murder" //new
+    | "Hijacking" //new
+    | "Smash and Grab" //new
+    | "Being Followed" //new
+    | "Home Invasion" //new
+    | "Police Bribes" //new
+    | "Phone Theft" //new
+    | "Drug Deal" //new
+    | "Vigilante Activity" //new
     | "Other";
 
 export type ClientReportActions =
@@ -43,9 +43,8 @@ export type ViolentCategory =
     | "Violent Crime"
     | "Murder"
     | "Hijacking"
-    | "Being Followed"
     | "Vigilante Activity";
-export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft" | "Smash and Grab" | "Home Invasion" | "Police Bribes" | "Phone Theft" | "Drug Deal";
+export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft" | "Smash and Grab" | "Being Followed" | "Home Invasion" | "Police Bribes" | "Phone Theft" | "Drug Deal";
 export type HazardCategory = "Dangerous Terrain" | "Roadblock/checkpoint";
 export type OtherCategory = "Other";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
