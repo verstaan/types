@@ -244,6 +244,7 @@ export interface NewPendingAampReport {
     form_id: number;
     first_name: string;
     last_name: string;
+    email?: string;
     date_time: Date;
     address?: string;
     description: string;
