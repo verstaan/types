@@ -347,15 +347,18 @@ export interface Form extends NewForm {
     domains: string[];
 }
 
+export interface PendingAampReportToInsert extends NewPendingAampReport {
+    photo_metadata_point?: Point;
+    auto_verification_failure?: AutoVerificationFailure[];
+}
+
 /**
  * Pending AAMP Report received from API
  */
-export interface PendingAampReport extends NewPendingAampReport {
+export interface PendingAampReport extends PendingAampReportToInsert {
     id: number;
     manager_review: Review;
     super_user_review: Review;
-    photo_metadata_point?: Point;
-    auto_verification_failure?: AutoVerificationFailure[];
     public_report_id?: number;
     created_at: Date;
 }
