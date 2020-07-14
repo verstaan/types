@@ -101,6 +101,8 @@ export type Target =
 
 export type WeaponType = "Small" | "Medium" | "Heavy";
 
+export type ReportClassification = "COVID-19 Entries" | "Arrests and Recoveries" | "Incidents and Suspicious Activity" | "Complaints/Compliments" | "Site Visits" | "Client Meetings" | "Inspections";
+
 export type Review = boolean | null; // true is approved, false is rejected, null is not yet reviewed
 
 export type AutoVerificationFailure = "photo-metadata-location" | "photo-metadata-missing";
@@ -538,6 +540,16 @@ export interface ReportBase {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
+    //Part F: Client Imported Report I
+    report_classification?: ReportClassification;
+    OB_number?: string;
+    category?: string;
+    sub_category?: string;
+    occurrence_date?: string;
+    locality?: string;
+    status?: string;
+    responsible?: string;
+    summary?: string;
 }
 
 
@@ -629,6 +641,16 @@ export interface FullClientReport {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
+    //Part F: Client Imported Report I
+    report_classification?: ReportClassification;
+    OB_number?: string;
+    category?: string;
+    sub_category?: string;
+    occurrence_date?: string;
+    locality?: string;
+    status?: string;
+    responsible?: string;
+    summary?: string;
 }
 
 
@@ -722,6 +744,16 @@ export interface FullClientReportToInsert {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
+    //Part F: Client Imported Report I
+    report_classification?: ReportClassification;
+    OB_number?: string;
+    category?: string;
+    sub_category?: string;
+    occurrence_date?: string;
+    locality?: string;
+    status?: string;
+    responsible?: string;
+    summary?: string;
 }
 
 /*
@@ -813,6 +845,16 @@ export interface FullClientReportUpdate {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
+    //Part F: Client Imported Report I
+    report_classification?: ReportClassification;
+    OB_number?: string;
+    category?: string;
+    sub_category?: string;
+    occurrence_date?: string;
+    locality?: string;
+    status?: string;
+    responsible?: string;
+    summary?: string;
 }
 
 // Hierarchy of the full client report
@@ -826,6 +868,7 @@ export interface FullClientReportSections {
     perpSection?: ClientReportSeaPerpSection | ClientReportLandPerpSection;
     weaponSection?: ClientReportWeaponSection;
     otherSection?: ClientReportSeaOtherSection | ClientReportLandOtherSection;
+    clientImportedReportOne?: ClientReportImportOne;
 }
 
 // Different components of a full report
@@ -960,6 +1003,18 @@ export interface ClientReportLandOtherSection {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
+}
+
+export interface ClientReportImportOne {
+    report_classification?: ReportClassification;
+    OB_number?: string;
+    category?: string;
+    sub_category?: string;
+    occurrence_date?: string;
+    locality?: string;
+    status?: string;
+    responsible?: string;
+    summary?: string;
 }
 
 export type ReportNotificationType = "Public" | "Quick" | "Alert" | "Alert-Update" | "Alert-Cancel" | "Alert-Confirm";
