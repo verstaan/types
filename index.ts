@@ -225,6 +225,7 @@ export interface NewForm {
     container_id: number;
     primary_manager: number;
     fields: AampReportFieldsSpecification;
+    immediate_public: boolean;
 }
 
 export interface NewVampReport {
@@ -361,7 +362,7 @@ export interface PendingAampReport extends PendingAampReportToInsert {
     id: number;
     manager_review: Review;
     super_user_review: Review;
-    public_report_id?: number;
+    public_report_id?: number | null;
     created_at: Date;
 }
 
