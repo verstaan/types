@@ -225,7 +225,7 @@ export interface NewForm {
     container_id: number;
     primary_manager: number;
     fields: AampReportFieldsSpecification;
-    immediate_public: boolean;
+    immediate_public?: boolean;
 }
 
 export interface NewVampReport {
@@ -348,6 +348,7 @@ export interface ClientAlertReport {
 export interface Form extends NewForm {
     id: number;
     domains: string[];
+    immediate_public: boolean;
 }
 
 export interface PendingAampReportToInsert extends NewPendingAampReport {
