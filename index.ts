@@ -363,6 +363,7 @@ export interface PendingAampReport extends PendingAampReportToInsert {
     id: number;
     manager_review: Review;
     super_user_review: Review;
+    archived: boolean;
     public_report_id?: number | null;
     created_at: Date;
 }
