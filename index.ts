@@ -263,6 +263,7 @@ export interface NewClientReport {
     report_type: reportType;
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
+    photo_url?: string;
 }
 
 export interface NewClientAlertReport {
@@ -316,7 +317,7 @@ export interface ClientReport {
     container_id?: number;
     default_region_id?: number;
     custom_region_ids?: number;
-    photoUrl?: string;
+    photo_url?: string;
     full_report_id: number;
 }
 
@@ -338,7 +339,7 @@ export interface ClientAlertReport {
     container_id?: number;
     default_region_id?: number;
     custom_region_ids?: number;
-    photoUrl?: string;
+    photo_url?: string;
     full_report_id: number;
 }
 
