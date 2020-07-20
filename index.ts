@@ -386,7 +386,8 @@ export const AampUpdateMinimumPrivileges: {
     date_time: AdminPrivileges.MANAGER,
     description: AdminPrivileges.MANAGER,
     point: AdminPrivileges.MANAGER,
-    fields: AdminPrivileges.MANAGER
+    fields: AdminPrivileges.MANAGER,
+    archived: AdminPrivileges.MANAGER
 };
 
 /**
