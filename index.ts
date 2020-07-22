@@ -447,6 +447,7 @@ export interface ClientAlertReportToInsert {
 export interface ClientAlertReportToInsertPartial {
     date_time: Date;
     point: Point;
+    address?: string;
 }
 
 export interface Login {
