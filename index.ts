@@ -1182,6 +1182,12 @@ export interface Team {
     address?: string
 }
 
+export interface TeamToInsert {
+    client_id: number,
+    name: string,
+    address?: string
+}
+
 export interface TeamUpdate {
     id: number,
     name?: string,
