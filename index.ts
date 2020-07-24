@@ -115,6 +115,19 @@ export interface UserProfile {
     role: number;
     client_id: number;
     current_container?: number;
+    nickname?: string;
+    position?: string;
+    address_home?: string;
+    phone_cell?: string;
+    phone_work?: string;
+    phone_home?: string;
+    emergency_contact?: string;
+    emergency_contact_relationship?: string;
+    emergency_phone_home?: string;
+    emergency_phone_cell?: string;
+    emergency_phone_work?: string;
+    current_container_mobile?: number;
+    current_default_region_mobile?: number;
 }
 
 export interface AdminUserProfile {
@@ -132,6 +145,9 @@ export interface Client {
     primary_email: string;
     licenses: number;
     created_at: Date;
+    licenses_FC?: number;
+    licenses_BC?: number;
+    licenses_EC?: number;
 }
 
 export interface ClientProfile {
@@ -140,6 +156,9 @@ export interface ClientProfile {
     primary_email: string;
     licenses: number;
     created_at: Date;
+    licenses_FC?: number;
+    licenses_BC?: number;
+    licenses_EC?: number;
 }
 
 export interface Device {
@@ -264,12 +283,14 @@ export interface NewClientReport {
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
     photo_url?: string;
+    team_id?: number;
 }
 
 export interface NewClientAlertReport {
     date_time: Date;
     point: Point;
     address?: string;
+    team_id?: number;
 }
 
 export interface AlertReportUpdate {
@@ -298,6 +319,7 @@ export interface PublicReport {
     actor?: Actor;
     target?: Target;
     photo_url?: string;
+    team_id?: number;
 }
 
 /**
@@ -319,6 +341,7 @@ export interface ClientReport {
     custom_region_ids?: number;
     photo_url?: string;
     full_report_id: number;
+    team_id?: number;
 }
 
 /**
@@ -341,6 +364,7 @@ export interface ClientAlertReport {
     custom_region_ids?: number;
     photo_url?: string;
     full_report_id: number;
+    team_id?: number;
 }
 
 /**
@@ -409,6 +433,7 @@ export interface PublicReportToInsert {
     photo_url?: string;
     actor?: Actor;
     target?: Target;
+    team_id?: number;
 }
 
 /**
@@ -427,6 +452,7 @@ export interface ClientReportToInsert {
     default_region_id?: number;
     custom_region_ids?: number;
     photo_url?: string;
+    team_id?: number;
 }
 
 /**
@@ -442,6 +468,7 @@ export interface ClientAlertReportToInsert {
     default_region_id?: number;
     custom_region_ids?: number;
     photo_url?: string;
+    team_id?: number;
 }
 
 export interface ClientAlertReportToInsertPartial {
@@ -1148,3 +1175,9 @@ export interface Viewport {
     zoom: number;
 }
 
+export interface Team {
+    id: number,
+    client_id: number,
+    name: string,
+    address?: string
+}
