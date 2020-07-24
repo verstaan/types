@@ -128,6 +128,7 @@ export interface UserProfile {
     emergency_phone_work?: string;
     current_container_mobile?: number;
     current_default_region_mobile?: number;
+    team_id?: number;
 }
 
 export interface AdminUserProfile {
