@@ -1183,11 +1183,13 @@ export interface Team {
 }
 
 export interface TeamUpdate {
+    id: number,
     name?: string,
     address?: string
 }
 
 export interface UserUpdate {
+    id: number,
     team_id?: number,
     role?: number
 }
