@@ -1181,3 +1181,13 @@ export interface Team {
     name: string,
     address?: string
 }
+
+export interface TeamUpdate {
+    name?: string,
+    address?: string
+}
+
+export interface UserUpdate {
+    team_id?: number,
+    role?: number
+}
