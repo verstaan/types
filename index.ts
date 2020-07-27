@@ -180,12 +180,6 @@ export interface NewClient {
     containers: string[];
 }
 
-export interface Viewport {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-}
-
 export interface Container {
     id: number;
     area: GeoJsonObject;
@@ -1172,8 +1166,8 @@ export class Analytics {
 }
 
 export interface Viewport {
-    width: string;
-    height: string;
+    width?: string;
+    height?: string;
     latitude: number;
     longitude: number;
     zoom: number;
