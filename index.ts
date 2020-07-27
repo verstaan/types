@@ -1,4 +1,4 @@
-import { GeoJsonObject, Point } from "geojson";
+import { Polygon, MultiPolygon, Point } from "geojson";
 import { AdminPrivileges } from "./adminPrivileges";
 
 export type reportType = | "Shooting"
@@ -188,7 +188,7 @@ export interface ViewportBase {
 
 export interface Container {
     id: number;
-    area: GeoJsonObject;
+    area: Polygon | MultiPolygon;
     name: string;
     viewport_mobile?: ViewportBase;
     viewport_web?: ViewportBase;
@@ -197,7 +197,7 @@ export interface Container {
 
 export interface DefaultRegion {
     id: number;
-    area?: GeoJsonObject;
+    area?: Polygon | MultiPolygon;
     name: string;
     viewport_mobile?: ViewportBase;
     viewport_web?: ViewportBase;
