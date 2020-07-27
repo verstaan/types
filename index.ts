@@ -189,15 +189,27 @@ export interface NewClient {
     containers: string[];
 }
 
+export interface Viewport {
+    latitude: number;
+    longitude: number;
+    zoom: number;
+}
+
 export interface Container {
     id: number;
     area: GeoJsonObject;
     name: string;
+    viewport_mobile: Viewport;
+    viewport_web: Viewport;
+    abbreviation: string;
 }
 
 export interface DefaultRegion {
     id: number;
+    area: GeoJsonObject;
     name: string;
+    viewport_mobile: Viewport;
+    viewport_web: Viewport;
     container_id: number;
 }
 
