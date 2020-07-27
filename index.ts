@@ -203,6 +203,15 @@ export interface Container {
     abbreviation?: string;
 }
 
+export interface DefaultRegionToInsert {
+    id: number;
+    area: Polygon | MultiPolygon;
+    name: string;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
+    container_id: number;
+}
+
 export interface DefaultRegion {
     id: number;
     area?: Polygon | MultiPolygon;
