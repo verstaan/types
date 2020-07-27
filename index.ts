@@ -186,6 +186,14 @@ export interface ViewportBase {
     zoom: number;
 }
 
+export interface ContainerToInsert {
+    area: Polygon | MultiPolygon;
+    name: string;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
+    abbreviation?: string;
+}
+
 export interface Container {
     id: number;
     area: Polygon | MultiPolygon;
