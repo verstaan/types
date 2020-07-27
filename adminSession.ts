@@ -37,7 +37,7 @@ export class AdminSession implements ISession {
    * @type {number}
    * @memberof AdminSession
    */
-  public privileges: number;
+  public privileges: AdminPrivileges;
 
   /**
    * Type of session for serialization
