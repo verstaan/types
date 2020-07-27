@@ -192,7 +192,7 @@ export interface Container {
     name: string;
     viewport_mobile: Viewport;
     viewport_web: Viewport;
-    abbreviation: string;
+    abbreviation?: string;
 }
 
 export interface DefaultRegion {
