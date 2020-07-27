@@ -151,16 +151,7 @@ export interface Client {
     licenses_EC?: number;
 }
 
-export interface ClientProfile {
-    id: number;
-    name: string;
-    primary_email: string;
-    licenses: number;
-    created_at: Date;
-    licenses_FC?: number;
-    licenses_BC?: number;
-    licenses_EC?: number;
-}
+export type ClientProfile = Client;
 
 export interface Device {
     user_id: number;
