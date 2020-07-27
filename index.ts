@@ -180,12 +180,18 @@ export interface NewClient {
     containers: string[];
 }
 
+export interface ViewportBase {
+    latitude: number;
+    longitude: number;
+    zoom: number;
+}
+
 export interface Container {
     id: number;
     area: GeoJsonObject;
     name: string;
-    viewport_mobile: Viewport;
-    viewport_web: Viewport;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
     abbreviation?: string;
 }
 
@@ -193,8 +199,8 @@ export interface DefaultRegion {
     id: number;
     area: GeoJsonObject;
     name: string;
-    viewport_mobile: Viewport;
-    viewport_web: Viewport;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
     container_id: number;
 }
 
@@ -1165,12 +1171,9 @@ export class Analytics {
     }
 }
 
-export interface Viewport {
-    width?: string;
-    height?: string;
-    latitude: number;
-    longitude: number;
-    zoom: number;
+export interface Viewport extends ViewportBase {
+    width: string;
+    height: string;
 }
 
 export interface Team {
