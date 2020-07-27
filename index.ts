@@ -190,17 +190,17 @@ export interface Container {
     id: number;
     area: GeoJsonObject;
     name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
+    viewport_mobile?: ViewportBase;
+    viewport_web?: ViewportBase;
     abbreviation?: string;
 }
 
 export interface DefaultRegion {
     id: number;
-    area: GeoJsonObject;
+    area?: GeoJsonObject;
     name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
+    viewport_mobile?: ViewportBase;
+    viewport_web?: ViewportBase;
     container_id: number;
 }
 
