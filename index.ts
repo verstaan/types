@@ -1217,3 +1217,19 @@ export interface UserUpdate {
     team_id?: number,
     role?: number
 }
+
+export interface PublicInsight {
+    id: number,
+    container_id: number,
+    default_region_id: number,
+    title: string,
+    content: any,
+    created_at: Date
+}
+
+export interface NewPublicInsight {
+    container_id: number,
+    default_region_id: number,
+    title: string,
+    content: any
+}
