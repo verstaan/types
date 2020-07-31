@@ -1223,7 +1223,7 @@ export interface PublicInsight {
     container_id: number,
     default_region_id?: number,
     title: string,
-    content: any,
+    content: Map<string, string>,
     created_at: Date
 }
 
@@ -1231,5 +1231,5 @@ export interface NewPublicInsight {
     container_id: number,
     default_region_id?: number,
     title: string,
-    content: any
+    content: Map<string, string>
 }
