@@ -7,18 +7,35 @@ export type reportType = | "Shooting"
     | "Emergency Response"
     | "Gang Activity"
     | "Dangerous Terrain"
-    | "Roadblock/checkpoint"
+    | "Roadblock"
     | "Violent Crime"
     | "Assault"
-    | "Murder" //new
-    | "Hijacking" //new
-    | "Smash and Grab" //new
-    | "Being Followed" //new
-    | "Home Invasion" //new
-    | "Police Bribes" //new
-    | "Phone Theft" //new
-    | "Drug Deal" //new
-    | "Vigilante Activity" //new
+    | "Murder" 
+    | "Hijacking" 
+    | "Smash and Grab" 
+    | "Being Followed" 
+    | "Home Invasion" 
+    | "Police Bribes" 
+    | "Phone Theft" 
+    | "Drug Deal" 
+    | "Vigilante Activity"
+    | "Stabbing" //new
+    | "Kidnapping"
+    | "Rocket Attack"
+    | "Coordinated Attack"
+    | "Explosive Weapon"
+    | "Harassment"
+    | "Suspicious Activity"
+    | "Suspicious Vehicle"
+    | "Suspicious Object"
+    | "COVID"
+    | "Hazard"
+    | "Road Congestion"
+    | "Fire"
+    | "Police"
+    | "Checkpoint"
+    | "Explosion"
+    | "Traffic Accident"
     | "Other";
 
 export type ClientReportActions =
@@ -43,9 +60,37 @@ export type ViolentCategory =
     | "Violent Crime"
     | "Murder"
     | "Hijacking"
-    | "Vigilante Activity";
-export type NonViolentCategory = "Protest" | "Emergency Response" | "Theft" | "Smash and Grab" | "Being Followed" | "Home Invasion" | "Police Bribes" | "Phone Theft" | "Drug Deal";
-export type HazardCategory = "Dangerous Terrain" | "Roadblock/checkpoint";
+    | "Vigilante Activity"
+    | "Stabbing"
+    | "Kidnapping"
+    | "Rocket Attack"
+    | "Coordinated Attack"
+    | "Explosive Weapon";
+export type NonViolentCategory = 
+    | "Protest" 
+    | "Emergency Response" 
+    | "Theft" 
+    | "Smash and Grab" 
+    | "Being Followed" 
+    | "Home Invasion" 
+    | "Police Bribes" 
+    | "Phone Theft" 
+    | "Drug Deal"
+    | "Harassment";
+export type HazardCategory = 
+    | "Dangerous Terrain" 
+    | "Roadblock"
+    | "Suspicious Activity"
+    | "Suspicious Vehicle"
+    | "Suspicious Object"
+    | "COVID"
+    | "Hazard"
+    | "Road Congestion"
+    | "Fire"
+    | "Police"
+    | "Checkpoint"
+    | "Explosion"
+    | "Traffic Accident";
 export type OtherCategory = "Other";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
 
@@ -60,9 +105,43 @@ export const ReportCategories: Record<
     CategoryTypes,
     Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
 > = {
-    Violent: ["Gang Activity", "Assault", "Shooting", "Violent Crime", "Murder", "Hijacking", "Being Followed", "Vigilante Activity"],
-    "Non-Violent": ["Protest", "Emergency Response", "Theft", "Smash and Grab", "Home Invasion", "Police Bribes", "Phone Theft", "Drug Deal"],
-    Hazard: ["Dangerous Terrain", "Roadblock/checkpoint"],
+    Violent: [
+        "Gang Activity", 
+        "Assault", 
+        "Shooting", 
+        "Violent Crime", 
+        "Murder", 
+        "Hijacking", 
+        "Being Followed", 
+        "Vigilante Activity", 
+        "Stabbing", 
+        "Kidnapping", 
+        "Rocket Attack",
+        "Coordinated Attack",
+        "Explosive Weapon"],
+    "Non-Violent": [
+        "Protest", 
+        "Emergency Response", 
+        "Theft", "Smash and Grab", 
+        "Home Invasion", 
+        "Police Bribes", 
+        "Phone Theft", 
+        "Drug Deal",
+        "Harassment"],
+    Hazard: [
+        "Dangerous Terrain", 
+        "Roadblock",
+        "Suspicious Activity",
+        "Suspicious Vehicle",
+        "Suspicious Object",
+        "COVID",
+        "Hazard",
+        "Road Congestion",
+        "Fire",
+        "Police",
+        "Checkpoint",
+        "Explosion",
+        "Traffic Accident"],
     Other: ["Other"],
 };
 
