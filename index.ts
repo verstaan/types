@@ -10,14 +10,14 @@ export type reportType = | "Shooting"
     | "Roadblock"
     | "Violent Crime"
     | "Assault"
-    | "Murder" 
-    | "Hijacking" 
-    | "Smash and Grab" 
-    | "Being Followed" 
-    | "Home Invasion" 
-    | "Police Bribes" 
-    | "Phone Theft" 
-    | "Drug Deal" 
+    | "Murder"
+    | "Hijacking"
+    | "Smash and Grab"
+    | "Being Followed"
+    | "Home Invasion"
+    | "Police Bribes"
+    | "Phone Theft"
+    | "Drug Deal"
     | "Vigilante Activity"
     | "Stabbing" //new
     | "Kidnapping"
@@ -66,19 +66,19 @@ export type ViolentCategory =
     | "Rocket Attack"
     | "Coordinated Attack"
     | "Explosive Weapon";
-export type NonViolentCategory = 
-    | "Protest" 
-    | "Emergency Response" 
-    | "Theft" 
-    | "Smash and Grab" 
-    | "Being Followed" 
-    | "Home Invasion" 
-    | "Police Bribes" 
-    | "Phone Theft" 
+export type NonViolentCategory =
+    | "Protest"
+    | "Emergency Response"
+    | "Theft"
+    | "Smash and Grab"
+    | "Being Followed"
+    | "Home Invasion"
+    | "Police Bribes"
+    | "Phone Theft"
     | "Drug Deal"
     | "Harassment";
-export type HazardCategory = 
-    | "Dangerous Terrain" 
+export type HazardCategory =
+    | "Dangerous Terrain"
     | "Roadblock"
     | "Suspicious Activity"
     | "Suspicious Vehicle"
@@ -106,30 +106,30 @@ export const ReportCategories: Record<
     Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
 > = {
     Violent: [
-        "Gang Activity", 
-        "Assault", 
-        "Shooting", 
-        "Violent Crime", 
-        "Murder", 
-        "Hijacking", 
-        "Being Followed", 
-        "Vigilante Activity", 
-        "Stabbing", 
-        "Kidnapping", 
+        "Gang Activity",
+        "Assault",
+        "Shooting",
+        "Violent Crime",
+        "Murder",
+        "Hijacking",
+        "Being Followed",
+        "Vigilante Activity",
+        "Stabbing",
+        "Kidnapping",
         "Rocket Attack",
         "Coordinated Attack",
         "Explosive Weapon"],
     "Non-Violent": [
-        "Protest", 
-        "Emergency Response", 
-        "Theft", "Smash and Grab", 
-        "Home Invasion", 
-        "Police Bribes", 
-        "Phone Theft", 
+        "Protest",
+        "Emergency Response",
+        "Theft", "Smash and Grab",
+        "Home Invasion",
+        "Police Bribes",
+        "Phone Theft",
         "Drug Deal",
         "Harassment"],
     Hazard: [
-        "Dangerous Terrain", 
+        "Dangerous Terrain",
         "Roadblock",
         "Suspicious Activity",
         "Suspicious Vehicle",
@@ -208,6 +208,7 @@ export interface UserProfile {
     current_container_mobile?: number;
     current_default_region_mobile?: number;
     team_id?: number;
+    designation?: string;
 }
 
 export interface AdminUserProfile {
@@ -1294,7 +1295,8 @@ export interface TeamUpdate {
 export interface UserUpdate {
     id: number,
     team_id?: number,
-    role?: number
+    role?: number,
+    designation?: string
 }
 
 export interface PublicInsight {

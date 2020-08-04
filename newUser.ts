@@ -5,6 +5,7 @@ export class NewUser {
   public password: string | undefined;
   public client_id: number | undefined;
   public role: number | undefined;
+  public designation: string | undefined;
 
   constructor(init?: Partial<NewUser>) {
     Object.assign(this, init);
