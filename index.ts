@@ -786,6 +786,8 @@ export interface FullClientReport {
     status?: string;
     responsible?: string;
     summary?: string;
+    template_id?: number;
+    template_fields?: JSON;
 }
 
 
@@ -889,6 +891,8 @@ export interface FullClientReportToInsert {
     status?: string;
     responsible?: string;
     summary?: string;
+    template_id?: number;
+    template_fields?: JSON;
 }
 
 /*
@@ -990,6 +994,8 @@ export interface FullClientReportUpdate {
     status?: string;
     responsible?: string;
     summary?: string;
+    template_id?: number;
+    template_fields?: JSON;
 }
 
 // Hierarchy of the full client report
