@@ -1317,8 +1317,8 @@ export interface NewPublicInsight {
     content: Map<string, string>
 }
 
-export interface reportTypeUpdate {
-    reportType: reportType,
+export interface ReportTypeUpdate {
+    report_type: reportType,
     team_id?: number,
     client_id?: number
 }
