@@ -1322,3 +1322,16 @@ export interface ReportTypeUpdate {
     team_id?: number,
     client_id?: number
 }
+
+export interface ReportTemplate {
+    id: number,
+    name: string,
+    client_id?: number,
+    fields: JSON
+}
+
+export interface ReportTemplateToInsert {
+    name: string,
+    client_id?: number,
+    fields: JSON
+}
