@@ -96,3 +96,69 @@ export class Analytics {
     }
 }
 
+
+/**
+ * Sherlock V2 analytics summary
+ */
+export class GeneralStats {
+    public count: number | undefined;
+    public change: number | undefined;
+    public day: string | undefined;
+    public month: string | undefined;
+    public date: string | undefined;
+
+    constructor(init?: Partial<GeneralStats>) {
+        Object.assign(this, init);
+    }
+
+    checkInfo(): boolean {
+        return (
+            this.count != undefined &&
+            this.change != undefined &&
+            this.day != undefined &&
+            this.month != undefined &&
+            this.date != undefined
+        )
+    }
+}
+
+
+export class PerCategoryStats {
+    public category: string | undefined;
+    public count: number | undefined;
+    public change: number | undefined;
+    public day: string | undefined;
+    public month: string | undefined;
+    public date: string | undefined;
+
+    constructor(init?: Partial<GeneralStats>) {
+        Object.assign(this, init);
+    }
+
+    checkInfo(): boolean {
+        return (
+            this.category != undefined &&
+            this.count != undefined &&
+            this.change != undefined &&
+            this.day != undefined &&
+            this.month != undefined &&
+            this.date != undefined
+        )
+    }
+}
+
+export class AnalyticsSummary {
+    public generalStats: GeneralStats[] | undefined;
+    public perCategoryStats: PerCategoryStats[] | undefined;
+
+    constructor(init?: Partial<AnalyticsSummary>) {
+        Object.assign(this, init);
+    }
+
+    checkInfo(): boolean {
+        return (
+            this.generalStats != undefined &&
+            this.perCategoryStats != undefined
+        )
+    }
+}
