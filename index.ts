@@ -229,6 +229,7 @@ export interface Client {
     licenses_FC?: number;
     licenses_BC?: number;
     licenses_EC?: number;
+    valid_report_types?: reportType[];
 }
 
 export type ClientProfile = Client;
@@ -1277,7 +1278,8 @@ export interface Team {
     id: number,
     client_id: number,
     name: string,
-    address?: string
+    address?: string,
+    valid_report_types?: reportType[];
 }
 
 export interface TeamToInsert {
@@ -1313,4 +1315,10 @@ export interface NewPublicInsight {
     default_region_id?: number,
     title: string,
     content: Map<string, string>
+}
+
+export interface reportTypeUpdate {
+    reportType: reportType,
+    team_id?: number,
+    client_id?: number
 }
