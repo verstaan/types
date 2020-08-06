@@ -131,7 +131,7 @@ export class PerCategoryStats {
     public month: string | undefined;
     public date: string | undefined;
 
-    constructor(init?: Partial<GeneralStats>) {
+    constructor(init?: Partial<PerCategoryStats>) {
         Object.assign(this, init);
     }
 
@@ -147,9 +147,33 @@ export class PerCategoryStats {
     }
 }
 
+
+export class CategoryStats {
+    public category: string | undefined;
+    public count: number | undefined;
+    public change: number | undefined;
+
+    constructor(init?: Partial<CategoryStats>) {
+        Object.assign(this, init);
+    }
+
+    checkInfo(): boolean {
+        return (
+            this.category != undefined &&
+            this.count != undefined &&
+            this.change != undefined
+        )
+    }
+}
+
+
 export class AnalyticsSummary {
     public generalStats: GeneralStats[] | undefined;
     public perCategoryStats: PerCategoryStats[] | undefined;
+    public pastDayCategoryStats: CategoryStats[] | undefined;
+    public pastWeekCategoryStats: CategoryStats[] | undefined;
+    public pastMonthCategoryStats: CategoryStats[] | undefined;
+    public allTimeCategoryStats: CategoryStats[] | undefined;
 
     constructor(init?: Partial<AnalyticsSummary>) {
         Object.assign(this, init);
@@ -158,7 +182,11 @@ export class AnalyticsSummary {
     checkInfo(): boolean {
         return (
             this.generalStats != undefined &&
-            this.perCategoryStats != undefined
+            this.perCategoryStats != undefined &&
+            this.pastDayCategoryStats != undefined &&
+            this.pastWeekCategoryStats != undefined &&
+            this.pastMonthCategoryStats != undefined &&
+            this.allTimeCategoryStats != undefined
         )
     }
 }
