@@ -285,7 +285,6 @@ export interface Container {
 }
 
 export interface DefaultRegionToInsert {
-    id: number;
     area: Polygon | MultiPolygon;
     name: string;
     viewport_mobile: ViewportBase;
