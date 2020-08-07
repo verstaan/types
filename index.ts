@@ -392,6 +392,8 @@ export interface NewClientAlertReport {
     point: Point;
     address?: string;
     team_id?: number;
+    nine_liner?: JSON;
+    mist_report_id?: number;
 }
 
 export interface AlertReportUpdate {
@@ -466,6 +468,8 @@ export interface ClientAlertReport {
     photo_url?: string;
     full_report_id: number;
     team_id?: number;
+    nine_liner?: JSON;
+    mist_report_id?: number;
 }
 
 /**
@@ -570,6 +574,8 @@ export interface ClientAlertReportToInsert {
     custom_region_ids?: number;
     photo_url?: string;
     team_id?: number;
+    nine_liner?: JSON;
+    mist_report_id?: number;
 }
 
 export interface ClientAlertReportToInsertPartial {
@@ -1332,11 +1338,52 @@ export interface ReportTemplate {
     id: number,
     name: string,
     client_id?: number,
-    fields: JSON
+    fields: Map<string, Map<string, TEMPLATE_FIELD>>
 }
 
 export interface ReportTemplateToInsert {
     name: string,
     client_id?: number,
-    fields: JSON
+    fields: Map<string, Map<string, TEMPLATE_FIELD>>
+}
+
+export interface Dropdown {
+    type: "dropdown",
+    options: string[],
+    value: string | null
+}
+
+export interface ShortString {
+    type: "short_string",
+    value: string | null
+}
+
+export interface LongString {
+    type: "long_string",
+    value: string | null
+}
+
+export interface Number {
+    type: "number",
+    value: number | null
+}
+
+export interface Tickbox {
+    type: "tickbox",
+    value: true | false | null
+}
+
+export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | Number | Tickbox;
+
+export interface NineLiner {
+    serial_number: SVGFESpecularLightingElement,
+    line_one: string, // location
+    line_two: string, // radio frequency, call sign, and suffix
+    line_three: number, // number of patients by precendence
+    line_four: string, // special equipment needed
+    line_five: number, // number of patients
+    line_six: string, // security at pick-up site
+    line_seven: string, // method of marking pick-up site
+    line_eight: string, // patient nationality and status
+    line_nine: string // NBC Contamination
 }
