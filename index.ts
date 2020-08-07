@@ -1387,3 +1387,52 @@ export interface NineLiner {
     line_eight: string | null, // patient nationality and status
     line_nine: string | null // NBC Contamination
 }
+
+export interface MISTReport {
+    id: number,
+    alert_report_id: number,
+    incident_time?: Date,
+    name?: string,
+    date_of_birth?: string,
+    blood_gp?: string,
+    company?: string,
+    urgency?: string,
+    other?: string,
+    injury_mechanism?: string[],
+    injuries_found?: JSON,
+    pulse_rate?: string,
+    rr?: string,
+    cap_refill?: string
+}
+
+export interface MISTReportToInsert {
+    alert_report_id: number,
+    incident_time?: Date,
+    name?: string,
+    date_of_birth?: string,
+    blood_gp?: string,
+    company?: string,
+    urgency?: string,
+    other?: string,
+    injury_mechanism?: string[],
+    injuries_found?: JSON,
+    pulse_rate?: string,
+    rr?: string,
+    cap_refill?: string
+}
+
+export interface MISTReportUpdate {
+    id: number,
+    incident_time?: Date,
+    name?: string,
+    date_of_birth?: string,
+    blood_gp?: string,
+    company?: string,
+    urgency?: string,
+    other?: string,
+    injury_mechanism?: string[],
+    injuries_found?: JSON,
+    pulse_rate?: string,
+    rr?: string,
+    cap_refill?: string
+}
