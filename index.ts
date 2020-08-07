@@ -1376,14 +1376,14 @@ export interface Tickbox {
 export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | Number | Tickbox;
 
 export interface NineLiner {
-    serial_number: SVGFESpecularLightingElement,
-    line_one: string, // location
-    line_two: string, // radio frequency, call sign, and suffix
-    line_three: number, // number of patients by precendence
-    line_four: string, // special equipment needed
-    line_five: number, // number of patients
-    line_six: string, // security at pick-up site
-    line_seven: string, // method of marking pick-up site
-    line_eight: string, // patient nationality and status
-    line_nine: string // NBC Contamination
+    serial_number: number | null,
+    line_one: string | null, // location
+    line_two: string | null, // radio frequency, call sign, and suffix
+    line_three: number | null, // number of patients by precendence
+    line_four: string | null, // special equipment needed
+    line_five: number | null, // number of patients
+    line_six: string | null, // security at pick-up site
+    line_seven: string | null, // method of marking pick-up site
+    line_eight: string | null, // patient nationality and status
+    line_nine: string | null // NBC Contamination
 }
