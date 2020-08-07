@@ -392,7 +392,7 @@ export interface NewClientAlertReport {
     point: Point;
     address?: string;
     team_id?: number;
-    nine_liner?: JSON;
+    nine_liner?: NineLiner;
     mist_report_id?: number;
 }
 
@@ -468,7 +468,7 @@ export interface ClientAlertReport {
     photo_url?: string;
     full_report_id: number;
     team_id?: number;
-    nine_liner?: JSON;
+    nine_liner?: NineLiner;
     mist_report_id?: number;
 }
 
@@ -574,7 +574,7 @@ export interface ClientAlertReportToInsert {
     custom_region_ids?: number;
     photo_url?: string;
     team_id?: number;
-    nine_liner?: JSON;
+    nine_liner?: NineLiner;
     mist_report_id?: number;
 }
 
