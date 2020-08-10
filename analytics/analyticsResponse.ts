@@ -100,36 +100,13 @@ export class Analytics {
 /**
  * Sherlock V2 analytics summary
  */
-export class GeneralStats {
-    public count: number | undefined;
-    public change: number | undefined;
-    public day: string | undefined;
-    public month: string | undefined;
-    public date: string | undefined;
-
-    constructor(init?: Partial<GeneralStats>) {
-        Object.assign(this, init);
-    }
-
-    checkInfo(): boolean {
-        return (
-            this.count != undefined &&
-            this.change != undefined &&
-            this.day != undefined &&
-            this.month != undefined &&
-            this.date != undefined
-        )
-    }
-}
-
-
 export class PerCategoryStats {
     public category: string | undefined;
     public count: number | undefined;
     public change: number | undefined;
     public day: string | undefined;
     public month: string | undefined;
-    public date: string | undefined;
+    public dateTime: string | undefined;
 
     constructor(init?: Partial<PerCategoryStats>) {
         Object.assign(this, init);
@@ -142,7 +119,7 @@ export class PerCategoryStats {
             this.change != undefined &&
             this.day != undefined &&
             this.month != undefined &&
-            this.date != undefined
+            this.dateTime != undefined
         )
     }
 }
@@ -168,8 +145,9 @@ export class CategoryStats {
 
 
 export class AnalyticsSummary {
-    public generalStats: GeneralStats[] | undefined;
     public perCategoryStats: PerCategoryStats[] | undefined;
+    public pastDayHourlyCategoryStats: PerCategoryStats[] | undefined;
+    public allTimeCategoryStatsPerWeek: PerCategoryStats[] | undefined;
     public pastDayCategoryStats: CategoryStats[] | undefined;
     public pastWeekCategoryStats: CategoryStats[] | undefined;
     public pastMonthCategoryStats: CategoryStats[] | undefined;
@@ -181,7 +159,6 @@ export class AnalyticsSummary {
 
     checkInfo(): boolean {
         return (
-            this.generalStats != undefined &&
             this.perCategoryStats != undefined &&
             this.pastDayCategoryStats != undefined &&
             this.pastWeekCategoryStats != undefined &&
