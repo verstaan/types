@@ -1,7 +1,7 @@
 import { Polygon, MultiPolygon, Point } from "geojson";
 import { AdminPrivileges } from "./adminPrivileges";
 
-export type reportType = | "Shooting"
+export type reportType = "Shooting"
     | "Theft"
     | "Protest"
     | "Emergency Response"
@@ -19,7 +19,7 @@ export type reportType = | "Shooting"
     | "Phone Theft"
     | "Drug Deal"
     | "Vigilante Activity"
-    | "Stabbing" //new
+    | "Stabbing" // new
     | "Kidnapping"
     | "Rocket Attack"
     | "Coordinated Attack"
@@ -37,6 +37,45 @@ export type reportType = | "Shooting"
     | "Explosion"
     | "Traffic Accident"
     | "Other";
+
+export const AllReportTypes: reportType[] = [
+  "Shooting",
+  "Theft",
+  "Protest",
+  "Emergency Response",
+  "Gang Activity",
+  "Dangerous Terrain",
+  "Roadblock",
+  "Violent Crime",
+  "Assault",
+  "Murder",
+  "Hijacking",
+  "Smash and Grab",
+  "Being Followed",
+  "Home Invasion",
+  "Police Bribes",
+  "Phone Theft",
+  "Drug Deal",
+  "Vigilante Activity",
+  "Stabbing",
+  "Kidnapping",
+  "Rocket Attack",
+  "Coordinated Attack",
+  "Explosive Weapon",
+  "Harassment",
+  "Suspicious Activity",
+  "Suspicious Vehicle",
+  "Suspicious Object",
+  "COVID",
+  "Hazard",
+  "Road Congestion",
+  "Fire",
+  "Police",
+  "Checkpoint",
+  "Explosion",
+  "Traffic Accident",
+  "Other"
+];
 
 export type ClientReportActions =
     | "Assisting"
@@ -229,7 +268,7 @@ export interface Client {
     licenses_FC?: number;
     licenses_BC?: number;
     licenses_EC?: number;
-    valid_report_types?: reportType[];
+    ignored_report_types?: reportType[];
 }
 
 export type ClientProfile = Client;
@@ -1290,7 +1329,7 @@ export interface Team {
     client_id: number,
     name: string,
     address?: string,
-    valid_report_types?: reportType[];
+    ignored_report_types?: reportType[];
 }
 
 export interface TeamToInsert {
@@ -1329,9 +1368,9 @@ export interface NewPublicInsight {
 }
 
 export interface ReportTypeUpdate {
-    report_type: reportType,
+    client_id: number,
     team_id?: number,
-    client_id?: number
+    ignored_report_types: reportType[]
 }
 
 export interface ReportTemplate {
