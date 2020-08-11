@@ -119,6 +119,7 @@ export type NonViolentCategory =
 export type HazardCategory =
     | "Dangerous Terrain"
     | "Roadblock"
+    | "Roadblock/checkpoint"
     | "Suspicious Activity"
     | "Suspicious Vehicle"
     | "Suspicious Object"
@@ -170,6 +171,7 @@ export const ReportCategories: Record<
     Hazard: [
         "Dangerous Terrain",
         "Roadblock",
+        "Roadblock/checkpoint",
         "Suspicious Activity",
         "Suspicious Vehicle",
         "Suspicious Object",
