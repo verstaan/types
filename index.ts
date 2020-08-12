@@ -143,7 +143,7 @@ export interface Categories {
 
 export const ReportCategories: Record<
     CategoryTypes,
-    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
+    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory | "SOS">
 > = {
     Violent: [
         "Gang Activity",
@@ -183,7 +183,7 @@ export const ReportCategories: Record<
         "Checkpoint",
         "Explosion",
         "Traffic Accident"],
-    Other: ["Other"],
+    Other: ["Other", "SOS"],
 };
 
 export type PublicReportSourceType =
