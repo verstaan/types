@@ -1384,16 +1384,13 @@ export interface ReportTemplate {
 
 export interface TemplateSection {
     name: string;
-    id: number;
-    client_id?: number,
-    fields: TemplateField[];
+    fields: TEMPLATE_FIELD[];
 }
 
-export interface TemplateField {
-    label: "dropdown" | "short_string" | "long_string" | "number" | "tickbox";
-    key?: number;
-    template: TEMPLATE_FIELD;
-}
+// export interface TemplateField {
+//     label: "dropdown" | "short_string" | "long_string" | "number" | "tickbox";
+//     template: TEMPLATE_FIELD;
+// }
 
 export interface ReportTemplateToInsert {
     name: string,
