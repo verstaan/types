@@ -320,8 +320,8 @@ export interface Container {
     id: number;
     area: Polygon | MultiPolygon;
     name: string;
-    viewport_mobile?: ViewportBase;
-    viewport_web?: ViewportBase;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
     abbreviation?: string;
 }
 
@@ -337,8 +337,8 @@ export interface DefaultRegion {
     id: number;
     area?: Polygon | MultiPolygon;
     name: string;
-    viewport_mobile?: ViewportBase;
-    viewport_web?: ViewportBase;
+    viewport_mobile: ViewportBase;
+    viewport_web: ViewportBase;
     container_id: number;
 }
 
