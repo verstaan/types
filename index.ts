@@ -131,7 +131,7 @@ export type HazardCategory =
     | "Checkpoint"
     | "Explosion"
     | "Traffic Accident";
-export type OtherCategory = "Other";
+export type OtherCategory = "Other" | "SOS" | null;
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
 
 export interface Categories {
@@ -143,7 +143,7 @@ export interface Categories {
 
 export const ReportCategories: Record<
     CategoryTypes,
-    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory | "SOS">
+    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory | "SOS" | null>
 > = {
     Violent: [
         "Gang Activity",
@@ -183,7 +183,7 @@ export const ReportCategories: Record<
         "Checkpoint",
         "Explosion",
         "Traffic Accident"],
-    Other: ["Other", "SOS"],
+    Other: ["Other", "SOS", null],
 };
 
 export type PublicReportSourceType =
