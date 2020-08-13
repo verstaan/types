@@ -1399,28 +1399,33 @@ export interface ReportTemplateToInsert {
 }
 
 export interface Dropdown {
+    label: string,
     type: "dropdown",
     options: string[],
     value: string | null
 }
 
 export interface ShortString {
+    label: string,
     type: "short_string",
     value: string | null
 }
 
 export interface LongString {
+    label: string,
     type: "long_string",
     value: string | null
 }
 
 export interface NumberField {
+    label: string,
     type: "number",
     value: number | null,
     units?: string
 }
 
 export interface Tickbox {
+    label: string,
     type: "tickbox",
     value: true | false | null
 }
