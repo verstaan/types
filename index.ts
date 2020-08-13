@@ -737,7 +737,7 @@ export interface ReportBase {
 // From the db
 export interface FullClientReport {
     id: number;
-    setting: Setting;
+    setting?: Setting;
     quick_report_id: number | null;
     alert_report_id: number | null;
     modified_at: Date;
@@ -833,7 +833,7 @@ export interface FullClientReport {
     responsible?: string;
     summary?: string;
     template_id?: number;
-    template_fields?: JSON;
+    template_fields?: ReportTemplate;
 }
 
 
@@ -842,7 +842,7 @@ export interface FullClientReport {
  */
 export interface FullClientReportToInsert {
     //MUST PASS IN SETTING, A QUICK REPORT ID, AND TIME OF MODIFICATION
-    setting: Setting;
+    setting?: Setting;
     quick_report_id: number | null;
     alert_report_id: number | null;
     modified_at: Date;
@@ -938,7 +938,7 @@ export interface FullClientReportToInsert {
     responsible?: string;
     summary?: string;
     template_id?: number;
-    template_fields?: JSON;
+    template_fields?: ReportTemplate;
 }
 
 /*
@@ -946,7 +946,7 @@ export interface FullClientReportToInsert {
 */
 export interface FullClientReportUpdate {
     //MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
-    setting: Setting;
+    setting?: Setting;
     full_report_id: number;
     modified_at: Date;
     photo_url?: string;
@@ -1041,7 +1041,7 @@ export interface FullClientReportUpdate {
     responsible?: string;
     summary?: string;
     template_id?: number;
-    template_fields?: JSON;
+    template_fields?: ReportTemplate;
 }
 
 // Hierarchy of the full client report
@@ -1379,13 +1379,26 @@ export interface ReportTemplate {
     id: number,
     name: string,
     client_id?: number,
-    fields: Map<string, Map<string, TEMPLATE_FIELD>>
+    fields: TemplateSection[]
+}
+
+export interface TemplateSection {
+    name: string;
+    id: number;
+    client_id?: number,
+    fields: TemplateField[];
+}
+
+export interface TemplateField {
+    label: "dropdown" | "short_string" | "long_string" | "number" | "tickbox";
+    key?: number;
+    template: TEMPLATE_FIELD;
 }
 
 export interface ReportTemplateToInsert {
     name: string,
     client_id?: number,
-    fields: Map<string, Map<string, TEMPLATE_FIELD>>
+    fields: TemplateSection[];
 }
 
 export interface Dropdown {
@@ -1404,9 +1417,10 @@ export interface LongString {
     value: string | null
 }
 
-export interface Number {
+export interface NumberField {
     type: "number",
-    value: number | null
+    value: number | null,
+    units?: string
 }
 
 export interface Tickbox {
@@ -1414,7 +1428,7 @@ export interface Tickbox {
     value: true | false | null
 }
 
-export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | Number | Tickbox;
+export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField | Tickbox;
 
 export interface NineLiner {
     serial_number: number | null,
