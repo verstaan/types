@@ -1494,7 +1494,7 @@ export interface MISTReportUpdate {
     cap_refill?: string
 }
 
-interface Log {
+export interface Log {
     timestamp: Date;
     user_id?: number;
     client_id?: number;
