@@ -275,7 +275,7 @@ export interface Client {
 
 export type ClientProfile = Client;
 
-export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">>;
+export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
 
 export interface Device {
     user_id: number;
