@@ -275,15 +275,17 @@ export interface Client {
 
 export type ClientProfile = Client;
 
+export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">>;
+
 export interface Device {
     user_id: number;
     client_id: number;
-    token: string | null;
-    device_type: DeviceType;
-    device_fingerprint: string;
-    point?: Point;
-    modified_at?: Date;
-}
+        token: string | null;
+        device_type: DeviceType;
+        device_fingerprint: string;
+        point?: Point;
+        modified_at?: Date;
+    }
 
 export type DeviceType = "Web" | "Mobile";
 
