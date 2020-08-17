@@ -1435,9 +1435,18 @@ export interface NineLiner {
     serial_number: number | null,
     line_one: string | null, // location
     line_two: string | null, // radio frequency, call sign, and suffix
-    line_three: number | null, // number of patients by precendence
+    line_three: {
+        a: number | null,
+        b: number | null,
+        c: number | null,
+        d: number | null,
+        e: number | null
+    }, // number of patients by precendence
     line_four: string | null, // special equipment needed
-    line_five: number | null, // number of patients
+    line_five: {
+        litter: number | null,
+        ambulatory: number | null
+    }, // number of patients
     line_six: string | null, // security at pick-up site
     line_seven: string | null, // method of marking pick-up site
     line_eight: string | null, // patient nationality and status
