@@ -433,14 +433,13 @@ export interface NewClientAlertReport {
     point: Point;
     address?: string;
     team_id?: number;
-    nine_liner?: NineLiner;
-    mist_report_id?: number;
 }
 
 export interface AlertReportUpdate {
     report_type?: reportType;
     report_actions?: ClientReportActions;
     report_needs?: ClientReportNeeds;
+    nine_liner?: NineLiner;
 }
 
 /**
@@ -510,7 +509,6 @@ export interface ClientAlertReport {
     full_report_id: number;
     team_id?: number;
     nine_liner?: NineLiner;
-    mist_report_id?: number;
 }
 
 /**
@@ -616,7 +614,6 @@ export interface ClientAlertReportToInsert {
     photo_url?: string;
     team_id?: number;
     nine_liner?: NineLiner;
-    mist_report_id?: number;
 }
 
 export interface ClientAlertReportToInsertPartial {
@@ -1448,50 +1445,28 @@ export interface NineLiner {
 export interface MISTReport {
     id: number,
     alert_report_id: number,
-    incident_time?: Date,
-    name?: string,
-    date_of_birth?: string,
-    blood_gp?: string,
-    company?: string,
-    urgency?: string,
-    other?: string,
-    injury_mechanism?: string[],
-    injuries_found?: JSON,
-    pulse_rate?: string,
-    rr?: string,
-    cap_refill?: string
+    client_id: number,
+    date_time?: Date,
+    user_id: number,
+    fields: MISTReportFields
 }
 
 export interface MISTReportToInsert {
     alert_report_id: number,
-    incident_time?: Date,
-    name?: string,
-    date_of_birth?: string,
-    blood_gp?: string,
-    company?: string,
-    urgency?: string,
-    other?: string,
-    injury_mechanism?: string[],
-    injuries_found?: JSON,
-    pulse_rate?: string,
-    rr?: string,
-    cap_refill?: string
+    date_time?: Date,
+    user_id?: number,
+    fields: MISTReportFields
 }
 
 export interface MISTReportUpdate {
     id: number,
-    incident_time?: Date,
-    name?: string,
-    date_of_birth?: string,
-    blood_gp?: string,
-    company?: string,
-    urgency?: string,
-    other?: string,
-    injury_mechanism?: string[],
-    injuries_found?: JSON,
-    pulse_rate?: string,
-    rr?: string,
-    cap_refill?: string
+    date_time?: Date,
+    user_id?: number,
+    fields: MISTReportFields
+}
+
+export interface MISTReportFields {
+    name: string;
 }
 
 export interface Log {
