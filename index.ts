@@ -1434,6 +1434,7 @@ export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField |
 export interface NineLiner {
     serial_number: number | null,
     line_one: string | null, // location
+    point?: Point,
     line_two: string | null, // radio frequency, call sign, and suffix
     line_three: {
         a: number | null,
