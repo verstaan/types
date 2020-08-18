@@ -1477,7 +1477,57 @@ export interface MISTReportUpdate {
 }
 
 export interface MISTReportFields {
-    name: string;
+    name?: string,
+    date_of_birth?: Date,
+    blood_gp?: string,
+    company?: string,
+    urgency?: string,
+    other?: string,
+    injury_mechanism?: string[],
+    injuries_found?: {
+        front_head?: boolean,
+        front_chest?: boolean,
+        front_right_arm?: boolean,
+        front_right_hand?: boolean,
+        front_hips?: boolean,
+        front_right_thigh?: boolean,
+        front_right_leg?: boolean,
+        back_head?: boolean,
+        back_chest?: boolean,
+        back_left_arm?: boolean,
+        back_left_hand?: boolean,
+        back_hips?: boolean,
+        back_left_thigh?: boolean,
+        back_left_leg?: boolean,
+    },
+    pulse_rate?: string,
+    pulse_rate_location?: string,
+    respiratory_rate?: string,
+    pearl?: string,
+    a?: boolean,
+    v?: boolean,
+    p?: boolean,
+    u?: boolean,
+    cat?: boolean,
+    cat_time?: Date,
+    quik_clot?: boolean,
+    quik_clot_time?: Date,
+    opa?: string, // small, medium, large
+    npa?: string, //small, medium, large
+    suction?: boolean,
+    collar?: boolean,
+    o2?: boolean,
+    chest_seal_left?: boolean,
+    chest_seal_right?: boolean,
+    bvm?: boolean,
+    needle_decomp_left?: boolean,
+    needle_decomp_right?: boolean,
+    iv_io?: boolean,
+    site?: string,
+    fluids?: string,
+    amount?: number, // mls
+    gauge?: string,
+    bls?: string
 }
 
 export interface Log {
