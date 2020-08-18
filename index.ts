@@ -1478,7 +1478,7 @@ export interface MISTReportUpdate {
 
 export interface MISTReportFields {
     name?: string,
-    date_of_birth?: Date,
+    date_of_birth?: string,
     blood_gp?: string,
     company?: string,
     urgency?: string,
@@ -1509,9 +1509,9 @@ export interface MISTReportFields {
     p?: boolean,
     u?: boolean,
     cat?: boolean,
-    cat_time?: Date,
+    cat_time?: string,
     quik_clot?: boolean,
-    quik_clot_time?: Date,
+    quik_clot_time?: string,
     opa?: string, // small, medium, large
     npa?: string, //small, medium, large
     suction?: boolean,
