@@ -1347,7 +1347,7 @@ export interface TeamUpdate {
 
 export interface UserUpdate {
     id: number,
-    team_id?: number,
+    team_id?: number | null,
     role?: number,
     designation?: string
 }
