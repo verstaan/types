@@ -1352,6 +1352,48 @@ export interface UserUpdate {
     designation?: string
 }
 
+export interface AdminUserSelfUpdate {
+    team_id?: number,
+    designation?: string,
+}
+
+export interface Profile {
+    nickname?: string;
+    position?: string;
+    address?: string;
+    phone_cell?: string;
+    phone_work?: string;
+    phone_home?: string;
+    emergency_contact_1?: EmergencyContactProfile;
+    emergency_contact_2?: EmergencyContactProfile;
+    medical_contact?: MedicalContactProfile;
+}
+
+export interface EmergencyContactProfile {
+    name: string;
+    relationship: string;
+    address?: string;
+    phone_primary: string;
+    phone_secondary?: string;
+}
+
+export interface MedicalContactProfile {
+    doctor_1?: {
+        name: string;
+        phone: string;
+        address?: string;
+        office?: string;
+    },
+    doctor_2?: {
+        name: string;
+        phone: string;
+        address?: string;
+        office?: string;
+    },
+    preferred_hospital?: string;
+    medical_conditions?: string;
+}
+
 export interface PublicInsight {
     id: number,
     container_id: number,
