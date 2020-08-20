@@ -1372,19 +1372,19 @@ export interface Profile {
 export interface EmergencyContactProfile {
     name: string;
     relationship: string;
-    address: string;
+    address?: string;
     phone_primary: string;
-    phone_secondary: string;
+    phone_secondary?: string;
 }
 
 export interface MedicalContactProfile {
-    doctor_1: {
+    doctor_1?: {
         name: string;
         phone: string;
         address?: string;
         office?: string;
     },
-    doctor_2: {
+    doctor_2?: {
         name: string;
         phone: string;
         address?: string;
