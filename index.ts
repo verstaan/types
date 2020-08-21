@@ -250,6 +250,7 @@ export interface UserProfile {
     current_default_region_mobile?: number;
     team_id?: number | null;
     designation?: string;
+    profile?: Profile;
 }
 
 export interface AdminUserProfile {
@@ -1370,23 +1371,23 @@ export interface Profile {
 }
 
 export interface EmergencyContactProfile {
-    name: string;
-    relationship: string;
+    name?: string;
+    relationship?: string;
     address?: string;
-    phone_primary: string;
+    phone_primary?: string;
     phone_secondary?: string;
 }
 
 export interface MedicalContactProfile {
     doctor_1?: {
-        name: string;
-        phone: string;
+        name?: string;
+        phone?: string;
         address?: string;
         office?: string;
     },
     doctor_2?: {
-        name: string;
-        phone: string;
+        name?: string;
+        phone?: string;
         address?: string;
         office?: string;
     },
