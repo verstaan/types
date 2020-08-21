@@ -1354,7 +1354,7 @@ export interface UserUpdate {
 }
 
 export interface AdminUserSelfUpdate {
-    team_id?: number,
+    team_id?: number | null,
     designation?: string,
 }
 
