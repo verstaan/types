@@ -10,17 +10,14 @@ export type reportType = "Shooting"
     | "Roadblock"
     | "Violent Crime"
     | "Assault"
-    | "Murder"
+    | "Homicide"
     | "Hijacking"
     | "Smash and Grab"
-    | "Being Followed"
     | "Home Invasion"
-    | "Police Bribes"
-    | "Phone Theft"
-    | "Drug Deal"
-    | "Vigilante Activity"
+    | "Corruption"
+    | "Drugs"
     | "Stabbing" // new
-    | "Kidnapping"
+    | "Abduction"
     | "Rocket Attack"
     | "Coordinated Attack"
     | "Explosive Weapon"
@@ -29,13 +26,20 @@ export type reportType = "Shooting"
     | "Suspicious Vehicle"
     | "Suspicious Object"
     | "COVID"
-    | "Hazard"
-    | "Road Congestion"
     | "Fire"
     | "Police"
+    | "Police Response"
     | "Checkpoint"
-    | "Explosion"
-    | "Traffic Accident"
+    | "Explosion (Accidental)"
+    | "Auto Accident"
+    | "Robbery"
+    | "Arms & Ammunition"
+    | "Terrorism"
+    | "Rioting"
+    | "Fraud"
+    | "Vandalism"
+    | "Disorderly Conduct"
+    | "Property Damage"
     | "Other";
 
 export const AllReportTypes: reportType[] = [
@@ -48,17 +52,15 @@ export const AllReportTypes: reportType[] = [
   "Roadblock",
   "Violent Crime",
   "Assault",
-  "Murder",
+  "Homicide",
   "Hijacking",
   "Smash and Grab",
-  "Being Followed",
   "Home Invasion",
-  "Police Bribes",
-  "Phone Theft",
-  "Drug Deal",
-  "Vigilante Activity",
+  "Police",
+  "Police Response",
+  "Drugs",
   "Stabbing",
-  "Kidnapping",
+  "Abduction",
   "Rocket Attack",
   "Coordinated Attack",
   "Explosive Weapon",
@@ -67,13 +69,19 @@ export const AllReportTypes: reportType[] = [
   "Suspicious Vehicle",
   "Suspicious Object",
   "COVID",
-  "Hazard",
-  "Road Congestion",
   "Fire",
   "Police",
   "Checkpoint",
-  "Explosion",
-  "Traffic Accident",
+  "Explosion (Accidental)",
+  "Auto Accident",
+  "Robbery",
+  "Arms & Ammunition",
+  "Terrorism",
+  "Rioting",
+  "Fraud",
+  "Vandalism",
+  "Disorderly Conduct",
+  "Property Damage",
   "Other"
 ];
 
@@ -97,41 +105,46 @@ export type ViolentCategory =
     | "Assault"
     | "Shooting"
     | "Violent Crime"
-    | "Murder"
+    | "Homicide"
     | "Hijacking"
-    | "Vigilante Activity"
     | "Stabbing"
-    | "Kidnapping"
+    | "Abduction"
     | "Rocket Attack"
     | "Coordinated Attack"
-    | "Explosive Weapon";
+    | "Explosive Weapon"
+    | "Robbery"
+    | "Arms & Ammunition"
+    | "Terrorism"
+    | "Rioting";
 export type NonViolentCategory =
     | "Protest"
     | "Emergency Response"
     | "Theft"
+    | "Auto Theft"
     | "Smash and Grab"
-    | "Being Followed"
     | "Home Invasion"
-    | "Police Bribes"
-    | "Phone Theft"
-    | "Drug Deal"
+    | "Police Response"
+    | "Corruption"
+    | "Drugs"
+    | "Vandalism"
+    | "Disorderly Conduct"
+    | "Property Damage"
+    | "Fraud"
     | "Harassment";
 export type HazardCategory =
     | "Dangerous Terrain"
     | "Roadblock"
-    | "Roadblock/checkpoint"
-    | "Suspicious Activity"
-    | "Suspicious Vehicle"
-    | "Suspicious Object"
     | "COVID"
-    | "Hazard"
-    | "Road Congestion"
     | "Fire"
     | "Police"
     | "Checkpoint"
-    | "Explosion"
-    | "Traffic Accident";
-export type OtherCategory = "Other";
+    | "Explosion (Accidental)"
+    | "Auto Accident";
+export type OtherCategory =
+    | "Other"
+    | "Suspicious Activity"
+    | "Suspicious Vehicle"
+    | "Suspicious Object";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
 
 export interface Categories {
@@ -150,40 +163,45 @@ export const ReportCategories: Record<
         "Assault",
         "Shooting",
         "Violent Crime",
-        "Murder",
+        "Homicide",
         "Hijacking",
-        "Being Followed",
-        "Vigilante Activity",
         "Stabbing",
-        "Kidnapping",
+        "Abduction",
         "Rocket Attack",
         "Coordinated Attack",
-        "Explosive Weapon"],
+        "Explosive Weapon",
+        "Robbery",
+        "Arms & Ammunition",
+        "Terrorism",
+        "Rioting"],
     "Non-Violent": [
         "Protest",
         "Emergency Response",
         "Theft", "Smash and Grab",
         "Home Invasion",
-        "Police Bribes",
-        "Phone Theft",
-        "Drug Deal",
-        "Harassment"],
+        "Corruption",
+        "Drugs",
+        "Harassment",
+        "Police Response",
+        "Fraud",
+        "Auto Theft",
+        "Vandalism",
+        "Disorderly Conduct",
+        "Property Damage"],
     Hazard: [
         "Dangerous Terrain",
         "Roadblock",
-        "Roadblock/checkpoint",
-        "Suspicious Activity",
-        "Suspicious Vehicle",
-        "Suspicious Object",
         "COVID",
-        "Hazard",
-        "Road Congestion",
         "Fire",
         "Police",
         "Checkpoint",
-        "Explosion",
-        "Traffic Accident"],
-    Other: ["Other"],
+        "Explosion (Accidental)",
+        "Auto Accident"],
+    Other: [
+        "Other",
+        "Suspicious Activity",
+        "Suspicious Vehicle",
+        "Suspicious Object",],
 };
 
 export type PublicReportSourceType =
