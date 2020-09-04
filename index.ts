@@ -72,7 +72,6 @@ export const AllReportTypes: reportType[] = [
   "Suspicious Object",
   "COVID",
   "Fire",
-  "Police",
   "Checkpoint",
   "Explosion (Accidental)",
   "Auto Accident",
