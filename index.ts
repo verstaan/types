@@ -3,6 +3,7 @@ import { AdminPrivileges } from "./adminPrivileges";
 
 export type reportType = "Shooting"
     | "Theft"
+    | "Auto Theft"
     | "Protest"
     | "Emergency Response"
     | "Gang Activity"
@@ -45,6 +46,7 @@ export type reportType = "Shooting"
 export const AllReportTypes: reportType[] = [
   "Shooting",
   "Theft",
+  "Auto Theft",
   "Protest",
   "Emergency Response",
   "Gang Activity",
@@ -93,7 +95,7 @@ export type ClientReportActions =
     | "No Actions";
 
 export type ClientReportNeeds =
-    | "Exfil"
+    | "Extraction"
     | "MedEvac"
     | "CasEvac"
     | "Police"
