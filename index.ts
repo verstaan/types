@@ -26,7 +26,6 @@ export type reportType = "Shooting"
     | "Suspicious Activity"
     | "Suspicious Vehicle"
     | "Suspicious Object"
-    | "COVID"
     | "Fire"
     | "Police"
     | "Police Response"
@@ -53,7 +52,6 @@ export const AllReportTypes: reportType[] = [
     "Checkpoint",
     "Coordinated Attack",
     "Corruption",
-    "COVID",
     "Dangerous Terrain",
     "Disorderly Conduct",
     "Drugs",
@@ -136,7 +134,6 @@ export type NonViolentCategory =
 export type HazardCategory =
     | "Dangerous Terrain"
     | "Roadblock"
-    | "COVID"
     | "Fire"
     | "Police"
     | "Checkpoint"
@@ -193,7 +190,6 @@ export const ReportCategories: Record<
     Hazard: [
         "Dangerous Terrain",
         "Roadblock",
-        "COVID",
         "Fire",
         "Police",
         "Checkpoint",
