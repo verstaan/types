@@ -1,24 +1,28 @@
-export class NewClient {
-  public name: string | undefined;
-  public primary_email: string | undefined;
-  public licenses: number | undefined;
-  public containers: string[] | undefined;
+export interface NewClient {
+  name: string;
+  primary_email: string;
+  licenses: number;
+  containers: string[];
+}
 
-  constructor(init?: Partial<NewClient>) {
-    Object.assign(this, init);
-  }
-  /**
-   * Checks if we have all the required information to sign up
-   *
-   * @returns {boolean} True if all the information is present
-   *
-   */
-  checkInfo(): boolean {
-    return (
-      this.name != undefined && this.name != "",
-      this.primary_email != undefined && this.primary_email != "",
-      this.licenses != undefined,
-      this.containers != undefined
-    );
+/**
+ * Checks if we have all the required information to sign up
+ *
+ * @returns {boolean} True if all the information is present
+ *
+ */
+export function checkNewClientInfo(newClient: NewClient): boolean {
+  if (typeof (newClient.name) != "string" ||
+    typeof (newClient.primary_email) != "string" ||
+    typeof (newClient.licenses) != "number" ||
+    newClient.containers instanceof Array ||
+    newClient.name === undefined ||
+    newClient.primary_email === undefined ||
+    newClient.primary_email === "" ||
+    newClient.licenses === undefined ||
+    newClient.containers === undefined) {
+    return false;
+  } else {
+    return true
   }
 }
