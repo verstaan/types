@@ -316,9 +316,12 @@ export interface DeviceSubscription {
 
 export interface NewClient {
     name: string;
-    primary_email: string;
     licenses: number;
     containers: string[];
+    primary_email: string;
+    first_name: string;
+    last_name: string;
+    password: string;
 }
 
 export interface ViewportBase {
