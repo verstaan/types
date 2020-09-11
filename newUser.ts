@@ -1,7 +1,7 @@
 export interface NewUser {
   email: string;
-  firstname: string;
-  lastname: string;
+  first_name: string;
+  last_name: string;
   password: string;
   client_id: number;
   team_id?: number | null;
@@ -27,11 +27,11 @@ export interface NewUser {
 * @memberof SignUp
 */
 export function checkNewUserInfo(newUser: NewUser): boolean {
-  if (typeof (newUser.email) !== "string" || typeof (newUser.firstname) !== "string" ||
-    typeof (newUser.lastname) !== "string" || newUser.email === undefined ||
-    newUser.firstname === undefined || newUser.lastname === undefined ||
+  if (typeof (newUser.email) !== "string" || typeof (newUser.first_name) !== "string" ||
+    typeof (newUser.last_name) !== "string" || newUser.email === undefined ||
+    newUser.first_name === undefined || newUser.last_name === undefined ||
     newUser.client_id === undefined || newUser.client_id === undefined ||
-    newUser.firstname === "" || newUser.lastname === "") {
+    newUser.first_name === "" || newUser.last_name === "") {
     return false;
   } else {
     return true;
