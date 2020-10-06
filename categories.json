@@ -1,0 +1,50 @@
+{
+    "Violent": [
+        "Gang Activity",
+        "Assault",
+        "Shooting",
+        "Violent Crime",
+        "Homicide",
+        "Hijacking",
+        "Stabbing",
+        "Abduction",
+        "Rocket Attack",
+        "Coordinated Attack",
+        "Explosive Weapon",
+        "Robbery",
+        "Arms & Ammunition",
+        "Terrorism",
+        "Rioting"
+    ],
+    "Non-Violent": [
+        "Protest",
+        "Emergency Response",
+        "Theft",
+        "Smash and Grab",
+        "Home Invasion",
+        "Corruption",
+        "Drugs",
+        "Harassment",
+        "Police Response",
+        "Fraud",
+        "Auto Theft",
+        "Vandalism",
+        "Disorderly Conduct",
+        "Property Damage"
+    ],
+    "Hazard": [
+        "Dangerous Terrain",
+        "Roadblock",
+        "Fire",
+        "Police",
+        "Checkpoint",
+        "Explosion (Accidental)",
+        "Auto Accident"
+    ],
+    "Other": [
+        "Other",
+        "Suspicious Activity",
+        "Suspicious Vehicle",
+        "Suspicious Object"
+    ]
+}
