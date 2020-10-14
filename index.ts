@@ -1383,7 +1383,7 @@ export interface Profile {
     phone_home?: string;
     emergency_contact_1?: EmergencyContactProfile;
     emergency_contact_2?: EmergencyContactProfile;
-    medical_contact?: MedicalContactProfile;
+    medical?: MedicalProfile;
 }
 
 export interface EmergencyContactProfile {
@@ -1394,7 +1394,11 @@ export interface EmergencyContactProfile {
     phone_secondary?: string;
 }
 
-export interface MedicalContactProfile {
+export interface MedicalProfile {
+    dob?: string;
+    blood_type?: string;
+    preferred_hospital?: string;
+    medical_conditions?: string;
     doctor_1?: {
         name?: string;
         phone?: string;
@@ -1406,9 +1410,7 @@ export interface MedicalContactProfile {
         phone?: string;
         address?: string;
         office?: string;
-    },
-    preferred_hospital?: string;
-    medical_conditions?: string;
+    }
 }
 
 export interface PublicInsight {
@@ -1416,7 +1418,7 @@ export interface PublicInsight {
     container_id: number,
     default_region_id?: number,
     title: string,
-    content: Map<string, string>,
+    content: Map<string, string | string[]>,
     created_at: Date
 }
 
