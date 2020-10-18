@@ -1346,6 +1346,7 @@ export interface Team {
     id: number,
     client_id: number,
     name: string,
+    permissions: number,
     address?: string,
     ignored_report_types?: reportType[];
 }
@@ -1353,13 +1354,15 @@ export interface Team {
 export interface TeamToInsert {
     client_id: number,
     name: string,
-    address?: string
+    address?: string,
+    permissions?: number
 }
 
 export interface TeamUpdate {
     id: number,
     name?: string,
     address?: string
+    permissions?: number
 }
 
 export interface UserUpdate {
