@@ -1342,6 +1342,17 @@ export interface Viewport extends ViewportBase {
     height: string;
 }
 
+/**
+ * Helper Object for building clientInfo queries with team permissions (Jarvis Only)
+ * Used with Session object to return correct client info
+ * TeamIds array need only be specified for 'Open Teams' case
+ */
+export interface TeamPermissionsQuery {
+    viewPermissions: "All" | "Open Teams" | "Closed Team";
+    team_id: number | null;
+    openTeamIds?: number[];
+}
+
 export interface Team {
     id: number,
     client_id: number,
