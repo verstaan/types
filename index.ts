@@ -863,6 +863,7 @@ export interface FullClientReportToInsert {
     alert_report_id: number | null;
     modified_at: Date;
     client_id: number;
+    team_id?: number;
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
@@ -1351,6 +1352,7 @@ export interface TeamPermissionsQuery {
     viewPermissions: "All" | "Open Teams" | "Closed Team";
     team_id: number | null;
     openTeamIds?: number[];
+    closedTeamIds?: number[];
 }
 
 export interface Team {
@@ -1542,7 +1544,8 @@ export interface MISTReportToInsert {
     alert_report_id: number,
     date_time?: Date,
     user_id?: number,
-    fields: MISTReportFields
+    fields: MISTReportFields,
+    team_id?: number
 }
 
 export interface MISTReportUpdate {
