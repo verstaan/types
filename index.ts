@@ -863,6 +863,7 @@ export interface FullClientReportToInsert {
     alert_report_id: number | null;
     modified_at: Date;
     client_id: number;
+    team_id?: number;
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
@@ -1342,10 +1343,23 @@ export interface Viewport extends ViewportBase {
     height: string;
 }
 
+/**
+ * Helper Object for building clientInfo queries with team permissions (Jarvis Only)
+ * Used with Session object to return correct client info
+ * TeamIds array need only be specified for 'Open Teams' case
+ */
+export interface TeamPermissionsQuery {
+    viewPermissions: "All" | "Open Teams" | "Closed Team";
+    team_id: number | null;
+    openTeamIds?: number[];
+    closedTeamIds?: number[];
+}
+
 export interface Team {
     id: number,
     client_id: number,
     name: string,
+    permissions: number,
     address?: string,
     ignored_report_types?: reportType[];
 }
@@ -1353,13 +1367,15 @@ export interface Team {
 export interface TeamToInsert {
     client_id: number,
     name: string,
-    address?: string
+    address?: string,
+    permissions?: number
 }
 
 export interface TeamUpdate {
     id: number,
     name?: string,
     address?: string
+    permissions?: number
 }
 
 export interface UserUpdate {
@@ -1528,7 +1544,8 @@ export interface MISTReportToInsert {
     alert_report_id: number,
     date_time?: Date,
     user_id?: number,
-    fields: MISTReportFields
+    fields: MISTReportFields,
+    team_id?: number
 }
 
 export interface MISTReportUpdate {
