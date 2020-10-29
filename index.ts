@@ -599,6 +599,8 @@ export interface PublicReportToInsert {
     actor?: Actor;
     target?: Target;
     team_id?: number;
+    client_report_id?: number;
+    alert_report_id?: number;
 }
 
 /**
