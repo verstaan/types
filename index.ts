@@ -521,6 +521,8 @@ export interface ClientAlertReport {
     report_actions?: ClientReportActions;
     report_needs: ClientReportNeeds;
     confirmed: number;
+    ended_at?: Date | null;
+    confirmed_at?: Date | null;
     container_id?: number;
     default_region_id?: number;
     custom_region_ids?: number;
@@ -597,6 +599,8 @@ export interface PublicReportToInsert {
     actor?: Actor;
     target?: Target;
     team_id?: number;
+    client_report_id?: number;
+    alert_report_id?: number;
 }
 
 /**
