@@ -482,6 +482,7 @@ export interface PublicReport {
     target?: Target;
     photo_url?: string;
     team_id?: number;
+    user_id?: number;
 }
 
 /**
@@ -599,6 +600,7 @@ export interface PublicReportToInsert {
     actor?: Actor;
     target?: Target;
     team_id?: number;
+    user_id?: number;
     client_report_id?: number;
     alert_report_id?: number;
 }
