@@ -1,10 +1,10 @@
 export enum StatusCode {
     // General error codes
     Success = 200,
-    
+
     // Client side errors
     EmailExists = 300,
-    
+
     // Standard auth and server error codes
     BadRequest = 400,
     Unauthorized,
@@ -15,6 +15,7 @@ export enum StatusCode {
     InvalidBody,
     InsufficientPrivileges,
     IncorrectPassword,
+    ClientLogicError,
 
     InternalServerError = 500,
 }
