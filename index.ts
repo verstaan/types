@@ -867,7 +867,6 @@ export interface FullClientReportToInsert {
     setting?: Setting;
     quick_report_id: number | null;
     alert_report_id: number | null;
-    modified_at: Date;
     client_id: number;
     team_id?: number;
     //Part A: Transportation Details (based on setting)
@@ -971,7 +970,6 @@ export interface FullClientReportUpdate {
     //MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
     setting?: Setting;
     full_report_id: number;
-    modified_at: Date;
     photo_url?: string;
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
