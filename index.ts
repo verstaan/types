@@ -524,6 +524,8 @@ export interface ClientAlertReport {
     confirmed: number;
     ended_at?: Date | null;
     confirmed_at?: Date | null;
+    deleted_by?: number;
+    deleted_at?: Date;
     container_id?: number;
     default_region_id?: number;
     custom_region_ids?: number;
