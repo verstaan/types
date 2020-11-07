@@ -1239,6 +1239,7 @@ export interface CombinedClientReportItem {
     type: "Quick" | "Alert";
     report: ClientReport | ClientAlertReport;
     full_report?: FullClientReport;
+    mist_reports?: MISTReport[];
 }
 
 /**
