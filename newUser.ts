@@ -1,3 +1,5 @@
+import {Profile, UserFeatureSelection} from "./index";
+
 export class NewUser {
   public email: string | undefined;
   public firstname: string | undefined;
@@ -7,17 +9,8 @@ export class NewUser {
   public team_id?: number | null | undefined;
   public role: number | undefined;
   public designation: string | null | undefined;
-  public nickname?: string | undefined;
-  public position?: string | undefined;
-  public address_home?: string | undefined;
-  public phone_cell?: string | undefined;
-  public phone_work?: string | undefined;
-  public phone_home?: string | undefined;
-  public emergency_contact?: string | undefined;
-  public emergency_contact_relationship?: string | undefined;
-  public emergency_phone_home?: string | undefined;
-  public emergency_phone_cell?: string | undefined;
-  public emergency_phone_work?: string | undefined;
+  public profile: Profile | null | undefined;
+  public features: UserFeatureSelection | null | undefined;
 
   constructor(init?: Partial<NewUser>) {
     Object.assign(this, init);
