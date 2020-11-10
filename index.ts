@@ -266,7 +266,8 @@ export interface UserProfile {
     current_default_region_mobile?: number;
     team_id?: number | null;
     designation?: string;
-    profile?: Profile;
+    profile?: Profile | null;
+    features?: UserFeatureSelection | null;
 }
 
 export interface AdminUserProfile {
@@ -1434,6 +1435,19 @@ export interface MedicalProfile {
         address?: string;
         office?: string;
     }
+}
+
+export interface UserFeatureSelection {
+    sosButton?: boolean | null;
+    addReportButton?: boolean | null;
+    filtering?: boolean | null;
+    filterTimeRangeDefault?: "7 Day" | "28 day" | "24 Hour" | null;
+    teamReportsMenu?: boolean | null;
+    teamsMenu?: boolean | null;
+    analyticsMenu?: boolean | null;
+    forecastingMenu? : boolean | null;
+    publicInsightsMenu? : boolean | null;
+    newsfeedMenu?: boolean | null;
 }
 
 export interface PublicInsight {
