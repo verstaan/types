@@ -1445,6 +1445,7 @@ export interface UserFeatureSelection {
     teamReportsMenu?: boolean | null;
     teamsMenu?: boolean | null;
     analyticsMenu?: boolean | null;
+    analyticsAdvancedMenu?: boolean | null;
     forecastingMenu? : boolean | null;
     publicInsightsMenu? : boolean | null;
     newsfeedMenu?: boolean | null;
