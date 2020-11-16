@@ -1441,7 +1441,7 @@ export interface UserFeatureSelection {
     sosButton?: boolean | null;
     addReportButton?: boolean | null;
     filtering?: boolean | null;
-    filterTimeRangeDefault?: "7 Day" | "28 day" | "24 Hour" | null;
+    filterTimeRangeDefault?: "7 Day" | "28 Day" | "24 Hour" | null;
     teamReportsMenu?: boolean | null;
     teamsMenu?: boolean | null;
     analyticsMenu?: boolean | null;
