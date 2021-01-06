@@ -651,9 +651,8 @@ export interface ClientAlertReportToInsertPartial {
 }
 
 export interface Login {
-    iat: number;
-    exp: number;
     token: string;
+    refreshToken: string;
 }
 
 /**
