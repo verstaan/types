@@ -1640,3 +1640,7 @@ export interface Log {
     admin_user_id?: number;
     route: string;
 }
+
+export interface Refresh {
+    refereshToken: string;
+}
