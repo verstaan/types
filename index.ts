@@ -249,8 +249,8 @@ export const ValidUserDesignations: UserDesignation[] = ["Medic"];
 export interface UserProfile {
     id: number;
     email: string;
-    first_name?: string;
-    last_name?: string;
+    first_name: string;
+    last_name: string;
     role: number;
     client_id: number;
     current_container?: number;
@@ -271,7 +271,7 @@ export interface PendingUser {
     role?: number;
     designation?: string;
     first_name?: string;
-    last_name: string;
+    last_name?: string;
     team_id?: number | null;
     profile?: Profile | null
     features?: UserFeatureSelection | null;
@@ -307,6 +307,7 @@ export interface Client {
     licenses_BC?: number;
     licenses_EC?: number;
     ignored_report_types?: reportType[];
+    domain?: string | null;
 }
 
 export type ClientProfile = Client;
