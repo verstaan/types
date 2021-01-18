@@ -279,6 +279,17 @@ export interface PendingUser {
     verif_exp: Date;
 }
 
+export interface PendingUserInvite {
+    email?: string;
+    phone_primary?: string;
+    first_name?: string;
+    last_name?: string;
+    role?: number;
+    designation?: string;
+    team_id?: number | null;
+    features?: UserFeatureSelection;
+}
+
 export interface UserSignUp {
     password: string;
     email?: string;
