@@ -275,8 +275,8 @@ export interface PendingUser {
     team_id?: number | null;
     profile?: Profile | null
     features?: UserFeatureSelection | null;
-    verif_code: number;
-    verif_exp: Date;
+    verif_code?: number | null;
+    verif_exp?: Date | null;
 }
 
 export interface PendingUserInvite {
