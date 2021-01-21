@@ -277,6 +277,7 @@ export interface PendingUser {
     features?: UserFeatureSelection | null;
     verif_code?: number | null;
     verif_exp?: Date | null;
+    inviting_user_id?: number | null;
 }
 
 export interface PendingUserInvite {
@@ -288,6 +289,7 @@ export interface PendingUserInvite {
     designation?: string;
     team_id?: number | null;
     features?: UserFeatureSelection;
+    inviting_user_id?: number;
 }
 
 export interface UserSignUp {
