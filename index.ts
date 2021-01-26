@@ -243,6 +243,9 @@ export type Review = boolean | null; // true is approved, false is rejected, nul
 
 export type AutoVerificationFailure = "photo-metadata-location" | "photo-metadata-missing";
 
+export type UserDesignation = "Medic";
+export const ValidUserDesignations: UserDesignation[] = ["Medic"];
+
 export interface UserProfile {
     id: number;
     email: string;
@@ -251,23 +254,51 @@ export interface UserProfile {
     role: number;
     client_id: number;
     current_container?: number;
-    nickname?: string;
-    position?: string;
-    address_home?: string;
-    phone_cell?: string;
-    phone_work?: string;
-    phone_home?: string;
-    emergency_contact?: string;
-    emergency_contact_relationship?: string;
-    emergency_phone_home?: string;
-    emergency_phone_cell?: string;
-    emergency_phone_work?: string;
+    phone_primary?: string;
     current_container_mobile?: number;
     current_default_region_mobile?: number;
     team_id?: number | null;
     designation?: string;
     profile?: Profile | null;
     features?: UserFeatureSelection | null;
+}
+
+export interface PendingUser {
+    uuid: string;
+    client_id: number;
+    email?: string;
+    phone_primary?: string;
+    role?: number;
+    designation?: string;
+    first_name?: string;
+    last_name?: string;
+    team_id?: number | null;
+    profile?: Profile | null
+    features?: UserFeatureSelection | null;
+    verif_code?: number | null;
+    verif_exp?: Date | null;
+    inviting_user_id?: number | null;
+}
+
+export interface PendingUserInvite {
+    email?: string;
+    phone_primary?: string;
+    first_name?: string;
+    last_name?: string;
+    role?: number;
+    designation?: string;
+    team_id?: number | null;
+    features?: UserFeatureSelection;
+    inviting_user_id?: number;
+}
+
+export interface UserSignUp {
+    password: string;
+    email?: string;
+    phone_primary?: string;
+    first_name?: string;
+    last_name?: string;
+    profile?: Profile;
 }
 
 export interface AdminUserProfile {
@@ -289,6 +320,7 @@ export interface Client {
     licenses_BC?: number;
     licenses_EC?: number;
     ignored_report_types?: reportType[];
+    domain?: string | null;
 }
 
 export type ClientProfile = Client;
