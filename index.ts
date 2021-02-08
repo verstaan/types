@@ -478,6 +478,7 @@ export interface NewClientReport {
     report_needs?: ClientReportNeeds;
     photo_url?: string;
     team_id?: number;
+    client_uuid?: string;
 }
 
 export interface NewClientAlertReport {
