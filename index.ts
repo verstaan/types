@@ -539,6 +539,7 @@ export interface ClientReport {
     photo_url?: string;
     full_report_id: number;
     team_id?: number;
+    client_uuid?: string | null;
 }
 
 /**
