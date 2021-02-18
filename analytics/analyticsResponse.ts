@@ -1,3 +1,4 @@
+import { reportType, CategoryTypes } from "..";
 
 export class WeeklyOverallStats {
     public totalWeekCount: number | undefined;
@@ -36,7 +37,7 @@ export class MonthlyOverallStats {
 }
 
 export class StatsPerCategory {
-    public name: string | undefined;
+    public name: reportType | CategoryTypes | undefined;
     public count: number | undefined;
     public change: string | undefined;
     public amountChange: number | undefined;
@@ -48,7 +49,7 @@ export class StatsPerCategory {
     checkInfo(): boolean {
         return (
             this.name != undefined &&
-            this.name != "" &&
+            this.name != undefined &&
             this.count != undefined &&
             this.change != undefined &&
             this.amountChange != undefined
@@ -101,7 +102,7 @@ export class Analytics {
  * Sherlock V2 analytics summary
  */
 export class PerCategoryStats {
-    public category: string | undefined;
+    public category: reportType | CategoryTypes | undefined;
     public count: number | undefined;
     public change: number | undefined;
     public day: string | undefined;
@@ -126,7 +127,7 @@ export class PerCategoryStats {
 
 
 export class CategoryStats {
-    public category: string | undefined;
+    public category: reportType | CategoryTypes | undefined;
     public count: number | undefined;
     public change: number | undefined;
 
