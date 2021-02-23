@@ -1,7 +1,8 @@
 import { Polygon, MultiPolygon, Point } from "geojson";
 import { AdminPrivileges } from "./adminPrivileges";
 
-export type reportType = "Shooting"
+export type reportType =
+    | "Shooting"
     | "Theft"
     | "Auto Theft"
     | "Protest"
@@ -48,7 +49,6 @@ export const AllReportTypes: reportType[] = [
     "Assault",
     "Auto Accident",
     "Auto Theft",
-    "Shooting",
     "Checkpoint",
     "Coordinated Attack",
     "Corruption",
@@ -73,6 +73,7 @@ export const AllReportTypes: reportType[] = [
     "Robbery",
     "Rioting",
     "Rocket Attack",
+    "Shooting",
     "Smash and Grab",
     "Stabbing",
     "Suspicious Activity",
@@ -85,19 +86,9 @@ export const AllReportTypes: reportType[] = [
     "Other"
 ];
 
-export type ClientReportActions =
-    | "Assisting"
-    | "Observing"
-    | "Coordinating"
-    | "Following"
-    | "No Actions";
+export type ClientReportActions = "Assisting" | "Observing" | "Coordinating" | "Following" | "No Actions";
 
-export type ClientReportNeeds =
-    | "Extraction"
-    | "MedEvac"
-    | "CasEvac"
-    | "Police"
-    | "Fire";
+export type ClientReportNeeds = "Extraction" | "MedEvac" | "CasEvac" | "Police" | "Fire";
 
 export type CategoryTypes = "Violent" | "Non-Violent" | "Hazard" | "Other";
 export type ViolentCategory =
@@ -139,11 +130,7 @@ export type HazardCategory =
     | "Checkpoint"
     | "Explosion (Accidental)"
     | "Auto Accident";
-export type OtherCategory =
-    | "Other"
-    | "Suspicious Activity"
-    | "Suspicious Vehicle"
-    | "Suspicious Object";
+export type OtherCategory = "Other" | "Suspicious Activity" | "Suspicious Vehicle" | "Suspicious Object";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
 
 export interface Categories {
@@ -172,11 +159,13 @@ export const ReportCategories: Record<
         "Robbery",
         "Arms & Ammunition",
         "Terrorism",
-        "Rioting"],
+        "Rioting"
+    ],
     "Non-Violent": [
         "Protest",
         "Emergency Response",
-        "Theft", "Smash and Grab",
+        "Theft",
+        "Smash and Grab",
         "Home Invasion",
         "Corruption",
         "Drugs",
@@ -186,7 +175,8 @@ export const ReportCategories: Record<
         "Auto Theft",
         "Vandalism",
         "Disorderly Conduct",
-        "Property Damage"],
+        "Property Damage"
+    ],
     Hazard: [
         "Dangerous Terrain",
         "Roadblock",
@@ -194,19 +184,16 @@ export const ReportCategories: Record<
         "Police",
         "Checkpoint",
         "Explosion (Accidental)",
-        "Auto Accident"],
-    Other: [
-        "Other",
-        "Suspicious Activity",
-        "Suspicious Vehicle",
-        "Suspicious Object",],
+        "Auto Accident"
+    ],
+    Other: ["Other", "Suspicious Activity", "Suspicious Vehicle", "Suspicious Object"]
 };
 
 export type PublicReportSourceType =
-    "Client" |
-    "VAMP" | // for old VAMP reports
-    "AAMP" |
-    "Open Source";
+    | "Client"
+    | "VAMP" // for old VAMP reports
+    | "AAMP"
+    | "Open Source";
 
 export type Setting = "Sea" | "Land";
 
@@ -237,7 +224,14 @@ export type Target =
 
 export type WeaponType = "Small" | "Medium" | "Heavy";
 
-export type ReportClassification = "COVID-19 Entries" | "Arrests and Recoveries" | "Incidents and Suspicious Activity" | "Complaints/Compliments" | "Site Visits" | "Client Meetings" | "Inspections";
+export type ReportClassification =
+    | "COVID-19 Entries"
+    | "Arrests and Recoveries"
+    | "Incidents and Suspicious Activity"
+    | "Complaints/Compliments"
+    | "Site Visits"
+    | "Client Meetings"
+    | "Inspections";
 
 export type Review = boolean | null; // true is approved, false is rejected, null is not yet reviewed
 
@@ -273,7 +267,7 @@ export interface PendingUser {
     first_name?: string;
     last_name?: string;
     team_id?: number | null;
-    profile?: Profile | null
+    profile?: Profile | null;
     features?: UserFeatureSelection | null;
     verif_code?: number | null;
     verif_exp?: Date | null;
@@ -330,12 +324,12 @@ export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Cl
 export interface Device {
     user_id: number;
     client_id: number;
-        token: string | null;
-        device_type: DeviceType;
-        device_fingerprint: string;
-        point?: Point;
-        modified_at?: Date;
-    }
+    token: string | null;
+    device_type: DeviceType;
+    device_fingerprint: string;
+    point?: Point;
+    modified_at?: Date;
+}
 
 export type DeviceType = "Web" | "Mobile";
 
@@ -425,12 +419,12 @@ export interface NewOsReport {
  */
 export interface AampReportFieldsSpecification {
     aamp_report_type: {
-        optional?: false,
-        values: Record<reportType, string[]>
+        optional?: false;
+        values: Record<reportType, string[]>;
     };
     [key: string]: {
-        optional?: boolean,
-        values: Record<string, string[]> | string[]
+        optional?: boolean;
+        values: Record<string, string[]> | string[];
     };
 }
 
@@ -790,7 +784,6 @@ export interface ReportBase {
     summary?: string;
 }
 
-
 // From the db
 export interface FullClientReport {
     id: number;
@@ -892,7 +885,6 @@ export interface FullClientReport {
     template_id?: number;
     template_fields?: ReportTemplate;
 }
-
 
 /**
  * Creating a Full Client Report
@@ -1102,12 +1094,8 @@ export interface FullClientReportUpdate {
 
 // Hierarchy of the full client report
 export interface FullClientReportSections {
-    transportationSection?:
-    | ClientReportSeaTransportationSection
-    | ClientReportLandTransportationSection;
-    incidentSection?:
-    | ClientReportSeaIncidentSection
-    | ClientReportLandIncidentSection;
+    transportationSection?: ClientReportSeaTransportationSection | ClientReportLandTransportationSection;
+    incidentSection?: ClientReportSeaIncidentSection | ClientReportLandIncidentSection;
     perpSection?: ClientReportSeaPerpSection | ClientReportLandPerpSection;
     weaponSection?: ClientReportWeaponSection;
     otherSection?: ClientReportSeaOtherSection | ClientReportLandOtherSection;
@@ -1304,7 +1292,7 @@ export class WeeklyOverallStats {
             this.totalWeekCount !== undefined &&
             this.changeTotalWeek !== undefined &&
             this.amountChangeTotalWeek !== undefined
-        )
+        );
     }
 }
 
@@ -1320,7 +1308,7 @@ export class MonthlyOverallStats {
             this.totalMonthCount !== undefined &&
             this.changeTotalMonth !== undefined &&
             this.amountChangeTotalMonth !== undefined
-        )
+        );
     }
 }
 
@@ -1339,7 +1327,7 @@ export class StatsPerCategory {
             this.count !== undefined &&
             this.change !== undefined &&
             this.amountChange !== undefined
-        )
+        );
     }
 }
 
@@ -1351,11 +1339,7 @@ export class ThirtyDayCount {
         Object.assign(this, init);
     }
     checkInfo(): boolean {
-        return (
-            this.dateTime !== undefined &&
-            this.dayName !== undefined &&
-            this.count !== undefined
-        )
+        return this.dateTime !== undefined && this.dayName !== undefined && this.count !== undefined;
     }
 }
 export class Analytics {
@@ -1374,7 +1358,7 @@ export class Analytics {
             this.monthlyOverallStats !== undefined &&
             this.monthlyStatsPerCategory !== undefined &&
             this.thirtyDayCount !== undefined
-        )
+        );
     }
 }
 
@@ -1396,38 +1380,38 @@ export interface TeamPermissionsQuery {
 }
 
 export interface Team {
-    id: number,
-    client_id: number,
-    name: string,
-    permissions: number,
-    address?: string,
+    id: number;
+    client_id: number;
+    name: string;
+    permissions: number;
+    address?: string;
     ignored_report_types?: reportType[];
 }
 
 export interface TeamToInsert {
-    client_id: number,
-    name: string,
-    address?: string,
-    permissions?: number
+    client_id: number;
+    name: string;
+    address?: string;
+    permissions?: number;
 }
 
 export interface TeamUpdate {
-    id: number,
-    name?: string,
-    address?: string
-    permissions?: number
+    id: number;
+    name?: string;
+    address?: string;
+    permissions?: number;
 }
 
 export interface UserUpdate {
-    id: number,
-    team_id?: number | null,
-    role?: number,
-    designation?: string
+    id: number;
+    team_id?: number | null;
+    role?: number;
+    designation?: string;
 }
 
 export interface AdminUserSelfUpdate {
-    team_id?: number | null,
-    designation?: string,
+    team_id?: number | null;
+    designation?: string;
 }
 
 export interface Profile {
@@ -1460,13 +1444,13 @@ export interface MedicalProfile {
         phone?: string;
         address?: string;
         office?: string;
-    },
+    };
     doctor_2?: {
         name?: string;
         phone?: string;
         address?: string;
         office?: string;
-    }
+    };
 }
 
 export interface UserFeatureSelection {
@@ -1478,38 +1462,38 @@ export interface UserFeatureSelection {
     teamsMenu?: boolean | null;
     analyticsMenu?: boolean | null;
     analyticsAdvancedMenu?: boolean | null;
-    forecastingMenu? : boolean | null;
-    publicInsightsMenu? : boolean | null;
+    forecastingMenu?: boolean | null;
+    publicInsightsMenu?: boolean | null;
     newsfeedMenu?: boolean | null;
 }
 
 export interface PublicInsight {
-    id: number,
-    container_id: number,
-    default_region_id?: number,
-    title: string,
-    content: Map<string, string | string[]>,
-    created_at: Date
+    id: number;
+    container_id: number;
+    default_region_id?: number;
+    title: string;
+    content: Map<string, string | string[]>;
+    created_at: Date;
 }
 
 export interface NewPublicInsight {
-    container_id: number,
-    default_region_id?: number,
-    title: string,
-    content: Map<string, string>
+    container_id: number;
+    default_region_id?: number;
+    title: string;
+    content: Map<string, string>;
 }
 
 export interface ReportTypeUpdate {
-    client_id: number,
-    team_id?: number,
-    ignored_report_types: reportType[]
+    client_id: number;
+    team_id?: number;
+    ignored_report_types: reportType[];
 }
 
 export interface ReportTemplate {
-    id: number,
-    name: string,
-    client_id?: number,
-    fields: TemplateSection[]
+    id: number;
+    name: string;
+    client_id?: number;
+    fields: TemplateSection[];
 }
 
 export interface TemplateSection {
@@ -1523,147 +1507,147 @@ export interface TemplateSection {
 // }
 
 export interface ReportTemplateToInsert {
-    name: string,
-    client_id?: number,
+    name: string;
+    client_id?: number;
     fields: TemplateSection[];
 }
 
 export interface Dropdown {
-    label: string,
-    type: "dropdown",
-    options: string[],
-    value: string | null
+    label: string;
+    type: "dropdown";
+    options: string[];
+    value: string | null;
 }
 
 export interface ShortString {
-    label: string,
-    type: "short_string",
-    value: string | null
+    label: string;
+    type: "short_string";
+    value: string | null;
 }
 
 export interface LongString {
-    label: string,
-    type: "long_string",
-    value: string | null
+    label: string;
+    type: "long_string";
+    value: string | null;
 }
 
 export interface NumberField {
-    label: string,
-    type: "number",
-    value: number | null,
-    units?: string
+    label: string;
+    type: "number";
+    value: number | null;
+    units?: string;
 }
 
 export interface Tickbox {
-    label: string,
-    type: "tickbox",
-    value: true | false | null
+    label: string;
+    type: "tickbox";
+    value: true | false | null;
 }
 
 export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField | Tickbox;
 
 export interface NineLiner {
-    serial_number: number | null,
-    line_one: string | null, // location
-    point?: Point,
-    line_two: string | null, // radio frequency, call sign, and suffix
+    serial_number: number | null;
+    line_one: string | null; // location
+    point?: Point;
+    line_two: string | null; // radio frequency, call sign, and suffix
     line_three: {
-        a: number | null,
-        b: number | null,
-        c: number | null,
-        d: number | null,
-        e: number | null
-    }, // number of patients by precendence
-    line_four: string | null, // special equipment needed
+        a: number | null;
+        b: number | null;
+        c: number | null;
+        d: number | null;
+        e: number | null;
+    }; // number of patients by precendence
+    line_four: string | null; // special equipment needed
     line_five: {
-        litter: number | null,
-        ambulatory: number | null
-    }, // number of patients
-    line_six: string | null, // security at pick-up site
-    line_seven: string | null, // method of marking pick-up site
-    line_eight: string | null, // patient nationality and status
-    line_nine: string | null // NBC Contamination
+        litter: number | null;
+        ambulatory: number | null;
+    }; // number of patients
+    line_six: string | null; // security at pick-up site
+    line_seven: string | null; // method of marking pick-up site
+    line_eight: string | null; // patient nationality and status
+    line_nine: string | null; // NBC Contamination
 }
 
 export interface MISTReport {
-    id: number,
-    alert_report_id: number,
-    client_id: number,
-    date_time?: Date,
-    user_id: number,
-    fields: MISTReportFields
+    id: number;
+    alert_report_id: number;
+    client_id: number;
+    date_time?: Date;
+    user_id: number;
+    fields: MISTReportFields;
 }
 
 export interface MISTReportToInsert {
-    alert_report_id: number,
-    date_time?: Date,
-    user_id?: number,
-    fields: MISTReportFields,
-    team_id?: number
+    alert_report_id: number;
+    date_time?: Date;
+    user_id?: number;
+    fields: MISTReportFields;
+    team_id?: number;
 }
 
 export interface MISTReportUpdate {
-    id: number,
-    date_time?: Date,
-    user_id?: number,
-    fields: MISTReportFields
+    id: number;
+    date_time?: Date;
+    user_id?: number;
+    fields: MISTReportFields;
 }
 
 export interface MISTReportFields {
-    name?: string,
-    date_of_birth?: string,
-    blood_gp?: string,
-    company?: string,
-    urgency?: string,
-    other?: string,
-    injury_mechanism?: string[],
+    name?: string;
+    date_of_birth?: string;
+    blood_gp?: string;
+    company?: string;
+    urgency?: string;
+    other?: string;
+    injury_mechanism?: string[];
     injuries_found?: {
-        front_head?: boolean,
-        front_chest?: boolean,
-        front_right_arm?: boolean,
-        front_right_hand?: boolean,
-        front_hips?: boolean,
-        front_right_thigh?: boolean,
-        front_right_leg?: boolean,
-        back_head?: boolean,
-        back_chest?: boolean,
-        back_left_arm?: boolean,
-        back_left_hand?: boolean,
-        back_hips?: boolean,
-        back_left_thigh?: boolean,
-        back_left_leg?: boolean,
-    },
-    pulse_rate?: string,
-    pulse_rate_location?: string,
-    respiratory_rate?: string,
-    pearl?: string,
-    pearl_l?: string,
-    pearl_r?: string,
-    mental_status?: string,
-    a?: boolean,
-    v?: boolean,
-    p?: boolean,
-    u?: boolean,
-    cat?: boolean,
-    cat_time?: string,
-    quik_clot?: boolean,
-    quik_clot_time?: string,
-    opa?: string, // small, medium, large
-    npa?: string, //small, medium, large
-    suction?: boolean,
-    collar?: boolean,
-    o2?: boolean,
-    chest_seal_left?: boolean,
-    chest_seal_right?: boolean,
-    bvm?: boolean,
-    needle_decomp_left?: boolean,
-    needle_decomp_right?: boolean,
-    iv_io?: boolean,
-    site?: string,
-    fluids?: string,
-    amount?: number, // mls
-    gauge?: string,
-    bls?: string
+        front_head?: boolean;
+        front_chest?: boolean;
+        front_right_arm?: boolean;
+        front_right_hand?: boolean;
+        front_hips?: boolean;
+        front_right_thigh?: boolean;
+        front_right_leg?: boolean;
+        back_head?: boolean;
+        back_chest?: boolean;
+        back_left_arm?: boolean;
+        back_left_hand?: boolean;
+        back_hips?: boolean;
+        back_left_thigh?: boolean;
+        back_left_leg?: boolean;
+    };
+    pulse_rate?: string;
+    pulse_rate_location?: string;
+    respiratory_rate?: string;
+    pearl?: string;
+    pearl_l?: string;
+    pearl_r?: string;
+    mental_status?: string;
+    a?: boolean;
+    v?: boolean;
+    p?: boolean;
+    u?: boolean;
+    cat?: boolean;
+    cat_time?: string;
+    quik_clot?: boolean;
+    quik_clot_time?: string;
+    opa?: string; // small, medium, large
+    npa?: string; //small, medium, large
+    suction?: boolean;
+    collar?: boolean;
+    o2?: boolean;
+    chest_seal_left?: boolean;
+    chest_seal_right?: boolean;
+    bvm?: boolean;
+    needle_decomp_left?: boolean;
+    needle_decomp_right?: boolean;
+    iv_io?: boolean;
+    site?: string;
+    fluids?: string;
+    amount?: number; // mls
+    gauge?: string;
+    bls?: string;
 }
 
 export interface Log {
