@@ -472,6 +472,7 @@ export interface NewClientReport {
     report_needs?: ClientReportNeeds;
     photo_url?: string;
     team_id?: number;
+    client_uuid?: string;
 }
 
 export interface NewClientAlertReport {
@@ -532,6 +533,7 @@ export interface ClientReport {
     photo_url?: string;
     full_report_id: number;
     team_id?: number;
+    client_uuid?: string | null;
 }
 
 /**
@@ -560,6 +562,7 @@ export interface ClientAlertReport {
     full_report_id: number;
     team_id?: number;
     nine_liner?: NineLiner;
+    client_uuid?: string | null;
 }
 
 /**
@@ -668,6 +671,7 @@ export interface ClientAlertReportToInsert {
     photo_url?: string;
     team_id?: number;
     nine_liner?: NineLiner;
+    client_uuid?: string;
 }
 
 export interface ClientAlertReportToInsertPartial {
