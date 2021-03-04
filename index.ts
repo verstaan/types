@@ -317,6 +317,38 @@ export interface Client {
     domain?: string | null;
 }
 
+export interface DisplayClient extends Client {
+    type: "Client";
+    incidents: number,
+    alerts: number,
+    full_reports: number,
+    users: number,
+    activity: number
+}
+
+export type DisplayTeam = Omit<Team, "id"> & {
+    id: number | null;
+    type: "Team";
+}
+
+export interface DisplayUserProfile extends UserProfile {
+    type: "UserProfile";
+    incidents: number;
+    alerts: number;
+    full_reports: number;
+    users: number;
+    activity: number;
+}
+
+export interface ClientDisplayData {
+    clientData: DisplayClient[];
+    teamData: DisplayTeam[];
+    userData: DisplayUserProfile[];
+    teamContext: Record<number, Record<number | "null", string>>;
+    containerContext: string[];
+
+}
+
 export type ClientProfile = Client;
 
 export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
