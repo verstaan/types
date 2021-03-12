@@ -1,5 +1,8 @@
 import { reportType, CategoryTypes } from "..";
 
+/**
+ * Legacy code but need to verify
+ */
 export class WeeklyOverallStats {
     public totalWeekCount: number | undefined;
     public changeTotalWeek: string | undefined;
@@ -57,6 +60,7 @@ export class StatsPerCategory {
     }
 }
 
+// We are using this in dataApplied in TimePicker so not sure if we can get rid on this or not
 export class ThirtyDayCount {
     public dateTime: string | undefined;
     public dayName: string | undefined;
@@ -108,6 +112,7 @@ export class PerCategoryStats {
     public day: string | undefined;
     public month: string | undefined;
     public dateTime: string | undefined;
+    public isCategory: boolean | undefined;
 
     constructor(init?: Partial<PerCategoryStats>) {
         Object.assign(this, init);
@@ -120,7 +125,8 @@ export class PerCategoryStats {
             this.change != undefined &&
             this.day != undefined &&
             this.month != undefined &&
-            this.dateTime != undefined
+            this.dateTime != undefined &&
+            this.isCategory != undefined
         )
     }
 }
@@ -130,6 +136,7 @@ export class CategoryStats {
     public category: reportType | CategoryTypes | undefined;
     public count: number | undefined;
     public change: number | undefined;
+    public isCategory: boolean | undefined;
 
     constructor(init?: Partial<CategoryStats>) {
         Object.assign(this, init);
@@ -139,7 +146,8 @@ export class CategoryStats {
         return (
             this.category != undefined &&
             this.count != undefined &&
-            this.change != undefined
+            this.change != undefined &&
+            this.isCategory != undefined
         )
     }
 }
