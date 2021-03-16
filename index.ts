@@ -302,6 +302,7 @@ export interface AdminUserProfile {
     privileges: AdminPrivileges;
     first_name: string;
     last_name: string;
+    features?: AdminFeatureSelection | null;
 }
 
 export interface Client {
@@ -1501,6 +1502,14 @@ export interface UserFeatureSelection {
     forecastingMenu?: boolean | null;
     publicInsightsMenu?: boolean | null;
     newsfeedMenu?: boolean | null;
+}
+
+export interface AdminFeatureSelection {
+    admin?: boolean | null;
+    client?: boolean | null;
+    areas?: boolean | null;
+    logs?: boolean | null;
+    aamp?: boolean | null;
 }
 
 export interface PublicInsight {
