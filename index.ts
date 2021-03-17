@@ -396,7 +396,7 @@ export interface ContainerToInsert {
 
 export interface Container {
     id: number;
-    area: Polygon | MultiPolygon;
+    area?: Polygon | MultiPolygon;
     name: string;
     viewport_mobile: ViewportBase;
     viewport_web: ViewportBase;
