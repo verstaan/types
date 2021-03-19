@@ -1,4 +1,5 @@
 import { AdminPrivileges } from "./adminPrivileges";
+import {AdminFeatureSelection} from "./index";
 
 export class NewAdminUser {
   public email: string | undefined;
@@ -6,6 +7,7 @@ export class NewAdminUser {
   public last_name: string | undefined;
   public password: string | undefined;
   public privileges: AdminPrivileges | undefined;
+  public features?: AdminFeatureSelection | undefined;
 
   constructor(init?: Partial<NewAdminUser>) {
     Object.assign(this, init);
