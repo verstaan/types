@@ -647,6 +647,30 @@ export const AampUpdateMinimumPrivileges: {
 };
 
 /**
+ * Interfaces corresponding to Message and Chat objects from Telegram's Bot API
+ */
+export interface TelegramMessage {
+    message_id: number,
+    text: string,
+    from: TelegramUser,
+    chat: TelegramChat,
+    date: number
+}
+
+export interface TelegramChat {
+    id: number,
+    type: string,
+    title: string
+}
+
+export interface TelegramUser {
+    id: number,
+    username: string,
+    first_name: string,
+    last_name: string
+}
+
+/**
  * Public Report to be added to DB
  */
 export interface PublicReportToInsert {
