@@ -489,9 +489,10 @@ export interface NewPendingAampReport {
     first_name?: string;
     last_name?: string;
     email?: string;
-    date_time: Date;
+    date_time?: Date;
     address?: string;
     description: string;
+    chat_messages?: number[];
     media?: string[];
     point?: Point;
     fields: AampReportFields;
@@ -661,7 +662,8 @@ export interface TelegramMessage {
 export interface TelegramChat {
     id: number,
     type: string,
-    title: string
+    title: string,
+    form_id: number
 }
 
 export interface TelegramUser {
