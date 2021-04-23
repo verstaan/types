@@ -651,19 +651,32 @@ export const AampUpdateMinimumPrivileges: {
 /**
  * Interfaces corresponding to Message and Chat objects from Telegram's Bot API
  */
+
+/**
+ * Telegram message as represented in the DB
+ */
 export interface TelegramMessage {
     message_id: number,
     text: string,
-    from: TelegramUser,
-    chat: TelegramChat,
+    chat_id: number,
+    user_id: number,
     date: number
 }
+
+/**
+ * Telegram message with user and chat objects embedded.
+ * This is the format that Telegram sends its messages in
+ */
+export interface TelegramMessageDetails extends Omit<TelegramMessage, "chat_id" | "user_id"> {
+    from: TelegramUser,
+    chat: TelegramChat,
+};
 
 export interface TelegramChat {
     id: number,
     type: string,
     title: string,
-    form_id: number
+    form_id?: number
 }
 
 export interface TelegramUser {
@@ -678,8 +691,8 @@ export interface TelegramUser {
  */
 export interface PublicReportToInsert {
     created_at?: Date;
-    date_time: Date;
-    point: Point;
+    date_time?: Date;
+    point?: Point;
     address?: string;
     report_type: reportType;
     source_type: PublicReportSourceType;
