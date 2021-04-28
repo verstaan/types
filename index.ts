@@ -691,8 +691,8 @@ export interface TelegramUser {
  */
 export interface PublicReportToInsert {
     created_at?: Date;
-    date_time?: Date;
-    point?: Point;
+    date_time: Date;
+    point: Point;
     address?: string;
     report_type: reportType;
     source_type: PublicReportSourceType;
