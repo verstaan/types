@@ -493,6 +493,7 @@ export interface NewPendingAampReport {
     address?: string;
     description: string;
     chat_messages?: number[];
+    source_message?: number;
     bot_generated?: boolean;
     media?: string[];
     point?: Point;
