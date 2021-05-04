@@ -1,4 +1,4 @@
-import { Polygon, MultiPolygon, Point } from "geojson";
+import { MultiPolygon, Point, Polygon } from "geojson";
 import { AdminPrivileges } from "./adminPrivileges";
 
 export type reportType =
@@ -647,7 +647,12 @@ export const AampUpdateMinimumPrivileges: {
     description: AdminPrivileges.MANAGER,
     point: AdminPrivileges.MANAGER,
     fields: AdminPrivileges.MANAGER,
-    archived: AdminPrivileges.MANAGER
+    archived: AdminPrivileges.MANAGER,
+    username: AdminPrivileges.MANAGER,
+    first_name: AdminPrivileges.MANAGER,
+    last_name: AdminPrivileges.MANAGER,
+    chat_messages: AdminPrivileges.MANAGER,
+    source_message: AdminPrivileges.MANAGER
 };
 
 /**
