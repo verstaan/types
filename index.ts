@@ -302,6 +302,7 @@ export interface AdminUserProfile {
     privileges: AdminPrivileges;
     first_name: string;
     last_name: string;
+    phone_primary?: number;
     features?: AdminFeatureSelection | null;
 }
 
