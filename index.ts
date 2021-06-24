@@ -458,7 +458,7 @@ export interface AampReportFieldsSpecification {
     };
     [key: string]: {
         optional?: boolean;
-        values: Record<string, string[]> | string[];
+        values: Record<string, string[]>;
     };
 }
 
