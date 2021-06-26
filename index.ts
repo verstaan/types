@@ -319,6 +319,11 @@ export interface Client {
     domain?: string | null;
 }
 
+export interface ClientContainers {
+    client_id: number;
+    containers: string[];
+}
+
 export interface DisplayClient extends Client {
     type: "Client";
     incidents: number,
