@@ -489,7 +489,7 @@ export interface AampReportFieldsSpecification {
 }
 
 export interface NewForm {
-  name: string;
+  name: string | null;
   container_id: number;
   primary_manager: number;
   fields: AampReportFieldsSpecification;
@@ -635,7 +635,7 @@ export interface ClientAlertReport {
  */
 export interface Form extends NewForm {
   id: number;
-  name: string;
+  name: string | null;
   domains: string[];
   immediate_public: boolean;
 }
