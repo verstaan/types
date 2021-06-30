@@ -247,7 +247,7 @@ export interface NewUser {
     firstname: string | undefined;
     lastname: string | undefined;
     password: string | undefined;
-    client_id: number;
+    client_id: number | undefined;
     team_id?: number | null | undefined;
     role: number | undefined;
     designation: string | null | undefined;
