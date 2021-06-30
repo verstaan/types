@@ -1,6 +1,6 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
-import store from "../../state/store";
 import { StatusCode } from "..";
+import { getToken } from "../../token";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -79,24 +79,6 @@ export class ConnectionError extends Error {
         this.errorType = type;
     }
 }
-
-/**
- * Get token from redux state, and handle expired token (or no token)
- */
-export const getToken = (): string | null => {
-    const cuser = store.getState().cuser;
-    if (!cuser.token) {
-        // TODO need to clear redux state and log out
-        return null;
-    }
-
-    // TODO send new sign-in request and update token if this one has expired. Would make this function async
-    // if (cuser.exp > Date.now()) {
-    //     // handle token refresh
-    //     return null;
-    // }
-    return cuser.token;
-};
 
 /**
  * Utility method for error handling and normalizing response types.
