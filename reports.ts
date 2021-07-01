@@ -720,7 +720,7 @@ export interface FullClientReportToInsert {
 export interface FullClientReportUpdate {
     //MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
     setting?: Setting;
-    full_report_id?: number;
+    full_report_id: number;
     photo_url?: string;
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
