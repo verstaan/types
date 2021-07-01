@@ -1,6 +1,5 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
 import { StatusCode } from "..";
-import { getToken } from "../../token";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -85,10 +84,10 @@ export class ConnectionError extends Error {
  */
 export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
     if (authenticate) {
-        const token = getToken();
+        const token = localStorage.getItem("verstaanToken");
         // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
         if (!token) {
-            throw new ErrorResponse("No token set in redux", 302);
+            throw new ErrorResponse("No token set in local storage", 302);
         }
         config.headers = {
             Authorization: `Bearer ${token}`,
