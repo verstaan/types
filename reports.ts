@@ -1,5 +1,4 @@
 import { Point } from "geojson";
-import { TEMPLATE_FIELD } from ".";
 
 export type reportType =
     | "Shooting"
@@ -721,7 +720,7 @@ export interface FullClientReportToInsert {
 export interface FullClientReportUpdate {
     //MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
     setting?: Setting;
-    full_report_id: number;
+    full_report_id?: number;
     photo_url?: string;
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
@@ -1131,3 +1130,38 @@ export interface MISTReportFields {
     gauge?: string;
     bls?: string;
 }
+
+// these are for full client reports
+export interface Dropdown {
+    label: string;
+    type: "dropdown";
+    options: string[];
+    value: string | null;
+}
+
+export interface ShortString {
+    label: string;
+    type: "short_string";
+    value: string | null;
+}
+
+export interface LongString {
+    label: string;
+    type: "long_string";
+    value: string | null;
+}
+
+export interface NumberField {
+    label: string;
+    type: "number";
+    value: number | null;
+    units?: string;
+}
+
+export interface Tickbox {
+    label: string;
+    type: "tickbox";
+    value: true | false | null;
+}
+
+export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField | Tickbox;

@@ -1,5 +1,6 @@
-import { AdminPrivileges } from ".";
+import { AdminPrivileges } from "./admin";
 import { reportType } from "./reports";
+import { Point } from "geojson";
 
 export type UserDesignation = "Medic";
 export const ValidUserDesignations: UserDesignation[] = ["Medic"];
@@ -267,3 +268,29 @@ export interface ClientCreation {
     user: NewUser;
     invite: boolean;
   }
+
+export interface PublicInsight {
+    id: number;
+    container_id: number;
+    default_region_id?: number;
+    title: string;
+    content: Map<string, string | string[]>;
+    created_at: Date;
+}
+
+export interface NewPublicInsight {
+    container_id: number;
+    default_region_id?: number;
+    title: string;
+    content: Map<string, string>;
+}
+
+export interface SubscriptionData {
+    user_id: number | undefined;
+    client_id: number | undefined;
+    token: string | undefined;
+    device_type: string | undefined;
+    device_fingerprint: string | undefined;
+    point: Point | undefined;
+    modified_at: Date | undefined;
+}

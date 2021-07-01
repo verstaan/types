@@ -17,8 +17,18 @@ import {
 } from "../reports";
 import { request } from "./index";
 import { Point } from "geojson";
-import { AdminUserSelfUpdate, ClientProfile, PendingUserInvite, Profile, Team, TeamToInsert, TeamUpdate, UserProfile, UserUpdate } from "../client";
-import { ContainerResponseItem, GeoAttribution, PublicInsight } from "..";
+import { 
+    AdminUserSelfUpdate, 
+    ClientProfile, 
+    PendingUserInvite, 
+    Profile, Team, 
+    TeamToInsert, 
+    TeamUpdate, 
+    UserProfile, 
+    UserUpdate, 
+    PublicInsight 
+} from "../client";
+import { ContainerResponseItem, GeoAttribution } from "../geo";
 import { Device, DeviceSubscription } from "../auth";
 
 export const user = {

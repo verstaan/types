@@ -1,5 +1,5 @@
 import { Point } from "geojson";
-import { AdminPrivileges } from ".";
+import { AdminPrivileges } from "./admin";
 import { reportType } from "./reports";
 
 export type Review = boolean | null; // true is approved, false is rejected, null is not yet reviewed

@@ -1,4 +1,4 @@
-import { Container, DefaultRegion } from "..";
+import { Container, DefaultRegion } from "../geo";
 import { NewVampReport } from "../aamp";
 import { NewOsReport, PublicReport } from "../reports";
 import { request } from "./index";

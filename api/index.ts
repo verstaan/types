@@ -1,5 +1,4 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
-import { StatusCode } from "..";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -37,6 +36,28 @@ export const api = axios.create({
 export enum Status {
     SUCCESS,
     ERROR
+}
+
+export enum StatusCode {
+    // General error codes
+    Success = 200,
+
+    // Client side errors
+    EmailExists = 300,
+
+    // Standard auth and server error codes
+    BadRequest = 400,
+    Unauthorized,
+    NotAllowed = 405,
+
+    // Custom auth/server error codes
+    InvalidLogin = 415,
+    InvalidBody,
+    InsufficientPrivileges,
+    IncorrectPassword,
+    ClientLogicError,
+
+    InternalServerError = 500,
 }
 
 /**
@@ -115,3 +136,5 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
 };
+
+
