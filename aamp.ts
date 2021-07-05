@@ -64,6 +64,13 @@ export interface NewPendingAampReport {
     immediate_public: boolean;
 }
 
+export interface CountedForm extends NewForm {
+    id: number;
+    domains: string[];
+    immediate_public: boolean;
+    count: number;
+}
+
 export interface PendingAampReportToInsert extends NewPendingAampReport {
     photo_metadata_point?: Point;
     auto_verification_failure?: AutoVerificationFailure[];
