@@ -117,14 +117,6 @@ export interface ClientDisplayData {
 
 export type ClientProfile = Client;
 
-export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
-
-export interface NewClient {
-    name: string;
-    primary_email: string;
-    licenses: number;
-    containers: string[];
-}
 
 /**
  * Helper Object for building clientInfo queries with team permissions (Jarvis Only)
