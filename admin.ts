@@ -1,14 +1,5 @@
 import { Client, Profile, UserFeatureSelection} from "./client";
-import {MultiPolygon, Point, Polygon} from "geojson";
-import {
-    Actor,
-    ClientReportActions,
-    ClientReportNeeds,
-    NineLiner,
-    PublicReportSourceType,
-    reportType,
-    Target
-} from "./reports";
+import {MultiPolygon, Polygon} from "geojson";
 import {ViewportBase} from "./geo";
 
 
@@ -25,6 +16,7 @@ export interface AdminUserProfile {
     privileges: AdminPrivileges;
     first_name: string;
     last_name: string;
+    phone_primary?: string;
     features?: AdminFeatureSelection | null;
 }
 

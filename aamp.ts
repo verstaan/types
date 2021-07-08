@@ -44,14 +44,18 @@ export interface AampReportFields {
 
 export interface NewPendingAampReport {
     form_id: number;
-    first_name: string;
-    last_name: string;
+    username?: string;
+    first_name?: string;
+    last_name?: string;
     email?: string;
-    date_time: Date;
+    date_time?: Date;
     address?: string;
     description: string;
-    media: string[];
-    point: Point;
+    chat_messages?: number[];
+    source_message?: number;
+    bot_generated?: boolean;
+    media?: string[];
+    point?: Point;
     fields: AampReportFields;
 }
 
@@ -107,5 +111,50 @@ export const AampUpdateMinimumPrivileges: {
     description: AdminPrivileges.MANAGER,
     point: AdminPrivileges.MANAGER,
     fields: AdminPrivileges.MANAGER,
-    archived: AdminPrivileges.MANAGER
+    archived: AdminPrivileges.MANAGER,
+    username: AdminPrivileges.MANAGER,
+    first_name: AdminPrivileges.MANAGER,
+    last_name: AdminPrivileges.MANAGER,
+    chat_messages: AdminPrivileges.MANAGER,
+    source_message: AdminPrivileges.MANAGER
 };
+
+/**
+ *
+ * Interfaces corresponding to Message and Chat objects from Telegram's Bot API
+ *
+ */
+
+/**
+ * Telegram message as represented in the DB
+ */
+export interface TelegramMessage {
+    message_id: number,
+    text: string,
+    chat_id: number,
+    user_id: number,
+    date: number
+}
+
+/**
+ * Telegram message with user and chat objects embedded.
+ * This is the format that Telegram sends its messages in
+ */
+export interface TelegramMessageDetails extends Omit<TelegramMessage, "chat_id" | "user_id"> {
+    from: TelegramUser,
+    chat: TelegramChat,
+}
+
+export interface TelegramChat {
+    id: number,
+    type: string,
+    title: string,
+    form_id?: number
+}
+
+export interface TelegramUser {
+    id: number,
+    username: string,
+    first_name: string,
+    last_name: string
+}
