@@ -1,6 +1,6 @@
+import { request } from "./index";
 import { Login } from "../auth";
 import { PendingUser, UserSignUp } from "../client";
-import { request } from "./index";
 
 export const signIn = (email: string, password: string): Promise<Login> =>
     request<Login>(false, {

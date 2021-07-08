@@ -1,5 +1,7 @@
 /**
- * Sherlock Analytics Types
+ *
+ * Defines types for Jarvis report summary statistics displays
+ *
  */
 
 import { CategoryTypes, reportType } from "./reports";

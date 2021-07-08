@@ -1,9 +1,11 @@
-import { AdminPrivileges } from "./admin";
 import { reportType } from "./reports";
 import { Point } from "geojson";
 
-export type UserDesignation = "Medic";
-export const ValidUserDesignations: UserDesignation[] = ["Medic"];
+/**
+ *
+ * Defines types relevant to client users accessing Orion.
+ *
+ */
 
 export interface UserProfile {
     id: number;
@@ -21,6 +23,9 @@ export interface UserProfile {
     profile?: Profile | null;
     features?: UserFeatureSelection | null;
 }
+
+export type UserDesignation = "Medic" | "";
+export const ValidUserDesignations: UserDesignation[] = ["Medic", ""];
 
 export interface PendingUser {
     uuid: string;
@@ -58,16 +63,6 @@ export interface UserSignUp {
     first_name?: string;
     last_name?: string;
     profile?: Profile;
-}
-
-export interface AdminUserProfile {
-    id: number;
-    email: string;
-    password: string;
-    privileges: AdminPrivileges;
-    first_name: string;
-    last_name: string;
-    features?: AdminFeatureSelection | null;
 }
 
 export interface Client {
@@ -117,27 +112,6 @@ export interface ClientDisplayData {
 
 export type ClientProfile = Client;
 
-export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
-
-export interface NewClient {
-    name: string;
-    primary_email: string;
-    licenses: number;
-    containers: string[];
-}
-
-/**
- * Helper Object for building clientInfo queries with team permissions (Jarvis Only)
- * Used with Session object to return correct client info
- * TeamIds array need only be specified for 'Open Teams' case
- */
- export interface TeamPermissionsQuery {
-    viewPermissions: "All" | "Open Teams" | "Closed Team";
-    team_id: number | null;
-    openTeamIds?: number[];
-    closedTeamIds?: number[];
-}
-
 export interface Team {
     id: number;
     client_id: number;
@@ -147,8 +121,7 @@ export interface Team {
     ignored_report_types?: reportType[];
 }
 
-export interface TeamToInsert {
-    client_id: number;
+export interface NewTeam {
     name: string;
     address?: string;
     permissions?: number;
@@ -225,49 +198,6 @@ export interface UserFeatureSelection {
     publicInsightsMenu?: boolean | null;
     newsfeedMenu?: boolean | null;
 }
-
-export interface AdminFeatureSelection {
-    admin?: boolean | null;
-    client?: boolean | null;
-    areas?: boolean | null;
-    logs?: boolean | null;
-    aamp?: boolean | null;
-}
-
-export interface NewAdminUser {
-    email: string;
-    first_name: string;
-    last_name: string;
-    password: string | undefined;
-    privileges: AdminPrivileges | undefined;
-    features?: AdminFeatureSelection | undefined;
-  }
-
-export interface NewUser {
-    email: string | undefined;
-    firstname: string | undefined;
-    lastname: string | undefined;
-    password: string | undefined;
-    client_id: number | undefined;
-    team_id?: number | null | undefined;
-    role: number | undefined;
-    designation: string | null | undefined;
-    profile: Profile | null | undefined;
-    features: UserFeatureSelection | null | undefined;
-}
-
-export interface NewClient {
-    name: string;
-    primary_email: string;
-    licenses: number;
-    containers: string[]
-}
-
-export interface ClientCreation {
-    client: NewClient;
-    user: NewUser;
-    invite: boolean;
-  }
 
 export interface PublicInsight {
     id: number;

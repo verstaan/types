@@ -1,7 +1,7 @@
+import { request } from "./index";
 import { Container, DefaultRegion } from "../geo";
 import { NewVampReport } from "../aamp";
 import { NewOsReport, PublicReport } from "../reports";
-import { request } from "./index";
 
 // createVampReport does not yet return properly wrapped responses on the Jarvis side so using this method will trigger an error until Jarvis is updated:
 export const createVampReport = (report: NewVampReport): Promise<void> => request<void>(false, {

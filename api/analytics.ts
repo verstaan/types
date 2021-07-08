@@ -1,5 +1,5 @@
-import { Analytics, AnalyticsSummary } from "../analytics";
 import { request } from "./index";
+import { Analytics, AnalyticsSummary } from "../analytics";
 
 export const containerSummary = (container_id: number): Promise<Analytics> =>
     request<Analytics>(true, {

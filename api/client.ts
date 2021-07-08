@@ -1,3 +1,5 @@
+import { request } from "./index";
+import { Point } from "geojson";
 import {
     NewClientReport,
     ClientReport,
@@ -15,18 +17,17 @@ import {
     MISTReportToInsert,
     MISTReportUpdate
 } from "../reports";
-import { request } from "./index";
-import { Point } from "geojson";
-import { 
-    AdminUserSelfUpdate, 
-    ClientProfile, 
-    PendingUserInvite, 
-    Profile, Team, 
-    TeamToInsert, 
-    TeamUpdate, 
-    UserProfile, 
-    UserUpdate, 
-    PublicInsight 
+import {
+    AdminUserSelfUpdate,
+    ClientProfile,
+    PendingUserInvite,
+    Profile,
+    Team,
+    NewTeam,
+    TeamUpdate,
+    UserProfile,
+    UserUpdate,
+    PublicInsight
 } from "../client";
 import { ContainerResponseItem, GeoAttribution } from "../geo";
 import { Device, DeviceSubscription } from "../auth";
@@ -229,7 +230,7 @@ export const getTeams = (): Promise<Team[]> =>
         url: "client/getTeams"
     })
 
-export const createTeam = (team: TeamToInsert): Promise<void> =>
+export const createTeam = (team: NewTeam): Promise<void> =>
     request<void>(true, {
         method: "post",
         url: "client/createTeam",

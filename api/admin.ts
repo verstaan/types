@@ -1,4 +1,4 @@
-import { NewClient } from "../client";
+import { NewClient } from "../admin";
 import { request } from "./index";
 
 export const createClient = (client: NewClient): Promise<void> => request<void>(false, {

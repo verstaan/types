@@ -139,10 +139,7 @@ export interface Categories {
     Other: Array<OtherCategory>;
 }
 
-export const ReportCategories: Record<
-    CategoryTypes,
-    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
-> = {
+export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>> = {
     Violent: [
         "Gang Activity",
         "Assault",
@@ -349,72 +346,6 @@ export interface ClientAlertReport {
     client_uuid?: string | null;
 }
 
-/**
- * Public Report to be added to DB
- */
- export interface PublicReportToInsert {
-    created_at?: Date;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    report_type: reportType;
-    source_type: PublicReportSourceType;
-    description?: string;
-    verified?: number;
-    client_id?: number;
-    container_id?: number;
-    default_region_id?: number;
-    photo_url?: string;
-    actor?: Actor;
-    target?: Target;
-    team_id?: number;
-    user_id?: number;
-    client_report_id?: number;
-    alert_report_id?: number;
-}
-
-/**
- * Quick Client Report to be added to DB
- */
-export interface ClientReportToInsert {
-    client_id: number;
-    user_id: number;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    report_type: reportType;
-    report_actions?: ClientReportActions;
-    report_needs?: ClientReportNeeds;
-    container_id?: number;
-    default_region_id?: number;
-    custom_region_ids?: number;
-    photo_url?: string;
-    team_id?: number;
-}
-
-/**
- * Quick Client Alert Report to be added to DB
- */
-export interface ClientAlertReportToInsert {
-    client_id: number;
-    user_id: number;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    container_id?: number;
-    default_region_id?: number;
-    custom_region_ids?: number;
-    photo_url?: string;
-    team_id?: number;
-    nine_liner?: NineLiner;
-    client_uuid?: string;
-}
-
-export interface ClientAlertReportToInsertPartial {
-    date_time: Date;
-    point: Point;
-    address?: string;
-}
 export interface ReportBase {
     //Part A: Transportation Details (based on setting)
     ship_name?: string;
@@ -1016,11 +947,6 @@ export interface TemplateSection {
     fields: TEMPLATE_FIELD[];
 }
 
-// export interface TemplateField {
-//     label: "dropdown" | "short_string" | "long_string" | "number" | "tickbox";
-//     template: TEMPLATE_FIELD;
-// }
-
 export interface ReportTemplateToInsert {
     name: string;
     client_id?: number;
@@ -1057,14 +983,6 @@ export interface MISTReport {
     date_time?: Date;
     user_id: number;
     fields: MISTReportFields;
-}
-
-export interface MISTReportToInsert {
-    alert_report_id: number;
-    date_time?: Date;
-    user_id?: number;
-    fields: MISTReportFields;
-    team_id?: number;
 }
 
 export interface MISTReportUpdate {
@@ -1131,7 +1049,85 @@ export interface MISTReportFields {
     bls?: string;
 }
 
-// these are for full client reports
+export interface MISTReportToInsert {
+    alert_report_id: number;
+    date_time?: Date;
+    user_id?: number;
+    fields: MISTReportFields;
+    team_id?: number;
+}
+
+/**
+ *
+ * Types defining structures to be immediately inserted to the database.
+ *
+ * These can be used as generics with Knex.js for better type safety.
+ *
+ */
+
+export interface PublicReportToInsert {
+    created_at?: Date;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    report_type: reportType;
+    source_type: PublicReportSourceType;
+    description?: string;
+    verified?: number;
+    client_id?: number;
+    container_id?: number;
+    default_region_id?: number;
+    photo_url?: string;
+    actor?: Actor;
+    target?: Target;
+    team_id?: number;
+    user_id?: number;
+    client_report_id?: number;
+    alert_report_id?: number;
+}
+
+export interface ClientReportToInsert {
+    client_id: number;
+    user_id: number;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    report_type: reportType;
+    report_actions?: ClientReportActions;
+    report_needs?: ClientReportNeeds;
+    container_id?: number;
+    default_region_id?: number;
+    custom_region_ids?: number;
+    photo_url?: string;
+    team_id?: number;
+}
+
+export interface ClientAlertReportToInsert {
+    client_id: number;
+    user_id: number;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    container_id?: number;
+    default_region_id?: number;
+    custom_region_ids?: number;
+    photo_url?: string;
+    team_id?: number;
+    nine_liner?: NineLiner;
+    client_uuid?: string;
+}
+
+export interface ClientAlertReportToInsertPartial {
+    date_time: Date;
+    point: Point;
+    address?: string;
+}
+
+
+/**
+ * Templated client report fields:
+ */
+
 export interface Dropdown {
     label: string;
     type: "dropdown";

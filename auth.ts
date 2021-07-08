@@ -1,5 +1,18 @@
 import { Point } from "geojson";
 
+
+/**
+ *
+ * Defines types relevant to authenticating client users, managing push notification subscriptions
+ *
+ */
+
+export interface Login {
+    iat: number;
+    exp: number;
+    token: string;
+}
+
 export interface Device {
     user_id: number;
     client_id: number;
@@ -18,10 +31,4 @@ export interface DeviceSubscription {
     device_fingerprint: string;
     point?: Point;
     modified_at?: Date;
-}
-
-export interface Login {
-    iat: number;
-    exp: number;
-    token: string;
 }
