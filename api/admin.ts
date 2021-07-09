@@ -1,6 +1,15 @@
 import { request } from "./index";
 import { QueryResult } from "material-table";
-import {ClientUpdate, NewAdminUser, NewClient, NewContainer, NewDefaultRegion, NewTeamAdmin, NewUser} from "../admin";
+import {
+    ClientContainers,
+    ClientUpdate,
+    NewAdminUser,
+    NewClient,
+    NewContainer,
+    NewDefaultRegion,
+    NewTeamAdmin,
+    NewUser
+} from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import {ClientDisplayData, TeamUpdate, UserProfile, UserUpdate} from "../client";
 import { AdminUserProfile, Log } from "../admin";
@@ -106,4 +115,16 @@ export const getClientUsers = (): Promise<UserProfile[]> =>
     request<UserProfile[]>(true, {
         method: "get",
         url: "/client/getClientUsers"
+});
+
+export const modifyClientContainers = (data: ClientContainers): Promise<number> => request<number>(true, {
+    method: "POST",
+    url: "/admin/modifyClientContainers",
+    data: data
+});
+
+export const getClientContainers = (client_id: number): Promise<number> => request<number>(true, {
+    method: "POST",
+    url: "/admin/getClientContainers",
+    data: { client_id }
 });
