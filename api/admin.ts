@@ -128,3 +128,9 @@ export const getClientContainers = (client_id: number): Promise<number> => reque
     url: "/admin/getClientContainers",
     data: { client_id }
 });
+
+export const createForm = (data: any): Promise<number> => request<number>(true, {
+    method: "POST",
+    url: "/aamp/createForm",
+    data: data
+});
