@@ -79,6 +79,11 @@ export interface NewUser {
 
 export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
 
+export interface ClientContainers {
+    client_id: number;
+    containers: string[];
+}
+
 export interface NewContainer {
     area: Polygon | MultiPolygon;
     name: string;
