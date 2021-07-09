@@ -25,6 +25,7 @@ export interface NewForm {
     primary_manager: number;
     fields: AampReportFieldsSpecification;
     immediate_public?: boolean;
+    name: string | undefined;
 }
 
 export interface NewVampReport {
