@@ -18,6 +18,8 @@ export const getJarvisUrl = (): string => {
         return "https://jarvis.arcturus.us.com";
     } else if (env === "staging") {
         return "https://jarvis-staging.arcturus.us.com";
+    } else if (env === "local") {
+        return "http://localhost:5000";
     } else {
         throw Error(
             "Invalid configuration. " +
