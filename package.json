@@ -9,6 +9,7 @@
         "@types/events": "^3.0.0",
         "@types/formidable": "^1.0.31",
         "@types/geojson": "^7946.0.7",
+        "@types/react": "^17.0.15",
         "@types/restify": "^8.4.2",
         "@types/spdy": "^3.4.4",
         "material-table": "^1.69.3"
