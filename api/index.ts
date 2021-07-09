@@ -24,7 +24,8 @@ export const getJarvisUrl = (): string => {
 };
 
 export const api = axios.create({
-    baseURL: getJarvisUrl(), // For local testing, replace getJarvisUrl() with localhost url
+    //baseURL: getJarvisUrl(), // For local testing, replace getJarvisUrl() with localhost url
+    baseURL: "http://localhost:5000",
     xsrfCookieName: "csrftoken",
     xsrfHeaderName: "X-CSRFTOKEN"
 });
@@ -117,6 +118,7 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         response = await api.request<RestResponse>(config);
     } catch (error) {
         // TODO: figure out how to intelligently use the axios error here, and set connection error accordingly
+        console.error(error);
         throw new ConnectionError("Axios error", "Timeout");
         // TODO: log w/ PM2
     }

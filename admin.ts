@@ -1,5 +1,5 @@
 import { Client, Profile, UserFeatureSelection} from "./client";
-import { MultiPolygon, Polygon } from "geojson";
+import { LineString, MultiLineString, MultiPoint, MultiPolygon, Point, Polygon } from "geojson";
 import { ViewportBase } from "./geo";
 
 
@@ -8,6 +8,24 @@ import { ViewportBase } from "./geo";
  *  Defines types relevant to administrative users interacting directly with Jarvis API/Jarvis Admin.
  *
  */
+
+ export type AssetConcern = 
+ | "Profitability" 
+ | "Damage/Loss" 
+ | "Safety/Harm" 
+ | "Operations/Downtime" 
+ | "Reputation" 
+ | "Environmental";
+
+export const AllAssetConcerns : AssetConcern[] = [
+ "Profitability",
+ "Damage/Loss",
+ "Safety/Harm",
+ "Operations/Downtime",
+ "Reputation",
+ "Environmental"
+];
+
 
 export interface AdminUserProfile {
     id: number;
@@ -113,4 +131,83 @@ export interface NewTeamAdmin {
 export interface ChatFormLink {
     id: number; // Chat ID
     form_id: number;
+}
+
+
+export interface AssetType {
+    name: string;
+    description: string;
+    category: string;
+    relevant_event_types: string[];
+    relevant_concerns: string[];
+    relevant_geographies: string[];
+    mobile: boolean;
+}
+
+export interface Asset {
+    id?: number,
+    name: string;
+    asset_type: string;
+    client_id?: number;
+    team_id?: number;
+    description?: string;
+    geography: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
+    operation_interval?: string;
+    concerns?: AssetConcern[];
+    relevant_event_types?: string[];
+    value?: number;
+    details?: JSON;
+    erp_link?: string;
+    container_id?: number[];
+    default_region_id?: number[];
+    scenario_asset_id?: number;
+    imaginary: boolean;
+    optimal?: boolean;
+    needs_review?: boolean;
+    arcturus_gen: boolean;
+
+}
+
+export interface AssetToInsert extends Asset{
+    container_id: number[];
+    default_region_id: number[];
+}
+
+export interface Consequence {
+    concern: AssetConcern;
+    magnitude: number;
+    timeframe: string;
+}
+
+export interface Risk {
+    asset_ids: number[];
+    name: string;
+    id?: number;
+    relevant_event_types: string[];
+    risk_interval: string;
+    created_at?: Date;
+    severity: number;
+    chance: number;
+    updates: RiskUpdate[];
+    geography?: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
+    concerns: AssetConcern[]; // "Profitability" (See below definition)
+    consequences: Consequence[]; // see below definition
+    is_obsolete: boolean // "true" indicates this risk is no longer relevant
+    container_ids?: Number[]; // Applicable container(s)
+    default_region_ids?: Number[]; // Applicable region(s)
+    suggestions: string;
+    comments: string;
+    needs_review?: boolean;
+} 
+
+export interface RiskUpdate {
+    modified_at: Date;
+  }
+
+export interface Consequence {
+    asset_ids: number[];
+    concern: AssetConcern; // "Profitability"
+    magnitude: number; // 100,000 (USD)
+    timeframe: string; // "Week" (default)
+    probability: Number; // Chance of occurrence
 }

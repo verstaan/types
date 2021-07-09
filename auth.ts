@@ -21,6 +21,7 @@ export interface Device {
     device_fingerprint: string;
     point?: Point;
     modified_at?: Date;
+    user_name?: string;
 }
 
 export interface DisplayDevice {

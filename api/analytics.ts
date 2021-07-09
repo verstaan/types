@@ -37,3 +37,12 @@ export const crimeGrid = (defaultRegionId: number): Promise<any> =>
             defaultRegionId
         }
     });
+
+export const adminCrimeGrid = (defaultRegionId: number): Promise<any> =>
+    request<any>(true, {
+        method: "post",
+        url: "/admin/geoForecast",
+        data: {
+            defaultRegionId
+        }
+    });
