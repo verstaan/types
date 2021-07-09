@@ -96,4 +96,10 @@ export const getPendingUserByToken = (uuid: string) =>
         data: {
             uuid
         }
-    });
+});
+
+export const adminSignIn = (email: string, password: string): Promise<Login> => request<Login>(false, {
+    method: "POST",
+    url: "/auth/adminSignIn",
+    data: { email, password }
+})

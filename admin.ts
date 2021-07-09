@@ -1,6 +1,6 @@
 import { Client, Profile, UserFeatureSelection} from "./client";
-import {MultiPolygon, Polygon} from "geojson";
-import {ViewportBase} from "./geo";
+import { MultiPolygon, Polygon } from "geojson";
+import { ViewportBase } from "./geo";
 
 
 /**
