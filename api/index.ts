@@ -2,12 +2,10 @@ import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
-    let env = process.env.REACT_APP_ARCTURUS_ENV!;
+    let env = process.env.REACT_APP_ENV!;
 
     if (!env) {
-        throw new Error(
-            "Invalid configuration. Expected environment variable 'REACT_APP_ARCTURUS_ENV', accepted values: production | development. See README.md"
-        );
+        throw new Error("Invalid configuration. Expected environment variable 'REACT_APP_ENV', accepted values: production | staging | development | local. See README.md");
     }
 
     env = env.toLowerCase();
@@ -21,11 +19,7 @@ export const getJarvisUrl = (): string => {
     } else if (env === "local") {
         return "http://localhost:5000";
     } else {
-        throw Error(
-            "Invalid configuration. " +
-                process.env.REACT_APP_ARCTURUS_ENV! +
-                ". Accepted values: production | development"
-        );
+        throw Error("Invalid configuration. " + process.env.REACT_APP_ENV! + ". Accepted values: production | staging | development | local");
     }
 };
 
