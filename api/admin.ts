@@ -15,6 +15,7 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
+import {CountedForm, PendingAampReport} from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
@@ -142,3 +143,16 @@ export const registerChat = (data: ChatFormLink): Promise<void> => request<void>
     url: "/aamp/bot/registerChat",
     data: data
 })
+
+export const getCountedForms = () : Promise<{[container_name: string]: CountedForm[]}> => request<{ [container_name: string]: CountedForm[] }>(true, {
+        method: "GET",
+        url: "/aamp/getFormsAndCounts",
+});
+
+export const getAampReportsByFormId = (form: number) : Promise<PendingAampReport[]> => request<PendingAampReport[]>(true, {
+    method: "POST",
+    url: "/aamp/getPendingReportsByFormId",
+    data: {
+        requestedForm: form
+    }
+});
