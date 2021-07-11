@@ -40,6 +40,7 @@ export interface NewAdminUser {
     password: string | undefined;
     privileges: AdminPrivileges | undefined;
     features?: AdminFeatureSelection | undefined;
+    phone_primary?: string;
 }
 
 export interface Log {
