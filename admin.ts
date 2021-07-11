@@ -106,3 +106,8 @@ export interface NewTeamAdmin {
     address?: string;
     permissions?: number;
 }
+
+export interface ChatFormLink {
+    id: number; // Chat ID
+    form_id: number;
+}

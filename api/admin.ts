@@ -3,16 +3,18 @@ import { QueryResult } from "material-table";
 import {
     ClientContainers,
     ClientUpdate,
+    AdminUserProfile,
     NewAdminUser,
     NewClient,
     NewContainer,
     NewDefaultRegion,
     NewTeamAdmin,
-    NewUser
+    NewUser,
+    Log,
+    ChatFormLink
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
-import {ClientDisplayData, TeamUpdate, UserProfile, UserUpdate} from "../client";
-import { AdminUserProfile, Log } from "../admin";
+import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
@@ -134,3 +136,9 @@ export const createForm = (data: any): Promise<number> => request<number>(true, 
     url: "/aamp/createForm",
     data: data
 });
+
+export const registerChat = (data: ChatFormLink): Promise<void> => request<void>(true, {
+    method: "POST",
+    url: "/aamp/bot/registerChat",
+    data: data
+})
