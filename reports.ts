@@ -1,5 +1,4 @@
-import { Polygon, MultiPolygon, Point } from "geojson";
-import { AdminPrivileges } from "./adminPrivileges";
+import { Point } from "geojson";
 
 export type reportType =
     | "Shooting"
@@ -140,10 +139,7 @@ export interface Categories {
     Other: Array<OtherCategory>;
 }
 
-export const ReportCategories: Record<
-    CategoryTypes,
-    Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>
-> = {
+export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory>> = {
     Violent: [
         "Gang Activity",
         "Assault",
@@ -233,204 +229,6 @@ export type ReportClassification =
     | "Client Meetings"
     | "Inspections";
 
-export type Review = boolean | null; // true is approved, false is rejected, null is not yet reviewed
-
-export type AutoVerificationFailure = "photo-metadata-location" | "photo-metadata-missing";
-
-export type UserDesignation = "Medic";
-export const ValidUserDesignations: UserDesignation[] = ["Medic"];
-
-export interface UserProfile {
-    id: number;
-    email: string;
-    first_name: string;
-    last_name: string;
-    role: number;
-    client_id: number;
-    current_container?: number;
-    phone_primary?: string;
-    current_container_mobile?: number;
-    current_default_region_mobile?: number;
-    team_id?: number | null;
-    designation?: string;
-    profile?: Profile | null;
-    features?: UserFeatureSelection | null;
-}
-
-export interface PendingUser {
-    uuid: string;
-    client_id: number;
-    email?: string;
-    phone_primary?: string;
-    role?: number;
-    designation?: string;
-    first_name?: string;
-    last_name?: string;
-    team_id?: number | null;
-    profile?: Profile | null;
-    features?: UserFeatureSelection | null;
-    verif_code?: number | null;
-    verif_exp?: Date | null;
-    inviting_user_id?: number | null;
-}
-
-export interface PendingUserInvite {
-    email?: string;
-    phone_primary?: string;
-    first_name?: string;
-    last_name?: string;
-    role?: number;
-    designation?: string;
-    team_id?: number | null;
-    features?: UserFeatureSelection;
-    inviting_user_id?: number;
-}
-
-export interface UserSignUp {
-    password: string;
-    email?: string;
-    phone_primary?: string;
-    first_name?: string;
-    last_name?: string;
-    profile?: Profile;
-}
-
-export interface AdminUserProfile {
-    id: number;
-    email: string;
-    password: string;
-    privileges: AdminPrivileges;
-    first_name: string;
-    last_name: string;
-    features?: AdminFeatureSelection | null;
-}
-
-export interface Client {
-    id: number;
-    name: string;
-    primary_email: string;
-    licenses: number;
-    created_at: Date;
-    licenses_FC?: number;
-    licenses_BC?: number;
-    licenses_EC?: number;
-    ignored_report_types?: reportType[];
-    domain?: string | null;
-}
-
-export interface DisplayClient extends Client {
-    type: "Client";
-    incidents: number,
-    alerts: number,
-    full_reports: number,
-    users: number,
-    activity: number
-}
-
-export type DisplayTeam = Omit<Team, "id"> & {
-    id: number | null;
-    type: "Team";
-}
-
-export interface DisplayUserProfile extends UserProfile {
-    type: "UserProfile";
-    incidents: number;
-    alerts: number;
-    full_reports: number;
-    users: number;
-    activity: number;
-}
-
-export interface ClientDisplayData {
-    clientData: DisplayClient[];
-    teamData: DisplayTeam[];
-    userData: DisplayUserProfile[];
-    teamContext: Record<number, Record<number | "null", string>>;
-    containerContext: string[];
-
-}
-
-export type ClientProfile = Client;
-
-export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
-
-export interface Device {
-    user_id: number;
-    client_id: number;
-    token: string | null;
-    device_type: DeviceType;
-    device_fingerprint: string;
-    point?: Point;
-    modified_at?: Date;
-}
-
-export type DeviceType = "Web" | "Mobile";
-
-export interface DeviceSubscription {
-    token: string;
-    device_type: DeviceType;
-    device_fingerprint: string;
-    point?: Point;
-    modified_at?: Date;
-}
-
-export interface NewClient {
-    name: string;
-    primary_email: string;
-    licenses: number;
-    containers: string[];
-}
-
-export interface ViewportBase {
-    latitude: number;
-    longitude: number;
-    zoom: number;
-}
-
-export interface ContainerToInsert {
-    area: Polygon | MultiPolygon;
-    name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
-    abbreviation?: string;
-}
-
-export interface Container {
-    id: number;
-    area: Polygon | MultiPolygon;
-    name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
-    abbreviation?: string;
-}
-
-export interface DefaultRegionToInsert {
-    area: Polygon | MultiPolygon;
-    name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
-    container_id: number;
-}
-
-export interface DefaultRegion {
-    id: number;
-    area?: Polygon | MultiPolygon;
-    name: string;
-    viewport_mobile: ViewportBase;
-    viewport_web: ViewportBase;
-    container_id: number;
-}
-
-export interface GeoAttribution {
-    container_id?: number;
-    default_region_id?: number;
-}
-
-export interface ContainerResponseItem {
-    containers: Container[];
-    default_regions: DefaultRegion[];
-}
-
 /**
  * New types submitted to endpoints to be processed by API
  */
@@ -446,56 +244,6 @@ export interface NewOsReport {
     photo_url?: string;
     verified?: number;
 }
-
-/**
- * Fields of an AAMP that can be customized with the "fields" property of a Form.
- */
-export interface AampReportFieldsSpecification {
-    aamp_report_type: {
-        optional?: false;
-        values: Record<reportType, string[]>;
-    };
-    [key: string]: {
-        optional?: boolean;
-        values: Record<string, string[]> | string[];
-    };
-}
-
-export interface NewForm {
-    container_id: number;
-    primary_manager: number;
-    fields: AampReportFieldsSpecification;
-    immediate_public?: boolean;
-}
-
-export interface NewVampReport {
-    created_at: Date;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    description: string;
-    report_type: reportType;
-    verified: number;
-}
-
-export interface AampReportFields {
-    aamp_report_type: string;
-    [key: string]: string;
-}
-
-export interface NewPendingAampReport {
-    form_id: number;
-    first_name: string;
-    last_name: string;
-    email?: string;
-    date_time: Date;
-    address?: string;
-    description: string;
-    media: string[];
-    point: Point;
-    fields: AampReportFields;
-}
-
 export interface NewClientReport {
     date_time: Date;
     point: Point;
@@ -596,136 +344,6 @@ export interface ClientAlertReport {
     team_id?: number;
     nine_liner?: NineLiner;
     client_uuid?: string | null;
-}
-
-/**
- * Form received from API
- */
-export interface Form extends NewForm {
-    id: number;
-    domains: string[];
-    immediate_public: boolean;
-}
-
-export interface PendingAampReportToInsert extends NewPendingAampReport {
-    photo_metadata_point?: Point;
-    auto_verification_failure?: AutoVerificationFailure[];
-}
-
-/**
- * Pending AAMP Report received from API
- */
-export interface PendingAampReport extends PendingAampReportToInsert {
-    id: number;
-    manager_review: Review;
-    super_user_review: Review;
-    archived: boolean;
-    public_report_id?: number | null;
-    created_at: Date;
-}
-
-export type PendingAampReportUpdate = Partial<Omit<PendingAampReport, "fields">> & {
-    id: number;
-    fields?: Partial<AampReportFields>;
-};
-
-/**
- * Map specifying minimum privileges required to update fields of a PendingAampReport:
- * Fields not present cannot be updated.
- */
-export const AampUpdateMinimumPrivileges: {
-    [P in keyof PendingAampReport]?: AdminPrivileges;
-} = {
-    manager_review: AdminPrivileges.MANAGER,
-    super_user_review: AdminPrivileges.SUPERUSER,
-    address: AdminPrivileges.MANAGER,
-    date_time: AdminPrivileges.MANAGER,
-    description: AdminPrivileges.MANAGER,
-    point: AdminPrivileges.MANAGER,
-    fields: AdminPrivileges.MANAGER,
-    archived: AdminPrivileges.MANAGER
-};
-
-/**
- * Public Report to be added to DB
- */
-export interface PublicReportToInsert {
-    created_at?: Date;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    report_type: reportType;
-    source_type: PublicReportSourceType;
-    description?: string;
-    verified?: number;
-    client_id?: number;
-    container_id?: number;
-    default_region_id?: number;
-    photo_url?: string;
-    actor?: Actor;
-    target?: Target;
-    team_id?: number;
-    user_id?: number;
-    client_report_id?: number;
-    alert_report_id?: number;
-}
-
-/**
- * Quick Client Report to be added to DB
- */
-export interface ClientReportToInsert {
-    client_id: number;
-    user_id: number;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    report_type: reportType;
-    report_actions?: ClientReportActions;
-    report_needs?: ClientReportNeeds;
-    container_id?: number;
-    default_region_id?: number;
-    custom_region_ids?: number;
-    photo_url?: string;
-    team_id?: number;
-}
-
-/**
- * Quick Client Alert Report to be added to DB
- */
-export interface ClientAlertReportToInsert {
-    client_id: number;
-    user_id: number;
-    date_time: Date;
-    point: Point;
-    address?: string;
-    container_id?: number;
-    default_region_id?: number;
-    custom_region_ids?: number;
-    photo_url?: string;
-    team_id?: number;
-    nine_liner?: NineLiner;
-    client_uuid?: string;
-}
-
-export interface ClientAlertReportToInsertPartial {
-    date_time: Date;
-    point: Point;
-    address?: string;
-}
-
-export interface Login {
-    iat: number;
-    exp: number;
-    token: string;
-}
-
-/**
- * Abstract interface that all session classes implement
- */
-export interface ISession {
-    email: string;
-    id: number;
-    session_type: string;
 }
 
 export interface ReportBase {
@@ -1311,223 +929,6 @@ export interface FullClientReportSections {
     otherSection?: ClientReportSeaOtherSection | ClientReportLandOtherSection;
 }
 
-/**
- * Sherlock Analytics Types
- */
-
-export class WeeklyOverallStats {
-    public totalWeekCount: number | undefined;
-    public changeTotalWeek: string | undefined;
-    public amountChangeTotalWeek: number | undefined;
-
-    constructor(init?: Partial<WeeklyOverallStats>) {
-        Object.assign(this, init);
-    }
-
-    checkInfo(): boolean {
-        return (
-            this.totalWeekCount !== undefined &&
-            this.changeTotalWeek !== undefined &&
-            this.amountChangeTotalWeek !== undefined
-        );
-    }
-}
-
-export class MonthlyOverallStats {
-    public totalMonthCount: number | undefined;
-    public changeTotalMonth: string | undefined;
-    public amountChangeTotalMonth: number | undefined;
-    constructor(init?: Partial<MonthlyOverallStats>) {
-        Object.assign(this, init);
-    }
-    checkInfo(): boolean {
-        return (
-            this.totalMonthCount !== undefined &&
-            this.changeTotalMonth !== undefined &&
-            this.amountChangeTotalMonth !== undefined
-        );
-    }
-}
-
-export class StatsPerCategory {
-    public name: string | undefined;
-    public count: number | undefined;
-    public change: string | undefined;
-    public amountChange: number | undefined;
-    constructor(init?: Partial<StatsPerCategory>) {
-        Object.assign(this, init);
-    }
-    checkInfo(): boolean {
-        return (
-            this.name !== undefined &&
-            this.name !== "" &&
-            this.count !== undefined &&
-            this.change !== undefined &&
-            this.amountChange !== undefined
-        );
-    }
-}
-
-export class ThirtyDayCount {
-    public dateTime: string | undefined;
-    public dayName: string | undefined;
-    public count: number | undefined;
-    constructor(init?: Partial<ThirtyDayCount>) {
-        Object.assign(this, init);
-    }
-    checkInfo(): boolean {
-        return this.dateTime !== undefined && this.dayName !== undefined && this.count !== undefined;
-    }
-}
-export class Analytics {
-    public weeklyOverallStats: WeeklyOverallStats | undefined;
-    public monthlyOverallStats: MonthlyOverallStats | undefined;
-    public weeklyStatsPerCategory: StatsPerCategory[] | undefined;
-    public monthlyStatsPerCategory: StatsPerCategory[] | undefined;
-    public thirtyDayCount: ThirtyDayCount[] | undefined;
-    constructor(init?: Partial<Analytics>) {
-        Object.assign(this, init);
-    }
-    checkInfo(): boolean {
-        return (
-            this.weeklyOverallStats !== undefined &&
-            this.weeklyStatsPerCategory !== undefined &&
-            this.monthlyOverallStats !== undefined &&
-            this.monthlyStatsPerCategory !== undefined &&
-            this.thirtyDayCount !== undefined
-        );
-    }
-}
-
-export interface Viewport extends ViewportBase {
-    width: string;
-    height: string;
-}
-
-/**
- * Helper Object for building clientInfo queries with team permissions (Jarvis Only)
- * Used with Session object to return correct client info
- * TeamIds array need only be specified for 'Open Teams' case
- */
-export interface TeamPermissionsQuery {
-    viewPermissions: "All" | "Open Teams" | "Closed Team";
-    team_id: number | null;
-    openTeamIds?: number[];
-    closedTeamIds?: number[];
-}
-
-export interface Team {
-    id: number;
-    client_id: number;
-    name: string;
-    permissions: number;
-    address?: string;
-    ignored_report_types?: reportType[];
-}
-
-export interface TeamToInsert {
-    client_id: number;
-    name: string;
-    address?: string;
-    permissions?: number;
-}
-
-export interface TeamUpdate {
-    id: number;
-    name?: string;
-    address?: string;
-    permissions?: number;
-}
-
-export interface UserUpdate {
-    id: number;
-    team_id?: number | null;
-    role?: number;
-    designation?: string;
-}
-
-export interface AdminUserSelfUpdate {
-    team_id?: number | null;
-    designation?: string;
-}
-
-export interface Profile {
-    nickname?: string;
-    position?: string;
-    address?: string;
-    phone_cell?: string;
-    phone_work?: string;
-    phone_home?: string;
-    emergency_contact_1?: EmergencyContactProfile;
-    emergency_contact_2?: EmergencyContactProfile;
-    medical?: MedicalProfile;
-}
-
-export interface EmergencyContactProfile {
-    name?: string;
-    relationship?: string;
-    address?: string;
-    phone_primary?: string;
-    phone_secondary?: string;
-}
-
-export interface MedicalProfile {
-    dob?: string;
-    blood_type?: string;
-    preferred_hospital?: string;
-    medical_conditions?: string;
-    doctor_1?: {
-        name?: string;
-        phone?: string;
-        address?: string;
-        office?: string;
-    };
-    doctor_2?: {
-        name?: string;
-        phone?: string;
-        address?: string;
-        office?: string;
-    };
-}
-
-export interface UserFeatureSelection {
-    sosButton?: boolean | null;
-    addReportButton?: boolean | null;
-    filtering?: boolean | null;
-    filterTimeRangeDefault?: "7 Day" | "28 Day" | "24 Hour" | null;
-    teamReportsMenu?: boolean | null;
-    teamsMenu?: boolean | null;
-    analyticsMenu?: boolean | null;
-    analyticsAdvancedMenu?: boolean | null;
-    forecastingMenu?: boolean | null;
-    publicInsightsMenu?: boolean | null;
-    newsfeedMenu?: boolean | null;
-}
-
-export interface AdminFeatureSelection {
-    admin?: boolean | null;
-    client?: boolean | null;
-    areas?: boolean | null;
-    logs?: boolean | null;
-    aamp?: boolean | null;
-}
-
-export interface PublicInsight {
-    id: number;
-    container_id: number;
-    default_region_id?: number;
-    title: string;
-    content: Map<string, string | string[]>;
-    created_at: Date;
-}
-
-export interface NewPublicInsight {
-    container_id: number;
-    default_region_id?: number;
-    title: string;
-    content: Map<string, string>;
-}
-
 export interface ReportTypeUpdate {
     client_id: number;
     team_id?: number;
@@ -1546,50 +947,11 @@ export interface TemplateSection {
     fields: TEMPLATE_FIELD[];
 }
 
-// export interface TemplateField {
-//     label: "dropdown" | "short_string" | "long_string" | "number" | "tickbox";
-//     template: TEMPLATE_FIELD;
-// }
-
 export interface ReportTemplateToInsert {
     name: string;
     client_id?: number;
     fields: TemplateSection[];
 }
-
-export interface Dropdown {
-    label: string;
-    type: "dropdown";
-    options: string[];
-    value: string | null;
-}
-
-export interface ShortString {
-    label: string;
-    type: "short_string";
-    value: string | null;
-}
-
-export interface LongString {
-    label: string;
-    type: "long_string";
-    value: string | null;
-}
-
-export interface NumberField {
-    label: string;
-    type: "number";
-    value: number | null;
-    units?: string;
-}
-
-export interface Tickbox {
-    label: string;
-    type: "tickbox";
-    value: true | false | null;
-}
-
-export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField | Tickbox;
 
 export interface NineLiner {
     serial_number: number | null;
@@ -1621,14 +983,6 @@ export interface MISTReport {
     date_time?: Date;
     user_id: number;
     fields: MISTReportFields;
-}
-
-export interface MISTReportToInsert {
-    alert_report_id: number;
-    date_time?: Date;
-    user_id?: number;
-    fields: MISTReportFields;
-    team_id?: number;
 }
 
 export interface MISTReportUpdate {
@@ -1695,10 +1049,115 @@ export interface MISTReportFields {
     bls?: string;
 }
 
-export interface Log {
-    timestamp: Date;
+export interface MISTReportToInsert {
+    alert_report_id: number;
+    date_time?: Date;
     user_id?: number;
-    client_id?: number;
-    admin_user_id?: number;
-    route: string;
+    fields: MISTReportFields;
+    team_id?: number;
 }
+
+/**
+ *
+ * Types defining structures to be immediately inserted to the database.
+ *
+ * These can be used as generics with Knex.js for better type safety.
+ *
+ */
+
+export interface PublicReportToInsert {
+    created_at?: Date;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    report_type: reportType;
+    source_type: PublicReportSourceType;
+    description?: string;
+    verified?: number;
+    client_id?: number;
+    container_id?: number;
+    default_region_id?: number;
+    photo_url?: string;
+    actor?: Actor;
+    target?: Target;
+    team_id?: number;
+    user_id?: number;
+    client_report_id?: number;
+    alert_report_id?: number;
+}
+
+export interface ClientReportToInsert {
+    client_id: number;
+    user_id: number;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    report_type: reportType;
+    report_actions?: ClientReportActions;
+    report_needs?: ClientReportNeeds;
+    container_id?: number;
+    default_region_id?: number;
+    custom_region_ids?: number;
+    photo_url?: string;
+    team_id?: number;
+}
+
+export interface ClientAlertReportToInsert {
+    client_id: number;
+    user_id: number;
+    date_time: Date;
+    point: Point;
+    address?: string;
+    container_id?: number;
+    default_region_id?: number;
+    custom_region_ids?: number;
+    photo_url?: string;
+    team_id?: number;
+    nine_liner?: NineLiner;
+    client_uuid?: string;
+}
+
+export interface ClientAlertReportToInsertPartial {
+    date_time: Date;
+    point: Point;
+    address?: string;
+}
+
+
+/**
+ * Templated client report fields:
+ */
+
+export interface Dropdown {
+    label: string;
+    type: "dropdown";
+    options: string[];
+    value: string | null;
+}
+
+export interface ShortString {
+    label: string;
+    type: "short_string";
+    value: string | null;
+}
+
+export interface LongString {
+    label: string;
+    type: "long_string";
+    value: string | null;
+}
+
+export interface NumberField {
+    label: string;
+    type: "number";
+    value: number | null;
+    units?: string;
+}
+
+export interface Tickbox {
+    label: string;
+    type: "tickbox";
+    value: true | false | null;
+}
+
+export type TEMPLATE_FIELD = Dropdown | ShortString | LongString | NumberField | Tickbox;
