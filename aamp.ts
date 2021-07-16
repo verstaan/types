@@ -134,7 +134,19 @@ export interface TelegramMessage {
     text: string,
     chat_id: number,
     user_id: number,
-    date: number
+    date: number,
+    photo?: TelegramPhotoSize[],
+    video?: TelegramVideo,
+    animation?: any,
+    audio?: any,
+    document?: any,
+    sticker?: any,
+    contact?: any,
+    game?: any,
+    poll?: any,
+    venue?: any,
+    location?: any,
+    invoice?: any
 }
 
 /**
@@ -158,4 +170,24 @@ export interface TelegramUser {
     username: string,
     first_name: string,
     last_name: string
+}
+
+export interface TelegramPhotoSize {
+    file_id: string,
+    file_unique_id: string,
+    width: number,
+    height: number,
+    file_size?: number
+}
+
+export interface TelegramVideo {
+    file_id: string,
+    file_unique_id: string,
+    width: number,
+    height: number,
+    duration: number,
+    thumb?: TelegramPhotoSize,
+    file_name?: string,
+    mime_type?: string,
+    file_size?: number
 }
