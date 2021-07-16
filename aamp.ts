@@ -135,6 +135,8 @@ export interface TelegramMessage {
     chat_id: number,
     user_id: number,
     date: number,
+    media: string,
+    type: string,
     photo?: TelegramPhotoSize[],
     video?: TelegramVideo,
     animation?: any,
