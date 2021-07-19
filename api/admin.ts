@@ -15,7 +15,7 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
-import {CountedForm, PendingAampReport} from "../aamp";
+import {CountedForm, PendingAampReport, TelegramMessageDetails} from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
@@ -156,3 +156,22 @@ export const getAampReportsByFormId = (form: number) : Promise<PendingAampReport
         requestedForm: form
     }
 });
+export const getReportChatMessages = (
+    report_id: number,
+    before: number,
+    after: number
+  ): Promise<TelegramMessageDetails[]> =>
+    request<TelegramMessageDetails[]>(true, {
+      method: "POST",
+      url: "/aamp/getReportChatMessages",
+      data: { report_id, before, after },
+    });
+  
+  export const getFullTranscriptMessages = (
+    report_id: number
+  ): Promise<TelegramMessageDetails[]> =>
+    request<TelegramMessageDetails[]>(true, {
+      method: "POST",
+      url: "/aamp/getFullTranscriptMessages",
+      data: { report_id },
+    });
