@@ -21,6 +21,8 @@ export interface Device {
     device_fingerprint: string;
     point?: Point;
     modified_at?: Date;
+    user_name?: string;
+    team_id?: number;
 }
 
 export type DeviceType = "Web" | "Mobile";

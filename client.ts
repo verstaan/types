@@ -197,6 +197,7 @@ export interface UserFeatureSelection {
     forecastingMenu?: boolean | null;
     publicInsightsMenu?: boolean | null;
     newsfeedMenu?: boolean | null;
+    tracking?: boolean | null;
 }
 
 export interface PublicInsight {
