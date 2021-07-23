@@ -74,6 +74,7 @@ export interface CountedForm extends NewForm {
     domains: string[];
     immediate_public: boolean;
     count: number;
+    chats: string[];
 }
 
 export interface PendingAampReportToInsert extends NewPendingAampReport {
