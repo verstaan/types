@@ -76,6 +76,10 @@ export interface NewUser {
     features: UserFeatureSelection | null | undefined;
 }
 
+/**
+ * another change
+ */
+
 
 export type ClientUpdate = Partial<Omit<Client, "id" | "created_at">> & { id: Client["id"] };
 
