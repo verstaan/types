@@ -144,6 +144,11 @@ export const registerChat = (data: ChatFormLink): Promise<void> => request<void>
     data: data
 })
 
+export const getChats = () : Promise<TelegramChat[]> => request<TelegramChat[]>(true, {
+    method: "GET",
+    url: "/aamp/getChats",
+});
+
 export const getCountedForms = () : Promise<{[container_name: string]: CountedForm[]}> => request<{ [container_name: string]: CountedForm[] }>(true, {
         method: "GET",
         url: "/aamp/getFormsAndCounts",
