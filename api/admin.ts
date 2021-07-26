@@ -15,7 +15,11 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
+<<<<<<< HEAD
 import { CountedForm, PendingAampReport, TelegramChat, TelegramMessageDetails } from "../aamp";
+=======
+import {CountedForm, editHistory, PendingAampReport, PendingAampReportUpdate} from "../aamp";
+>>>>>>> c5da974... added types + routes for edit history tracking feature
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
