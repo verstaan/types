@@ -91,11 +91,28 @@ export interface PendingAampReport extends PendingAampReportToInsert {
     archived: boolean;
     public_report_id?: number | null;
     created_at: Date;
+    changes: string[];
 }
 
-export type PendingAampReportUpdate = Partial<Omit<PendingAampReport, "fields">> & {
+export type PendingAampReportUpdate = Partial<Omit<PendingAampReport, "fields" | "changes">> & {
     id: number;
     fields?: Partial<AampReportFields>;
+    changes: string[];
+    identifier: string;
+};
+
+export interface editHistory {
+    payload: {
+        aamp_report_type?: string,
+        description?: string
+        aggressor?: string,
+        victim?: string, 
+        address?: string,
+        date_time?: string,
+    },
+    timestamp: string,
+    admin_user_id?: number |  null,
+    user_id?: number | null
 };
 
 /**
