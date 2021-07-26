@@ -172,3 +172,21 @@ export const getFullTranscriptMessages = (report_id: number): Promise<TelegramMe
   url: "/aamp/getFullTranscriptMessages",
   data: { report_id },
 });
+
+export const updatePendingReport = (data: PendingAampReportUpdate) : Promise<void> => request<void>(true, {
+    method: "POST",
+    url: "/aamp/updatePendingReport",
+    data: data
+});
+
+export const getPendingReportEdits = (logIdentifier: string) : Promise<editHistory[]> => request<editHistory[]>(true, {
+    method: "POST",
+    url: "/aamp/getPendingReportEdits",
+    data: { logIdentifier }
+})
+
+export const getUserProfileByID = (user_id: number) : Promise<UserProfile> => request<UserProfile>(true, {
+    method: "POST",
+    url: "/admin/getUserProfile",
+    data: { user_id }
+})
