@@ -15,7 +15,7 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
-import { CountedForm, PendingAampReport, TelegramChat, TelegramMessageDetails } from "../aamp";
+import { CountedForm, editHistory, PendingAampReport, PendingAampReportUpdate, TelegramChat, TelegramMessageDetails } from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
@@ -178,3 +178,21 @@ export const getFullTranscriptMessagesByChatID = (chat_id: number): Promise<Tele
     url: "/aamp/getFullTranscriptMessagesByChatID",
     data: { chat_id },
 });
+
+export const updatePendingReport = (data: PendingAampReportUpdate) : Promise<void> => request<void>(true, {
+    method: "POST",
+    url: "/aamp/updatePendingReport",
+    data: data
+});
+
+export const getPendingReportEdits = (report_id: number) : Promise<editHistory[]> => request<editHistory[]>(true, {
+    method: "POST",
+    url: "/aamp/getPendingReportEdits",
+    data: { report_id }
+})
+
+export const getUserProfileByID = (user_id: number) : Promise<UserProfile> => request<UserProfile>(true, {
+    method: "POST",
+    url: "/admin/getUserProfile",
+    data: { user_id }
+})
