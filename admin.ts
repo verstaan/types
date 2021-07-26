@@ -49,6 +49,8 @@ export interface Log {
     client_id?: number;
     admin_user_id?: number;
     route: string;
+    report_id?: number;
+    payload?: object;
 }
 
 export interface ClientCreation {
