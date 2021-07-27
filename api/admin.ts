@@ -163,10 +163,10 @@ export const updatePendingReport = (data: PendingAampReportUpdate) : Promise<voi
     data: data
 });
 
-export const getPendingReportEdits = (logIdentifier: string) : Promise<editHistory[]> => request<editHistory[]>(true, {
+export const getPendingReportEdits = (report_id: number) : Promise<editHistory[]> => request<editHistory[]>(true, {
     method: "POST",
     url: "/aamp/getPendingReportEdits",
-    data: { logIdentifier }
+    data: { report_id }
 })
 
 export const getUserProfileByID = (user_id: number) : Promise<UserProfile> => request<UserProfile>(true, {

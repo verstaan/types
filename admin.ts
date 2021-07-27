@@ -50,7 +50,6 @@ export interface Log {
     route: string;
     report_id?: number;
     payload?: object;
-    edits_index: string;
 }
 
 export interface ClientCreation {

@@ -98,7 +98,6 @@ export type PendingAampReportUpdate = Partial<Omit<PendingAampReport, "fields" |
     id: number;
     fields?: Partial<AampReportFields>;
     changes: string[];
-    identifier: string;
 };
 
 export interface editHistory {
