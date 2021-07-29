@@ -1,5 +1,5 @@
 import { Client, Profile, UserFeatureSelection} from "./client";
-import { GeoJsonGeometryTypes, MultiPolygon, Polygon } from "geojson";
+import { GeoJsonGeometryTypes, LineString, MultiLineString, MultiPoint, MultiPolygon, Point, Polygon } from "geojson";
 import { ViewportBase } from "./geo";
 
 
@@ -135,7 +135,7 @@ export interface AssetType {
     category: string;
     relevant_event_types: string[];
     relevant_concerns: string[];
-    relevant_geographies: JSON;
+    relevant_geographies: string[];
     mobile: boolean;
 }
 
@@ -145,7 +145,7 @@ export interface Asset {
     client_id?: number;
     team_id?: number;
     description?: string;
-    geography?: GeoJsonGeometryTypes;
+    geography: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
     operation_interval?: string;
     concerns?: AssetConcern[];
     relevant_event_types?: string[];
@@ -154,16 +154,21 @@ export interface Asset {
     erp_link?: string;
 }
 
-export interface consequence {
+export interface AssetToInsert extends Asset{
+    container_id: number[];
+    default_region_id: number[];
+}
+
+export interface Consequence {
     concern: AssetConcern;
     magnitude: number;
     timeframe: string;
 }
 
-export interface AssetRisk {
+export interface Risk {
     asset_id: number;
     concern: AssetConcern;
-    consequence: consequence;
+    consequence: Consequence;
     relevant_event_types: string[];
     risk_interval: string;
     created_at: Date;

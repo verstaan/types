@@ -29,6 +29,11 @@ export interface GeoAttribution {
     default_region_id?: number;
 }
 
+export interface MultiDimGeoAttribution {
+    container_id_arr: number[];
+    default_region_id_arr: number[];
+}
+
 export interface ContainerResponseItem {
     containers: Container[];
     default_regions: DefaultRegion[];
