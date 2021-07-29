@@ -15,7 +15,7 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
-import {CountedForm, PendingAampReport, TelegramMessageDetails} from "../aamp";
+import {CountedForm, PendingAampReport, TelegramChat, TelegramMessageDetails} from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
