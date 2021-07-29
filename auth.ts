@@ -23,6 +23,7 @@ export interface Device {
     modified_at?: Date;
     user_name?: string;
     team_id?: number;
+    active_sos?: boolean;
 }
 
 export type DeviceType = "Web" | "Mobile";
