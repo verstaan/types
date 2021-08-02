@@ -21,6 +21,16 @@ export interface Device {
     device_fingerprint: string;
     point?: Point;
     modified_at?: Date;
+}
+
+export interface DisplayDevice {
+    user_id: number;
+    client_id: number;
+    token: string | null;
+    device_type: DeviceType;
+    device_fingerprint: string;
+    point?: Point;
+    modified_at?: Date;
     user_name?: string;
     team_id?: number;
     active_sos?: boolean;
