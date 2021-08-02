@@ -64,6 +64,12 @@ export const getClientUsers = (): Promise<UserProfile[]> =>
         url: "/client/getClientUsers"
     });
 
+export const getClientDevices = (): Promise<Device[]> =>
+    request<Device[]>(true, {
+        method: "get",
+        url: "/client/getClientDevices"
+    })
+
 export const createReport = (report: NewClientReport): Promise<void> =>
     request<void>(true, {
         method: "post",
