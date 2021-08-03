@@ -15,7 +15,7 @@ import {
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
 import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
-import { CountedForm, editHistory, PendingAampReport, PendingAampReportUpdate, TelegramChat, TelegramMessageDetails } from "../aamp";
+import { CountedForm, FormUpdate, editHistory, PendingAampReport, PendingAampReportUpdate, TelegramChat, TelegramMessageDetails } from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
     method: "GET",
@@ -135,6 +135,12 @@ export const getClientContainers = (client_id: number): Promise<number> => reque
 export const createForm = (data: any): Promise<number> => request<number>(true, {
     method: "POST",
     url: "/aamp/createForm",
+    data: data
+});
+
+export const modifyForm = (data : FormUpdate): Promise<void> => request<void>(true, {
+    method: "POST",
+    url:  "/aamp/modifyForm",
     data: data
 });
 

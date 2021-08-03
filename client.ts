@@ -22,6 +22,7 @@ export interface UserProfile {
     designation?: string;
     profile?: Profile | null;
     features?: UserFeatureSelection | null;
+    created_at?: Date;
 }
 
 export type UserDesignation = "Medic" | "";
@@ -99,6 +100,7 @@ export interface DisplayUserProfile extends UserProfile {
     full_reports: number;
     users: number;
     activity: number;
+    last_active?: Date;
 }
 
 export interface ClientDisplayData {

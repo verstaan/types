@@ -69,6 +69,10 @@ export interface NewPendingAampReport {
     immediate_public: boolean;
 }
 
+export interface FormUpdate extends NewForm {
+    id: number;
+}
+
 export interface CountedForm extends NewForm {
     id: number;
     domains: string[];
