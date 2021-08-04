@@ -11,10 +11,12 @@ import {
     NewTeamAdmin,
     NewUser,
     Log,
-    ChatFormLink
+    ChatFormLink,
+    AssetType,
+    Asset
 } from "../admin";
 import { Container, DefaultRegion } from "../geo";
-import { ClientDisplayData, TeamUpdate, UserProfile, UserUpdate } from "../client";
+import { ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import {CountedForm, PendingAampReport} from "../aamp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
@@ -155,4 +157,22 @@ export const getAampReportsByFormId = (form: number) : Promise<PendingAampReport
     data: {
         requestedForm: form
     }
+});
+
+export const getAssetTypes = () : Promise<AssetType[]> => request<AssetType[]> (true, {
+    method: "GET",
+    url: "/admin/getAssetTypes"
+});
+
+export const addAsset = (createdAsset: Asset) : Promise<void> => request<void> (true, {
+    method: "POST",
+    url: "/admin/addAsset",
+    data: {
+        asset: createdAsset
+    }
+})
+
+export const getAllTeams = () : Promise<Team[]> => request<Team[]> (true, {
+    method: "GET",
+    url: "/admin/getAllTeams"
 });
