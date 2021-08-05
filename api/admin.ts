@@ -168,7 +168,7 @@ export const addAsset = (createdAsset: Asset) : Promise<void> => request<void> (
     method: "POST",
     url: "/admin/addAsset",
     data: {
-        asset: createdAsset
+        ...createdAsset
     }
 })
 
