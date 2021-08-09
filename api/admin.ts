@@ -172,3 +172,9 @@ export const getFullTranscriptMessages = (report_id: number): Promise<TelegramMe
   url: "/aamp/getFullTranscriptMessages",
   data: { report_id },
 });
+
+export const getFullTranscriptMessagesByChatID = (chat_id: number): Promise<TelegramMessageDetails[]> => request<TelegramMessageDetails[]>(true, {
+    method: "POST",
+    url: "/aamp/getFullTranscriptMessagesByChatID",
+    data: { chat_id },
+});
