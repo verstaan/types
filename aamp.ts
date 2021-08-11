@@ -150,6 +150,7 @@ export interface TelegramMessage {
   venue?: any;
   location?: any;
   invoice?: any;
+  caption?: any;
 }
 
 export interface TelegramPhotoSize {
