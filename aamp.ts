@@ -113,6 +113,10 @@ export interface editHistory {
         victim?: string, 
         address?: string,
         date_time?: string,
+        super_user_review?: boolean,
+        manager_review?: boolean,
+        archived?: boolean,
+        point?: JSON
     },
     timestamp: string,
     admin_user_id?: number |  null,
