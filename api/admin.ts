@@ -28,6 +28,12 @@ export const modifyUser = (data: UserUpdate): Promise<void> => request<void>(tru
     data: data
 });
 
+export const deleteUser = (data: UserUpdate): Promise<void> => request<void>(true, {
+    method: "POST",
+    url: "/admin/deleteUser",
+    data: data
+});
+
 export const updateTeam = (data: TeamUpdate): Promise<void> => request<void>(true, {
     method: "POST",
     url: "/admin/updateTeam",
@@ -63,6 +69,11 @@ export const createClient = (data: { client: NewClient, user: Partial<NewUser>, 
     url: "/admin/createClient",
     data: data
 });
+
+export const getAllUsers = (): Promise<UserProfile[]> => request<UserProfile[]>(true, {
+    method: "GET",
+    url: "/admin/getAllUsers",
+})
 
 export const getAllAdminUsers = (): Promise<AdminUserProfile[]> => request<AdminUserProfile[]>(true, {
     method: "GET",

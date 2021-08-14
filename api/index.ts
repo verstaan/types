@@ -1,4 +1,6 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
+import firebase from "firebase/app";
+import { auth } from "../firebase";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -96,22 +98,8 @@ export class ConnectionError extends Error {
     }
 }
 
-/**
- * Utility method for error handling and normalizing response types.
- */
-export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
-    if (authenticate) {
-        const token = localStorage.getItem("verstaanToken");
-        // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
-        if (!token) {
-            throw new ErrorResponse("No token set in local storage", 302);
-        }
-        config.headers = {
-            Authorization: `Bearer ${token}`,
-            ...config.headers
-        };
-    }
-
+// function used in request to send response
+const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
     let response: AxiosResponse<RestResponse>;
     try {
         response = await api.request<RestResponse>(config);
@@ -131,6 +119,43 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         // PM2 log?
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
+}
+
+// function used in request to get current firebase user
+const getCurrentUser = (): Promise<firebase.User | null> => {
+    return new Promise((resolve, reject) => {
+        const unsubscribe = auth.onAuthStateChanged(user => {
+            unsubscribe();
+            resolve(user);
+        }, reject);
+    });
+}
+
+/**
+ * Utility method for error handling and normalizing response types.
+ */
+export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
+    if (authenticate) {
+        const user = await getCurrentUser();
+        if (user) {
+            // signed in
+            const token = await user.getIdToken()   // pass true in getIdToken() for force refresh
+            localStorage.setItem("verstaanToken", token);
+            console.log("new token", token)
+            // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
+            if (!token) {
+                throw new ErrorResponse("No token set in local storage", 302);
+            }
+            config.headers = {
+                Authorization: `Bearer ${token}`,
+                ...config.headers
+            };
+            return getResponse(config);
+        } else {
+            // signed out
+            throw new ErrorResponse("User is signed out", StatusCode.Unauthorized);
+        }
+    } else {
+        return getResponse(config);
+    }
 };
-
-
