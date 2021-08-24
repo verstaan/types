@@ -1,5 +1,4 @@
 import { request } from "./index";
-import { QueryResult } from "material-table";
 import {
     ClientContainers,
     ClientUpdate,
@@ -12,195 +11,223 @@ import {
     NewUser,
     Log,
     ChatFormLink,
-    Asset,
-    AssetType,
-    Risk
+    QueryResult,
 } from "../admin";
-import { CountedForm, FormUpdate, editHistory, PendingAampReport, PendingAampReportUpdate, TelegramChat, TelegramMessageDetails } from "../aamp";
+import { AdminNewAsset, Asset, AssetType, Risk } from "../case";
+import {
+    CountedForm,
+    FormUpdate,
+    editHistory,
+    PendingAampReport,
+    PendingAampReportUpdate,
+    TelegramChat,
+    TelegramMessageDetails,
+} from "../aamp";
 import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
 
-export const getClientDisplayData = (): Promise<ClientDisplayData> => request<ClientDisplayData>(true, {
-    method: "GET",
-    url: "/admin/getClientDisplayData",
-});
+export const getClientDisplayData = (): Promise<ClientDisplayData> =>
+    request<ClientDisplayData>(true, {
+        method: "GET",
+        url: "/admin/getClientDisplayData",
+    });
 
-export const modifyUser = (data: UserUpdate): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/modifyUser",
-    data: data
-});
+export const modifyUser = (data: UserUpdate): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/modifyUser",
+        data: data,
+    });
 
-export const updateTeam = (data: TeamUpdate): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateTeam",
-    data: data
-});
+export const updateTeam = (data: TeamUpdate): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateTeam",
+        data: data,
+    });
 
-export const updateClient = (data: ClientUpdate): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateClient",
-    data: data
-});
+export const updateClient = (data: ClientUpdate): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateClient",
+        data: data,
+    });
 
-export const createClientUser = (data: any): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createClientUser",
-    data: data
-});
+export const createClientUser = (data: any): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createClientUser",
+        data: data,
+    });
 
-export const createAdminUser = (data: NewAdminUser): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createAdminUser",
-    data: data
-});
+export const createAdminUser = (data: NewAdminUser): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createAdminUser",
+        data: data,
+    });
 
-export const createTeam = (data: NewTeamAdmin): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createTeam",
-    data: data
-});
+export const createTeam = (data: NewTeamAdmin): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createTeam",
+        data: data,
+    });
 
-export const createClient = (data: { client: NewClient, user: Partial<NewUser>, invite: boolean }): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createClient",
-    data: data
-});
+export const createClient = (data: { client: NewClient; user: Partial<NewUser>; invite: boolean }): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createClient",
+        data: data,
+    });
 
-export const getAllAdminUsers = (): Promise<AdminUserProfile[]> => request<AdminUserProfile[]>(true, {
-    method: "GET",
-    url: "/admin/getAllAdminUsers",
-});
+export const getAllAdminUsers = (): Promise<AdminUserProfile[]> =>
+    request<AdminUserProfile[]>(true, {
+        method: "GET",
+        url: "/admin/getAllAdminUsers",
+    });
 
-export const getAllContainers = (): Promise<Container[]> => request<Container[]>(true, {
-    method: "GET",
-    url: "/admin/getAllContainers",
-});
+export const getAllContainers = (): Promise<Container[]> =>
+    request<Container[]>(true, {
+        method: "GET",
+        url: "/admin/getAllContainers",
+    });
 
-export const getAllDefaultRegions = (): Promise<DefaultRegion[]> => request<DefaultRegion[]>(true, {
-    method: "get",
-    url: "/admin/getAllDefaultRegions",
-});
+export const getAllDefaultRegions = (): Promise<DefaultRegion[]> =>
+    request<DefaultRegion[]>(true, {
+        method: "get",
+        url: "/admin/getAllDefaultRegions",
+    });
 
-export const updateContainer = (data: Partial<Container> & Pick<Container, "id">): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateContainer",
-    data: data
-});
+export const updateContainer = (data: Partial<Container> & Pick<Container, "id">): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateContainer",
+        data: data,
+    });
 
-export const updateDefaultRegion = (data: Partial<DefaultRegion> & Pick<DefaultRegion, "id">): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateDefaultRegion",
-    data: data
-});
+export const updateDefaultRegion = (data: Partial<DefaultRegion> & Pick<DefaultRegion, "id">): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateDefaultRegion",
+        data: data,
+    });
 
-export const createContainer = (data: NewContainer): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createContainer",
-    data: data
-});
+export const createContainer = (data: NewContainer): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createContainer",
+        data: data,
+    });
 
-export const createDefaultRegion = (data: NewDefaultRegion): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/createDefaultRegion",
-    data: data
-});
+export const createDefaultRegion = (data: NewDefaultRegion): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createDefaultRegion",
+        data: data,
+    });
 
-export const queryLogs = (query: any): Promise<QueryResult<Log>> => request<QueryResult<Log>>(true, {
-    method: "POST",
-    url: "/admin/queryLogs",
-    data: query
-});
+export const queryLogs = (query: any): Promise<QueryResult<Log>> =>
+    request<QueryResult<Log>>(true, {
+        method: "POST",
+        url: "/admin/queryLogs",
+        data: query,
+    });
 
-export const getAdminProfile = (): Promise<AdminUserProfile> => request<AdminUserProfile>(true, {
-    method: "GET",
-    url: "/admin/getAdminProfile"
-})
+export const getAdminProfile = (): Promise<AdminUserProfile> =>
+    request<AdminUserProfile>(true, {
+        method: "GET",
+        url: "/admin/getAdminProfile",
+    });
 
 export const getClientUsers = (): Promise<UserProfile[]> =>
     request<UserProfile[]>(true, {
         method: "get",
-        url: "/client/getClientUsers"
-});
+        url: "/client/getClientUsers",
+    });
 
-export const modifyClientContainers = (data: ClientContainers): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/modifyClientContainers",
-    data: data
-});
+export const modifyClientContainers = (data: ClientContainers): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/modifyClientContainers",
+        data: data,
+    });
 
-export const getClientContainers = (client_id: number): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/admin/getClientContainers",
-    data: { client_id }
-});
+export const getClientContainers = (client_id: number): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/getClientContainers",
+        data: { client_id },
+    });
 
-export const getContainers = () : Promise<ContainerResponseItem> => request<ContainerResponseItem>(true, {
-    method: "GET",
-    url: "/admin/getContainers"
-})
+export const getContainers = (): Promise<ContainerResponseItem> =>
+    request<ContainerResponseItem>(true, {
+        method: "GET",
+        url: "/admin/getContainers",
+    });
 
-export const createForm = (data: any): Promise<number> => request<number>(true, {
-    method: "POST",
-    url: "/aamp/createForm",
-    data: data
-});
+export const createForm = (data: any): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/aamp/createForm",
+        data: data,
+    });
 
-export const modifyForm = (data : FormUpdate): Promise<void> => request<void>(true, {
-    method: "POST",
-    url:  "/aamp/modifyForm",
-    data: data
-});
+export const modifyForm = (data: FormUpdate): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/aamp/modifyForm",
+        data: data,
+    });
 
-export const registerChat = (data: ChatFormLink): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/aamp/bot/registerChat",
-    data: data
-})
+export const registerChat = (data: ChatFormLink): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/aamp/bot/registerChat",
+        data: data,
+    });
 
-export const getChats = () : Promise<TelegramChat[]> => request<TelegramChat[]>(true, {
-    method: "GET",
-    url: "/aamp/getChats",
-});
+export const getChats = (): Promise<TelegramChat[]> =>
+    request<TelegramChat[]>(true, {
+        method: "GET",
+        url: "/aamp/getChats",
+    });
 
-export const getCountedForms = () : Promise<{[container_name: string]: CountedForm[]}> => request<{ [container_name: string]: CountedForm[] }>(true, {
+export const getCountedForms = (): Promise<{ [container_name: string]: CountedForm[] }> =>
+    request<{ [container_name: string]: CountedForm[] }>(true, {
         method: "GET",
         url: "/aamp/getFormsAndCounts",
-});
-
-export const getAampReportsByFormId = (form: number) : Promise<PendingAampReport[]> => request<PendingAampReport[]>(true, {
-    method: "POST",
-    url: "/aamp/getPendingReportsByFormId",
-    data: {
-        requestedForm: form
-    }
-});
-export const getReportChatMessages = (
-    report_id: number,
-    before: number,
-    after: number
-  ): Promise<TelegramMessageDetails[]> =>
-    request<TelegramMessageDetails[]>(true, {
-      method: "POST",
-      url: "/aamp/getReportChatMessages",
-      data: { report_id, before, after },
-    });
-  
-  export const getFullTranscriptMessages = (
-    report_id: number
-  ): Promise<TelegramMessageDetails[]> =>
-    request<TelegramMessageDetails[]>(true, {
-      method: "POST",
-      url: "/aamp/getFullTranscriptMessages",
-      data: { report_id },
     });
 
-export const adminGetReports = () : Promise<PublicReport[]> => request<PublicReport[]>(true, {
-    method: "GET",
-    url: "/admin/getReports",
-});
+export const getAampReportsByFormId = (form: number): Promise<PendingAampReport[]> =>
+    request<PendingAampReport[]>(true, {
+        method: "POST",
+        url: "/aamp/getPendingReportsByFormId",
+        data: {
+            requestedForm: form,
+        },
+    });
+export const getReportChatMessages = (report_id: number, before: number, after: number): Promise<TelegramMessageDetails[]> =>
+    request<TelegramMessageDetails[]>(true, {
+        method: "POST",
+        url: "/aamp/getReportChatMessages",
+        data: { report_id, before, after },
+    });
+
+export const getFullTranscriptMessages = (report_id: number): Promise<TelegramMessageDetails[]> =>
+    request<TelegramMessageDetails[]>(true, {
+        method: "POST",
+        url: "/aamp/getFullTranscriptMessages",
+        data: { report_id },
+    });
+
+export const adminGetReports = (): Promise<PublicReport[]> =>
+    request<PublicReport[]>(true, {
+        method: "GET",
+        url: "/admin/getReports",
+    });
 
 export const adminGetReportsInContainer = (
     container_id?: number
@@ -215,126 +242,146 @@ export const adminGetReportsInContainer = (
         method: "post",
         url: "/admin/getReportsInContainer",
         data: {
-            container_id
-        }
+            container_id,
+        },
     });
 
-export const getAssets = () : Promise<Asset[]> => request<Asset[]>(true, {
-    method: "GET",
-    url: "/admin/getAssets",
-});
+export const getAssets = (): Promise<Asset[]> =>
+    request<Asset[]>(true, {
+        method: "GET",
+        url: "/admin/getAssets",
+    });
 
-export const getAllScenarios = () : Promise<Asset[]> => request<Asset[]>(true, {
-    method: "GET",
-    url: "/admin/getAllScenarios",
-});
+export const getAllScenarios = (): Promise<Asset[]> =>
+    request<Asset[]>(true, {
+        method: "GET",
+        url: "/admin/getAllScenarios",
+    });
 
-export const getAssetScenarios = (id: number) : Promise<Asset[]> => request<Asset[]>(true, {
-    method: "POST",
-    url: "/admin/getAssetScenarios",
-    data:  {
-        asset_id: id
-    }
-});
+export const getAssetScenarios = (id: number): Promise<Asset[]> =>
+    request<Asset[]>(true, {
+        method: "POST",
+        url: "/admin/getAssetScenarios",
+        data: {
+            asset_id: id,
+        },
+    });
 
-export const getAllRisks = () : Promise<Risk[]> => request<Risk[]>(true, {
-    method: "GET",
-    url: "/admin/getAllAssetRisks",
-});
+export const getAllRisks = (): Promise<Risk[]> =>
+    request<Risk[]>(true, {
+        method: "GET",
+        url: "/admin/getAllAssetRisks",
+    });
 
-export const getAssetRisks = (id : number) : Promise<Risk[]> => request<Risk[]>(true, {
-    method: "POST",
-    url: "/admin/getAssetRisks",
-    data: {asset_id: id}
-});
+export const getAssetRisks = (id: number): Promise<Risk[]> =>
+    request<Risk[]>(true, {
+        method: "POST",
+        url: "/admin/getAssetRisks",
+        data: { asset_id: id },
+    });
 
-export const updateAssetRisk = (id: number, assetRisk: Risk, changes: string[]) : Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateAssetRisk",
-    data: {risk_id: id, risk: {...assetRisk, id: undefined}, changes: changes}
-});
+export const updateAssetRisk = (id: number, assetRisk: Risk, changes: string[]): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateAssetRisk",
+        data: { risk_id: id, risk: { ...assetRisk, id: undefined }, changes: changes },
+    });
 
-export const addAssetRisk = (risk: Risk) : Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/addAssetRisk",
-    data: {...risk}
-});
+export const addAssetRisk = (risk: Risk): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/addAssetRisk",
+        data: { ...risk },
+    });
 
-export const getAssetTypes = () : Promise<AssetType[]> => request<AssetType[]>(true, {
-    method: "GET",
-    url: "/admin/getAssetTypes",
-});
+export const getAssetTypes = (): Promise<AssetType[]> =>
+    request<AssetType[]>(true, {
+        method: "GET",
+        url: "/admin/getAssetTypes",
+    });
 
-export const getDevices = () : Promise<Device[]> => request<Device[]>(true, {
-    method: "GET",
-    url: "/admin/getDevices",
-})
+export const getDevices = (): Promise<Device[]> =>
+    request<Device[]>(true, {
+        method: "GET",
+        url: "/admin/getDevices",
+    });
 
-export const getAllClients = () : Promise<Client[]> => request<Client[]>(true, {
-    method: "GET",
-    url: "/admin/getAllClients"
-});
+export const getAllClients = (): Promise<Client[]> =>
+    request<Client[]>(true, {
+        method: "GET",
+        url: "/admin/getAllClients",
+    });
 
-export const getAllTeams = () : Promise<Team[]> => request<Team[]>(true, {
-    method: "GET",
-    url: "/admin/getAllTeams"
-});
+export const getAllTeams = (): Promise<Team[]> =>
+    request<Team[]>(true, {
+        method: "GET",
+        url: "/admin/getAllTeams",
+    });
 
-export const addAsset = (data: Asset): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/addAsset",
-    data: data
-});
+export const addAsset = (data: AdminNewAsset): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/addAsset",
+        data: data,
+    });
 
-export const addAssetType = (data: AssetType): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/addAssetType",
-    data: data
-});
+export const addAssetType = (data: AssetType): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/addAssetType",
+        data: data,
+    });
 
-export const updateAsset = (asset_id: number, asset: Asset): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateAsset",
-    data: {asset_id, asset}
-});
+export const updateAsset = (asset_id: number, asset: Asset): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateAsset",
+        data: { asset_id, asset },
+    });
 
-export const updateAssetType = (oldName: string, assetType: AssetType): Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/admin/updateAssetType",
-    data: {
-        oldName: oldName,
-        asset_type: assetType
-    }
-});
+export const updateAssetType = (oldName: string, assetType: AssetType): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/updateAssetType",
+        data: {
+            oldName: oldName,
+            asset_type: assetType,
+        },
+    });
 
-export const getFullTranscriptMessagesByChatID = (chat_id: number): Promise<TelegramMessageDetails[]> => request<TelegramMessageDetails[]>(true, {
-    method: "POST",
-    url: "/aamp/getFullTranscriptMessagesByChatID",
-    data: { chat_id },
-});
+export const getFullTranscriptMessagesByChatID = (chat_id: number): Promise<TelegramMessageDetails[]> =>
+    request<TelegramMessageDetails[]>(true, {
+        method: "POST",
+        url: "/aamp/getFullTranscriptMessagesByChatID",
+        data: { chat_id },
+    });
 
-export const updatePendingReport = (data: PendingAampReportUpdate) : Promise<void> => request<void>(true, {
-    method: "POST",
-    url: "/aamp/updatePendingReport",
-    data: data
-});
+export const updatePendingReport = (data: PendingAampReportUpdate): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/aamp/updatePendingReport",
+        data: data,
+    });
 
-export const getPendingReportEdits = (report_id: number) : Promise<editHistory[]> => request<editHistory[]>(true, {
-    method: "POST",
-    url: "/aamp/getPendingReportEdits",
-    data: { report_id }
-})
+export const getPendingReportEdits = (report_id: number): Promise<editHistory[]> =>
+    request<editHistory[]>(true, {
+        method: "POST",
+        url: "/aamp/getPendingReportEdits",
+        data: { report_id },
+    });
 
-export const getRiskEdits = (risk_id: number): Promise<any> => request<any>(true,{
-    method: "POST",
-    url: "/admin/getRiskEdits",
-    data: {
-        risk_id: risk_id
-    }
-});
+export const getRiskEdits = (risk_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/getRiskEdits",
+        data: {
+            risk_id: risk_id,
+        },
+    });
 
-export const getUserProfileByID = (user_id: number) : Promise<UserProfile> => request<UserProfile>(true, {
-    method: "POST",
-    url: "/admin/getUserProfile",
-    data: { user_id }
-});
+export const getUserProfileByID = (user_id: number): Promise<UserProfile> =>
+    request<UserProfile>(true, {
+        method: "POST",
+        url: "/admin/getUserProfile",
+        data: { user_id },
+    });

@@ -9,7 +9,7 @@ export type AutoVerificationFailure = "photo-metadata-location" | "photo-metadat
 /**
  * Fields of an AAMP that can be customized with the "fields" property of a Form.
  */
- export interface AampReportFieldsSpecification {
+export interface AampReportFieldsSpecification {
     aamp_report_type: {
         optional?: false;
         values: Record<reportType, string[]>;
@@ -63,7 +63,7 @@ export interface NewPendingAampReport {
 /**
  * Form received from API
  */
- export interface Form extends NewForm {
+export interface Form extends NewForm {
     id: number;
     domains: string[];
     immediate_public: boolean;
@@ -107,21 +107,21 @@ export type PendingAampReportUpdate = Partial<Omit<PendingAampReport, "fields" |
 
 export interface editHistory {
     payload: {
-        aamp_report_type?: string,
-        description?: string
-        aggressor?: string,
-        victim?: string, 
-        address?: string,
-        date_time?: string,
-        super_user_review?: boolean,
-        manager_review?: boolean,
-        archived?: boolean,
-        point?: JSON
-    },
-    timestamp: string,
-    admin_user_id?: number |  null,
-    user_id?: number | null
-};
+        aamp_report_type?: string;
+        description?: string;
+        aggressor?: string;
+        victim?: string;
+        address?: string;
+        date_time?: string;
+        super_user_review?: boolean;
+        manager_review?: boolean;
+        archived?: boolean;
+        point?: JSON;
+    };
+    timestamp: string;
+    admin_user_id?: number | null;
+    user_id?: number | null;
+}
 
 /**
  * Map specifying minimum privileges required to update fields of a PendingAampReport:
@@ -142,7 +142,7 @@ export const AampUpdateMinimumPrivileges: {
     first_name: AdminPrivileges.MANAGER,
     last_name: AdminPrivileges.MANAGER,
     chat_messages: AdminPrivileges.MANAGER,
-    source_message: AdminPrivileges.MANAGER
+    source_message: AdminPrivileges.MANAGER,
 };
 
 /**
@@ -155,46 +155,46 @@ export const AampUpdateMinimumPrivileges: {
  * Telegram message as represented in the DB
  */
 export interface TelegramMessage {
-  message_id: number;
-  text: string;
-  chat_id: number;
-  user_id: number;
-  date: number;
-  media?: string | undefined;
-  type: string;
-  photo?: TelegramPhotoSize[];
-  video?: TelegramVideo;
-  animation?: any;
-  audio?: any;
-  document?: any;
-  sticker?: any;
-  contact?: any;
-  game?: any;
-  poll?: any;
-  venue?: any;
-  location?: any;
-  invoice?: any;
-  caption?: any;
+    message_id: number;
+    text: string;
+    chat_id: number;
+    user_id: number;
+    date: number;
+    media?: string | undefined;
+    type: string;
+    photo?: TelegramPhotoSize[];
+    video?: TelegramVideo;
+    animation?: any;
+    audio?: any;
+    document?: any;
+    sticker?: any;
+    contact?: any;
+    game?: any;
+    poll?: any;
+    venue?: any;
+    location?: any;
+    invoice?: any;
+    caption?: any;
 }
 
 export interface TelegramPhotoSize {
-  file_id: string;
-  file_unique_id: string;
-  width: number;
-  height: number;
-  file_size?: number;
+    file_id: string;
+    file_unique_id: string;
+    width: number;
+    height: number;
+    file_size?: number;
 }
 
 export interface TelegramVideo {
-  file_id: string;
-  file_unique_id: string;
-  width: number;
-  height: number;
-  duration: number;
-  thumb?: TelegramPhotoSize;
-  file_name?: string;
-  mime_type?: string;
-  file_size?: number;
+    file_id: string;
+    file_unique_id: string;
+    width: number;
+    height: number;
+    duration: number;
+    thumb?: TelegramPhotoSize;
+    file_name?: string;
+    mime_type?: string;
+    file_size?: number;
 }
 
 /**
@@ -202,20 +202,20 @@ export interface TelegramVideo {
  * This is the format that Telegram sends its messages in
  */
 export interface TelegramMessageDetails extends Omit<TelegramMessage, "chat_id" | "user_id"> {
-    from: TelegramUser,
-    chat: TelegramChat,
+    from: TelegramUser;
+    chat: TelegramChat;
 }
 
 export interface TelegramChat {
-    id: number,
-    type: string,
-    title: string,
-    form_id?: number
+    id: number;
+    type: string;
+    title: string;
+    form_id?: number;
 }
 
 export interface TelegramUser {
-    id: number,
-    username: string,
-    first_name: string,
-    last_name: string
+    id: number;
+    username: string;
+    first_name: string;
+    last_name: string;
 }

@@ -1,11 +1,15 @@
+// eslint-disable-next-line import/no-named-default,import/no-extraneous-dependencies
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
+import "source-map-support/register";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
     let env = process.env.REACT_APP_ENV!;
 
     if (!env) {
-        throw new Error("Invalid configuration. Expected environment variable 'REACT_APP_ENV', accepted values: production | staging | development | local. See README.md");
+        throw new Error(
+            "Invalid configuration. Expected environment variable 'REACT_APP_ENV', accepted values: production | staging | development | local. See README.md"
+        );
     }
 
     env = env.toLowerCase();
@@ -19,20 +23,21 @@ export const getJarvisUrl = (): string => {
     } else if (env === "local") {
         return "http://localhost:5000";
     } else {
-        throw Error("Invalid configuration. " + process.env.REACT_APP_ENV! + ". Accepted values: production | staging | development | local");
+        throw Error(
+            "Invalid configuration. " + process.env.REACT_APP_ENV! + ". Accepted values: production | staging | development | local"
+        );
     }
 };
 
 export const api = axios.create({
-    //baseURL: getJarvisUrl(), // For local testing, replace getJarvisUrl() with localhost url
-    baseURL: "http://localhost:5000",
+    baseURL: process.env.REACT_APP_ENV ? getJarvisUrl() : "", // For local testing, replace getJarvisUrl() with localhost url
     xsrfCookieName: "csrftoken",
-    xsrfHeaderName: "X-CSRFTOKEN"
+    xsrfHeaderName: "X-CSRFTOKEN",
 });
 
 export enum Status {
     SUCCESS,
-    ERROR
+    ERROR,
 }
 
 export enum StatusCode {
@@ -77,7 +82,7 @@ export class SuccessResponse<T> extends RestResponse {
             status: Status.SUCCESS,
             statusCode: StatusCode.Success,
             message,
-            result
+            result,
         });
     }
 }
@@ -109,7 +114,7 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         }
         config.headers = {
             Authorization: `Bearer ${token}`,
-            ...config.headers
+            ...config.headers,
         };
     }
 
@@ -134,5 +139,3 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
 };
-
-

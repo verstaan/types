@@ -6,7 +6,7 @@
 
 import { CategoryTypes, reportType } from "./reports";
 
- export class WeeklyOverallStats {
+export class WeeklyOverallStats {
     public totalWeekCount: number | undefined;
     public changeTotalWeek: string | undefined;
     public amountChangeTotalWeek: number | undefined;
@@ -16,11 +16,7 @@ import { CategoryTypes, reportType } from "./reports";
     }
 
     checkInfo(): boolean {
-        return (
-            this.totalWeekCount !== undefined &&
-            this.changeTotalWeek !== undefined &&
-            this.amountChangeTotalWeek !== undefined
-        );
+        return this.totalWeekCount !== undefined && this.changeTotalWeek !== undefined && this.amountChangeTotalWeek !== undefined;
     }
 }
 
@@ -32,11 +28,7 @@ export class MonthlyOverallStats {
         Object.assign(this, init);
     }
     checkInfo(): boolean {
-        return (
-            this.totalMonthCount !== undefined &&
-            this.changeTotalMonth !== undefined &&
-            this.amountChangeTotalMonth !== undefined
-        );
+        return this.totalMonthCount !== undefined && this.changeTotalMonth !== undefined && this.amountChangeTotalMonth !== undefined;
     }
 }
 
@@ -105,17 +97,16 @@ export class PerCategoryStats {
 
     checkInfo(): boolean {
         return (
-            this.category != undefined &&
-            this.count != undefined &&
-            this.change != undefined &&
-            this.day != undefined &&
-            this.month != undefined &&
-            this.dateTime != undefined &&
-            this.isCategory != undefined
-        )
+            this.category !== undefined &&
+            this.count !== undefined &&
+            this.change !== undefined &&
+            this.day !== undefined &&
+            this.month !== undefined &&
+            this.dateTime !== undefined &&
+            this.isCategory !== undefined
+        );
     }
 }
-
 
 export class CategoryStats {
     public category: reportType | CategoryTypes | undefined;
@@ -128,12 +119,7 @@ export class CategoryStats {
     }
 
     checkInfo(): boolean {
-        return (
-            this.category != undefined &&
-            this.count != undefined &&
-            this.change != undefined &&
-            this.isCategory != undefined
-        )
+        return this.category !== undefined && this.count !== undefined && this.change !== undefined && this.isCategory !== undefined;
     }
 }
 
@@ -152,11 +138,11 @@ export class AnalyticsSummary {
 
     checkInfo(): boolean {
         return (
-            this.perCategoryStats != undefined &&
-            this.pastDayCategoryStats != undefined &&
-            this.pastWeekCategoryStats != undefined &&
-            this.pastMonthCategoryStats != undefined &&
-            this.allTimeCategoryStats != undefined
-        )
+            this.perCategoryStats !== undefined &&
+            this.pastDayCategoryStats !== undefined &&
+            this.pastWeekCategoryStats !== undefined &&
+            this.pastMonthCategoryStats !== undefined &&
+            this.allTimeCategoryStats !== undefined
+        );
     }
 }
