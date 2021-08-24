@@ -1,5 +1,5 @@
-import { reportType } from "./reports";
 import { Point } from "geojson";
+import { reportType } from "./reports";
 
 /**
  *
@@ -81,17 +81,17 @@ export interface Client {
 
 export interface DisplayClient extends Client {
     type: "Client";
-    incidents: number,
-    alerts: number,
-    full_reports: number,
-    users: number,
-    activity: number
+    incidents: number;
+    alerts: number;
+    full_reports: number;
+    users: number;
+    activity: number;
 }
 
 export type DisplayTeam = Omit<Team, "id"> & {
     id: number | null;
     type: "Team";
-}
+};
 
 export interface DisplayUserProfile extends UserProfile {
     type: "UserProfile";
@@ -109,7 +109,6 @@ export interface ClientDisplayData {
     userData: DisplayUserProfile[];
     teamContext: Record<number, Record<number | "null", string>>;
     containerContext: string[];
-
 }
 
 export type ClientProfile = Client;

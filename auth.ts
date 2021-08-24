@@ -1,6 +1,5 @@
 import { Point } from "geojson";
 
-
 /**
  *
  * Defines types relevant to authenticating client users, managing push notification subscriptions
