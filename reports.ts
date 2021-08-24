@@ -82,7 +82,7 @@ export const AllReportTypes: reportType[] = [
     "Theft",
     "Vandalism",
     "Violent Crime",
-    "Other"
+    "Other",
 ];
 
 export type ClientReportActions = "Assisting" | "Observing" | "Coordinating" | "Following" | "No Actions";
@@ -155,7 +155,7 @@ export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | Non
         "Robbery",
         "Arms & Ammunition",
         "Terrorism",
-        "Rioting"
+        "Rioting",
     ],
     "Non-Violent": [
         "Protest",
@@ -171,18 +171,10 @@ export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | Non
         "Auto Theft",
         "Vandalism",
         "Disorderly Conduct",
-        "Property Damage"
+        "Property Damage",
     ],
-    Hazard: [
-        "Dangerous Terrain",
-        "Roadblock",
-        "Fire",
-        "Police",
-        "Checkpoint",
-        "Explosion (Accidental)",
-        "Auto Accident"
-    ],
-    Other: ["Other", "Suspicious Activity", "Suspicious Vehicle", "Suspicious Object"]
+    Hazard: ["Dangerous Terrain", "Roadblock", "Fire", "Police", "Checkpoint", "Explosion (Accidental)", "Auto Accident"],
+    Other: ["Other", "Suspicious Activity", "Suspicious Vehicle", "Suspicious Object"],
 };
 
 export type PublicReportSourceType =
@@ -347,7 +339,7 @@ export interface ClientAlertReport {
 }
 
 export interface ReportBase {
-    //Part A: Transportation Details (based on setting)
+    // Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
     ship_flag?: string;
@@ -368,7 +360,7 @@ export interface ReportBase {
     vehicle_registration?: string;
     vehicle_identifiers?: string;
     vehicle_makemodel?: string;
-    //Part B: Incident Details
+    // Part B: Incident Details
     nearest_landmark?: string;
     ship_port_town?: string;
     vehicle_town?: string;
@@ -388,7 +380,7 @@ export interface ReportBase {
     personal_situation_description?: string;
     admin_points?: string;
     other_details?: string;
-    //Part C: Details of Raiding Party
+    // Part C: Details of Raiding Party
     number_of_perps?: number;
     perp_age?: string;
     perp_build?: string;
@@ -405,7 +397,7 @@ export interface ReportBase {
     method_approach?: string;
     attack_duration?: number;
     aggression?: string;
-    //Part D: Details Weapons and Damage
+    // Part D: Details Weapons and Damage
     weapons_sighted?: number;
     weapons_used?: number;
     weapons_type?: WeaponType;
@@ -414,7 +406,7 @@ export interface ReportBase {
     damage_details?: string;
     ladders_sighted?: number;
     other_equipment?: string;
-    //Part E: Other Details
+    // Part E: Other Details
     ship_action_taken?: string;
     vehicle_action_taken?: string;
     incident_reported_authorities?: string;
@@ -427,7 +419,7 @@ export interface ReportBase {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
-    //Part F: Client Imported Report I
+    // Part F: Client Imported Report I
     report_classification?: ReportClassification;
     OB_number?: string;
     category?: string;
@@ -447,7 +439,7 @@ export interface FullClientReport {
     alert_report_id: number | null;
     modified_at: Date;
     client_id: number;
-    //Part A: Transportation Details (based on setting)
+    // Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
     ship_flag?: string;
@@ -468,7 +460,7 @@ export interface FullClientReport {
     vehicle_registration?: string;
     vehicle_identifiers?: string;
     vehicle_makemodel?: string;
-    //Part B: Incident Details
+    // Part B: Incident Details
     nearest_landmark?: string;
     ship_port_town?: string;
     vehicle_town?: string;
@@ -488,7 +480,7 @@ export interface FullClientReport {
     personal_situation_description?: string;
     admin_points?: string;
     other_details?: string;
-    //Part C: Details of Raiding Party
+    // Part C: Details of Raiding Party
     number_of_perps?: number;
     perp_age?: string;
     perp_build?: string;
@@ -505,7 +497,7 @@ export interface FullClientReport {
     method_approach?: string;
     attack_duration?: number;
     aggression?: string;
-    //Part D: Details Weapons and Damage
+    // Part D: Details Weapons and Damage
     weapons_sighted?: number;
     weapons_used?: number;
     weapons_type?: WeaponType;
@@ -514,7 +506,7 @@ export interface FullClientReport {
     damage_details?: string;
     ladders_sighted?: number;
     other_equipment?: string;
-    //Part E: Other Details
+    // Part E: Other Details
     ship_action_taken?: string;
     vehicle_action_taken?: string;
     incident_reported_authorities?: string;
@@ -527,7 +519,7 @@ export interface FullClientReport {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
-    //Part F: Client Imported Report I
+    // Part F: Client Imported Report I
     report_classification?: ReportClassification;
     OB_number?: string;
     category?: string;
@@ -545,13 +537,13 @@ export interface FullClientReport {
  * Creating a Full Client Report
  */
 export interface FullClientReportToInsert {
-    //MUST PASS IN SETTING, A QUICK REPORT ID, AND TIME OF MODIFICATION
+    // MUST PASS IN SETTING, A QUICK REPORT ID, AND TIME OF MODIFICATION
     setting?: Setting;
     quick_report_id: number | null;
     alert_report_id: number | null;
     client_id: number;
     team_id?: number;
-    //Part A: Transportation Details (based on setting)
+    // Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
     ship_flag?: string;
@@ -572,7 +564,7 @@ export interface FullClientReportToInsert {
     vehicle_registration?: string;
     vehicle_identifiers?: string;
     vehicle_makemodel?: string;
-    //Part B: Incident Details
+    // Part B: Incident Details
     nearest_landmark?: string;
     ship_port_town?: string;
     vehicle_town?: string;
@@ -592,7 +584,7 @@ export interface FullClientReportToInsert {
     personal_situation_description?: string;
     admin_points?: string;
     other_details?: string;
-    //Part C: Details of Raiding Party
+    // Part C: Details of Raiding Party
     number_of_perps?: number;
     perp_age?: string;
     perp_build?: string;
@@ -609,7 +601,7 @@ export interface FullClientReportToInsert {
     method_approach?: string;
     attack_duration?: number;
     aggression?: string;
-    //Part D: Details Weapons and Damage
+    // Part D: Details Weapons and Damage
     weapons_sighted?: number;
     weapons_used?: number;
     weapons_type?: WeaponType;
@@ -618,7 +610,7 @@ export interface FullClientReportToInsert {
     damage_details?: string;
     ladders_sighted?: number;
     other_equipment?: string;
-    //Part E: Other Details
+    // Part E: Other Details
     ship_action_taken?: string;
     vehicle_action_taken?: string;
     incident_reported_authorities?: string;
@@ -631,7 +623,7 @@ export interface FullClientReportToInsert {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
-    //Part F: Client Imported Report I
+    // Part F: Client Imported Report I
     report_classification?: ReportClassification;
     OB_number?: string;
     category?: string;
@@ -649,11 +641,11 @@ export interface FullClientReportToInsert {
   Updating a full client report
 */
 export interface FullClientReportUpdate {
-    //MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
+    // MUST PASS IN SETTING, REPORT ID, AND TIME OF MODIFICATION
     setting?: Setting;
     full_report_id: number;
     photo_url?: string;
-    //Part A: Transportation Details (based on setting)
+    // Part A: Transportation Details (based on setting)
     ship_name?: string;
     ship_IMO_number?: number;
     ship_flag?: string;
@@ -674,7 +666,7 @@ export interface FullClientReportUpdate {
     vehicle_registration?: string;
     vehicle_identifiers?: string;
     vehicle_makemodel?: string;
-    //Part B: Incident Details
+    // Part B: Incident Details
     nearest_landmark?: string;
     ship_port_town?: string;
     vehicle_town?: string;
@@ -694,7 +686,7 @@ export interface FullClientReportUpdate {
     personal_situation_description?: string;
     admin_points?: string;
     other_details?: string;
-    //Part C: Details of Raiding Party
+    // Part C: Details of Raiding Party
     number_of_perps?: number;
     perp_age?: string;
     perp_build?: string;
@@ -711,7 +703,7 @@ export interface FullClientReportUpdate {
     method_approach?: string;
     attack_duration?: number;
     aggression?: string;
-    //Part D: Details Weapons and Damage
+    // Part D: Details Weapons and Damage
     weapons_sighted?: number;
     weapons_used?: number;
     weapons_type?: WeaponType;
@@ -720,7 +712,7 @@ export interface FullClientReportUpdate {
     damage_details?: string;
     ladders_sighted?: number;
     other_equipment?: string;
-    //Part E: Other Details
+    // Part E: Other Details
     ship_action_taken?: string;
     vehicle_action_taken?: string;
     incident_reported_authorities?: string;
@@ -733,7 +725,7 @@ export interface FullClientReportUpdate {
     vehicle_crew_nationality?: string;
     actor?: Actor;
     target?: Target;
-    //Part F: Client Imported Report I
+    // Part F: Client Imported Report I
     report_classification?: ReportClassification;
     OB_number?: string;
     category?: string;
@@ -918,17 +910,6 @@ export interface CombinedClientReportItem {
     mist_reports?: MISTReport[];
 }
 
-/**
- * For front-end organization
- */
-export interface FullClientReportSections {
-    transportationSection?: ClientReportSeaTransportationSection | ClientReportLandTransportationSection;
-    incidentSection?: ClientReportSeaIncidentSection | ClientReportLandIncidentSection;
-    perpSection?: ClientReportSeaPerpSection | ClientReportLandPerpSection;
-    weaponSection?: ClientReportWeaponSection;
-    otherSection?: ClientReportSeaOtherSection | ClientReportLandOtherSection;
-}
-
 export interface ReportTypeUpdate {
     client_id: number;
     team_id?: number;
@@ -1032,7 +1013,7 @@ export interface MISTReportFields {
     quik_clot?: boolean;
     quik_clot_time?: string;
     opa?: string; // small, medium, large
-    npa?: string; //small, medium, large
+    npa?: string; // small, medium, large
     suction?: boolean;
     collar?: boolean;
     o2?: boolean;
@@ -1122,7 +1103,6 @@ export interface ClientAlertReportToInsertPartial {
     point: Point;
     address?: string;
 }
-
 
 /**
  * Templated client report fields:
