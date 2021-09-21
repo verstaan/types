@@ -23,6 +23,7 @@ export interface UserProfile {
     profile?: Profile | null;
     features?: UserFeatureSelection | null;
     created_at?: Date;
+    deleted?: boolean;
 }
 
 export type UserDesignation = "Medic" | "";
@@ -140,6 +141,7 @@ export interface UserUpdate {
     team_id?: number | null;
     role?: number;
     designation?: string;
+    deleted?: boolean;
 }
 
 export interface AdminUserSelfUpdate {
