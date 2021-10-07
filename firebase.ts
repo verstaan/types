@@ -1,17 +1,17 @@
-import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 import "firebase/analytics";
-import "firebase/auth";
+import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-    apiKey: "AIzaSyB6GQdtvDGb8ozZDFRx7ymAaQaqWUQzUr4",
-    authDomain: "jarvis-46347.firebaseapp.com",
-    projectId: "jarvis-46347",
-    storageBucket: "jarvis-46347.appspot.com",
-    messagingSenderId: "470207736143",
-    appId: "1:470207736143:web:9cd6f282ed84c4983bbd3a",
-    measurementId: "G-94SGZNG6SJ"
+    apiKey: "AIzaSyA4X_XVhMvAYBtVTtWQf6vptanNMelgFDM",
+    authDomain: "jarvis-dev-9a39b.firebaseapp.com",
+    projectId: "jarvis-dev-9a39b",
+    storageBucket: "jarvis-dev-9a39b.appspot.com",
+    messagingSenderId: "691705522763",
+    appId: "1:691705522763:web:7078966778a366da743bce",
+    measurementId: "G-XXRC8H6FZZ"
 };
-  
-firebase.initializeApp(firebaseConfig);
 
-export const auth = firebase.auth();
+initializeApp(firebaseConfig);
+
+export const auth = getAuth();

@@ -1,6 +1,8 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
-import firebase from "firebase/app";
 import { auth } from "../firebase";
+import { User as FirebaseUser } from "firebase/auth";
+import "source-map-support/register";
+
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -122,7 +124,7 @@ const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
 }
 
 // function used in request to get current firebase user
-const getCurrentUser = (): Promise<firebase.User | null> => {
+const getCurrentUser = (): Promise<FirebaseUser | null> => {
     return new Promise((resolve, reject) => {
         const unsubscribe = auth.onAuthStateChanged(user => {
             unsubscribe();
