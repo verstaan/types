@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-named-default,import/no-extraneous-dependencies
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
-import "source-map-support/register";
+// import "source-map-support/register";
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
