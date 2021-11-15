@@ -23,6 +23,8 @@ export interface UserProfile {
     profile?: Profile | null;
     features?: UserFeatureSelection | null;
     created_at?: Date;
+    password_change_token?: string;
+    password_expiry_time?: Date;
 }
 
 export type UserDesignation = "Medic" | "";
