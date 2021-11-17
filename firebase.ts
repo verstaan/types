@@ -1,6 +1,6 @@
 import { initializeApp } from "firebase/app";
 import "firebase/analytics";
-import { getAuth } from "firebase/auth";
+import { getAuth, signInWithCustomToken } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyA4X_XVhMvAYBtVTtWQf6vptanNMelgFDM",
@@ -15,3 +15,4 @@ const firebaseConfig = {
 initializeApp(firebaseConfig);
 
 export const auth = getAuth();
+export const signInCustom = signInWithCustomToken;
