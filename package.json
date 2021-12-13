@@ -6,10 +6,15 @@
     "dependencies": {
         "@types/bunyan": "^1.8.6",
         "@types/events": "^3.0.0",
+        "@types/firebase": "^3.2.1",
+        "@types/formidable": "^1.0.31",
         "@types/geojson": "^7946.0.7",
         "@types/react": "^17.0.15",
         "@types/restify": "^8.4.2",
-        "@types/spdy": "^3.4.4"
+        "@types/spdy": "^3.4.4",
+        "firebase": "^9.1.1",
+        "material-table": "^1.69.3",
+        "source-map-support": "^0.5.20"
     },
     "engines": {
         "node": "14.x"
