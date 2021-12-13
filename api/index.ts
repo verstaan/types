@@ -1,6 +1,9 @@
 // eslint-disable-next-line import/no-named-default,import/no-extraneous-dependencies
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
-// import "source-map-support/register";
+import { auth } from "../firebase";
+import { User as FirebaseUser } from "firebase/auth";
+import "source-map-support/register";
+
 
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
@@ -102,23 +105,11 @@ export class ConnectionError extends Error {
     }
 }
 
-/**
- * Utility method for error handling and normalizing response types.
- */
-export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
-    if (authenticate) {
-        const token = localStorage.getItem("verstaanToken");
-        // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
-        if (!token) {
-            throw new ErrorResponse("No token set in local storage", 302);
-        }
-        config.headers = {
-            Authorization: `Bearer ${token}`,
-            ...config.headers,
-        };
-    }
-
+// function used in request to send response
+const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
     let response: AxiosResponse<RestResponse>;
+    console.log("?????")
+
     try {
         response = await api.request<RestResponse>(config);
     } catch (error) {
@@ -136,6 +127,71 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         return successResponse.result;
     } else {
         // PM2 log?
+
+        console.log("hello???")
+        console.log("Need to check for token expiry here: ");
+        console.log(response);
+
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
+    }
+}
+
+// function used in request to get current firebase user
+const getCurrentUserToken = (): Promise<string | null> => {
+    return new Promise((resolve, reject) => {
+        try {
+            const unsubscribe = auth.onAuthStateChanged(user => {
+                unsubscribe();
+                console.log("Current user: " + user)
+
+                if (user) {
+                    user.getIdToken()
+                        .then((token) => {
+                            resolve(token);
+                        })
+                        .catch((err) => {
+                            console.log("failed to get id token!");
+                            console.log(err)
+                        })
+                } else {
+                    console.log("The user is gone!!!!")
+                }
+
+            }, reject);
+        } catch (err) {
+            console.log("you aint logged in no mo: " + err)
+        }
+
+    });
+}
+
+/**
+ * Utility method for error handling and normalizing response types.
+ */
+export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
+    if (authenticate) {
+        const token = await getCurrentUserToken();
+        if (token) {
+            // signed in
+            // const token = await user.getIdToken()   // pass true in getIdToken() for force refresh
+            // console.log("token: ")
+            // console.log(token)
+            // localStorage.setItem("verstaanToken", token);
+            // console.log("new token", token)
+            // // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
+            // if (!token) {
+            //     throw new ErrorResponse("No token set in local storage", 302);
+            // }
+            config.headers = {
+                Authorization: `Bearer ${token}`,
+                ...config.headers
+            };
+            return getResponse(config);
+        } else {
+            // signed out
+            throw new ErrorResponse("User is signed out", StatusCode.Unauthorized);
+        }
+    } else {
+        return getResponse(config);
     }
 };

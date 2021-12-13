@@ -17,6 +17,7 @@ export interface AdminUserProfile {
     last_name: string;
     phone_primary?: string;
     features?: AdminFeatureSelection | null;
+    deleted?: boolean;
 }
 
 export enum AdminPrivileges {
