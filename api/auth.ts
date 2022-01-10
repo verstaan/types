@@ -12,6 +12,27 @@ export const signIn = (email: string, password: string): Promise<Login> =>
         }
     });
 
+export const resetPasswordEmail = (email: string): Promise<void> =>
+    request<void>(false, {
+        method: "post",
+        url: "/auth/resetPasswordEmail",
+        data: {
+            email
+        }
+    });
+
+
+export const resetPassword = (email: string, code: string, newPassword: string): Promise<void> =>
+    request<void>(false, {
+        method: "post",
+        url: "/auth/resetPassword",
+        data: {
+            email,
+            code,
+            newPassword
+        }
+    });
+
 export const signUp = (
     email: string,
     password: string,

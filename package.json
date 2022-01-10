@@ -9,8 +9,7 @@
         "@types/geojson": "^7946.0.7",
         "@types/react": "^17.0.15",
         "@types/restify": "^8.4.2",
-        "@types/spdy": "^3.4.4",
-        "source-map-support": "^0.5.20"
+        "@types/spdy": "^3.4.4"
     },
     "engines": {
         "node": "14.x"

@@ -48,6 +48,12 @@ export const updateTeam = (data: TeamUpdate): Promise<void> =>
         data: data,
     });
 
+export const deleteUser = (data: UserUpdate): Promise<void> => request<void>(true, {
+    method: "POST",
+    url: "/admin/deleteUser",
+    data: data
+});
+
 export const updateClient = (data: ClientUpdate): Promise<void> =>
     request<void>(true, {
         method: "POST",
@@ -113,6 +119,12 @@ export const updateDefaultRegion = (data: Partial<DefaultRegion> & Pick<DefaultR
         method: "POST",
         url: "/admin/updateDefaultRegion",
         data: data,
+    });
+
+export const getAllUsers = (): Promise<UserProfile[]> => 
+    request<UserProfile[]>(true, {
+        method: "GET",
+        url: "/admin/getAllUsers",
     });
 
 export const createContainer = (data: NewContainer): Promise<number> =>
