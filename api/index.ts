@@ -18,11 +18,11 @@ export const getJarvisUrl = (): string => {
     env = env.toLowerCase();
 
     if (env === "development") {
-        return "https://jarvis-dev.arcturus.us.com";
+        return "https://jarvis-dev.arcturus.co";
     } else if (env === "production") {
-        return "https://jarvis.arcturus.us.com";
+        return "https://jarvis.arcturus.co";
     } else if (env === "staging") {
-        return "https://jarvis-staging.arcturus.us.com";
+        return "https://jarvis-staging.arcturus.co";
     } else if (env === "local") {
         return "http://localhost:5000";
     } else {
