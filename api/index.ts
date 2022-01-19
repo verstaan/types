@@ -1,8 +1,6 @@
-// eslint-disable-next-line import/no-named-default,import/no-extraneous-dependencies
+// eslint-disable-next-line,import/no-extraneous-dependencies
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
 import { auth } from "../firebase";
-import { User as FirebaseUser } from "firebase/auth";
-import "source-map-support/register";
 
 
 // set Jarvis url based on env
