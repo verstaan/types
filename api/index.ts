@@ -106,7 +106,6 @@ export class ConnectionError extends Error {
 // function used in request to send response
 const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
     let response: AxiosResponse<RestResponse>;
-    console.log("?????")
 
     try {
         response = await api.request<RestResponse>(config);
@@ -124,12 +123,7 @@ const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
         console.log(successResponse.message); // PM2 log?
         return successResponse.result;
     } else {
-        // PM2 log?
-
-        console.log("hello???")
-        console.log("Need to check for token expiry here: ");
-        console.log(response);
-
+        console.warn("Received jarvis error response: " + response.data.message ?? "No message");
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
 }
@@ -140,7 +134,6 @@ const getCurrentUserToken = (): Promise<string | null> => {
         try {
             const unsubscribe = auth.onAuthStateChanged(user => {
                 unsubscribe();
-                console.log("Current user: " + user)
 
                 if (user) {
                     user.getIdToken()
@@ -148,16 +141,16 @@ const getCurrentUserToken = (): Promise<string | null> => {
                             resolve(token);
                         })
                         .catch((err) => {
-                            console.log("failed to get id token!");
-                            console.log(err)
+                            console.warn("Failed to retrieve firebase user token: " + err);
                         })
                 } else {
-                    console.log("The user is gone!!!!")
+                    console.warn("Cannot retrieve token, no firebase user is signed in");
                 }
 
             }, reject);
         } catch (err) {
-            console.log("you aint logged in no mo: " + err)
+            console.log("Error in authState listener on token fetch: " + err);
+            reject(err);
         }
 
     });
@@ -168,26 +161,27 @@ const getCurrentUserToken = (): Promise<string | null> => {
  */
 export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
     if (authenticate) {
-        const token = await getCurrentUserToken();
+        // const token = await getCurrentUserToken();
+
+        let token = localStorage.getItem("idToken")
+
+        // TODO: remove firebase token fetch here once supported on jarvis-admin
+        if (!token) {
+            try {
+                token = await getCurrentUserToken()
+            } catch (err) {
+                console.warn("Error retrieving firebase user token: " + err);
+            }
+        }
+
         if (token) {
-            // signed in
-            // const token = await user.getIdToken()   // pass true in getIdToken() for force refresh
-            // console.log("token: ")
-            // console.log(token)
-            // localStorage.setItem("verstaanToken", token);
-            // console.log("new token", token)
-            // // If we don't have a token set in the client application, don't bother sending the request. Just reject with an error response.
-            // if (!token) {
-            //     throw new ErrorResponse("No token set in local storage", 302);
-            // }
             config.headers = {
                 Authorization: `Bearer ${token}`,
                 ...config.headers
             };
             return getResponse(config);
         } else {
-            // signed out
-            throw new ErrorResponse("User is signed out", StatusCode.Unauthorized);
+            throw new ErrorResponse("No token in cache, user is signed out.", StatusCode.Unauthorized);
         }
     } else {
         return getResponse(config);
