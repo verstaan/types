@@ -1,7 +1,6 @@
 import { request } from "./index";
 import { AssetRiskQuery, AssetType, ClientNewAsset } from "../case";
 
-
 export const createAsset = (asset: ClientNewAsset): Promise<void> =>
     request<void>(true, {
         method: "post",
@@ -11,8 +10,8 @@ export const createAsset = (asset: ClientNewAsset): Promise<void> =>
 
 export const getAssetTypes = (): Promise<AssetType[]> =>
     request<AssetType[]>(true, {
-       method: "get",
-       url: "client/case/getAssetTypes"
+        method: "get",
+        url: "client/case/getAssetTypes"
     });
 
 export const getClientAssetsRisks = (): Promise<AssetRiskQuery[]> =>

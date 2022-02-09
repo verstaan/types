@@ -40,18 +40,18 @@ export const getFirebaseConfig = () => {
         env = process.env.BACKEND_ENV;
     }
 
-    switch(env) {
+    switch (env) {
         case "local":
         case "development":
-            return firebaseConfigDevelopment
+            return firebaseConfigDevelopment;
         case "staging":
-            return firebaseConfigStaging
+            return firebaseConfigStaging;
         case "production":
             return firebaseConfigProduction;
         default:
             throw new Error("Unable to determine firebase environment. Set REACT_APP_ENV or BACKEND_ENV to values: local | development | staging | production");
     }
-}
+};
 
 export const firebaseApp = initializeApp(getFirebaseConfig());
 

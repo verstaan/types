@@ -12,7 +12,6 @@ export const signIn = (email: string, password: string): Promise<Login> =>
         }
     });
 
-
 export const resetPasswordEmail = (email: string): Promise<void> =>
     request<void>(false, {
         method: "post",
@@ -21,7 +20,6 @@ export const resetPasswordEmail = (email: string): Promise<void> =>
             email
         }
     });
-
 
 export const resetPassword = (email: string, code: string, newPassword: string): Promise<void> =>
     request<void>(false, {
@@ -34,14 +32,7 @@ export const resetPassword = (email: string, code: string, newPassword: string):
         }
     });
 
-export const signUp = (
-    email: string,
-    password: string,
-    firstname: string,
-    lastname: string,
-    client_id: number,
-    role?: number
-): Promise<void> =>
+export const signUp = (email: string, password: string, firstname: string, lastname: string, client_id: number, role?: number): Promise<void> =>
     request<void>(false, {
         method: "post",
         url: "/auth/signUp",
@@ -118,10 +109,11 @@ export const getPendingUserByToken = (uuid: string) =>
         data: {
             uuid
         }
-});
+    });
 
-export const adminSignIn = (email: string, password: string): Promise<Login> => request<Login>(false, {
-    method: "POST",
-    url: "/auth/adminSignIn",
-    data: { email, password }
-})
+export const adminSignIn = (email: string, password: string): Promise<Login> =>
+    request<Login>(false, {
+        method: "POST",
+        url: "/auth/adminSignIn",
+        data: { email, password }
+    });

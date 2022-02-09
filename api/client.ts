@@ -17,18 +17,7 @@ import {
     MISTReportToInsert,
     MISTReportUpdate
 } from "../reports";
-import {
-    AdminUserSelfUpdate,
-    ClientProfile,
-    PendingUserInvite,
-    Profile,
-    Team,
-    NewTeam,
-    TeamUpdate,
-    UserProfile,
-    UserUpdate,
-    PublicInsight
-} from "../client";
+import { AdminUserSelfUpdate, ClientProfile, PendingUserInvite, Profile, Team, NewTeam, TeamUpdate, UserProfile, UserUpdate, PublicInsight } from "../client";
 import { ContainerResponseItem, GeoAttribution } from "../geo";
 import { Device, DeviceSubscription } from "../auth";
 
@@ -68,7 +57,7 @@ export const getClientDevices = (): Promise<Device[]> =>
     request<Device[]>(true, {
         method: "get",
         url: "/client/getClientDevices"
-    })
+    });
 
 export const createReport = (report: NewClientReport): Promise<void> =>
     request<void>(true, {
@@ -135,8 +124,6 @@ export const removeSubscription = (device_fingerprint: string): Promise<void> =>
             device_fingerprint
         }
     });
-
-
 
 export const updateContainerAndFetchReports = (
     container_id?: number
@@ -234,28 +221,28 @@ export const getTeams = (): Promise<Team[]> =>
     request<Team[]>(true, {
         method: "get",
         url: "client/getTeams"
-    })
+    });
 
 export const createTeam = (team: NewTeam): Promise<void> =>
     request<void>(true, {
         method: "post",
         url: "client/createTeam",
         data: team
-    })
+    });
 
 export const updateTeam = (teamUpdate: TeamUpdate): Promise<void> =>
     request<void>(true, {
         method: "post",
         url: "client/updateTeam",
         data: teamUpdate
-    })
+    });
 
 export const modifyUser = (userUpdate: UserUpdate): Promise<void> =>
     request<void>(true, {
         method: "post",
         url: "client/modifyUser",
         data: userUpdate
-    })
+    });
 
 export const getReportTemplates = (): Promise<ReportTemplate[]> =>
     request<ReportTemplate[]>(true, {
@@ -300,6 +287,6 @@ export const inviteUser = (invite: PendingUserInvite): Promise<void> =>
         method: "post",
         url: "/client/inviteUser",
         data: {
-          ...invite
+            ...invite
         }
     });

@@ -22,7 +22,7 @@ export interface AdminUserProfile {
 
 export enum AdminPrivileges {
     MANAGER = 0,
-    SUPERUSER = 1,
+    SUPERUSER = 1
 }
 
 export interface AdminFeatureSelection {

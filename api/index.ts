@@ -2,7 +2,6 @@
 import { default as axios, AxiosResponse, AxiosRequestConfig } from "axios";
 import { auth } from "../firebase";
 
-
 // set Jarvis url based on env
 export const getJarvisUrl = (): string => {
     let env = process.env.REACT_APP_ENV!;
@@ -24,21 +23,19 @@ export const getJarvisUrl = (): string => {
     } else if (env === "local") {
         return "http://localhost:5000";
     } else {
-        throw Error(
-            "Invalid configuration. " + process.env.REACT_APP_ENV! + ". Accepted values: production | staging | development | local"
-        );
+        throw Error("Invalid configuration. " + process.env.REACT_APP_ENV! + ". Accepted values: production | staging | development | local");
     }
 };
 
 export const api = axios.create({
     baseURL: process.env.REACT_APP_ENV ? getJarvisUrl() : "", // For local testing, replace getJarvisUrl() with localhost url
     xsrfCookieName: "csrftoken",
-    xsrfHeaderName: "X-CSRFTOKEN",
+    xsrfHeaderName: "X-CSRFTOKEN"
 });
 
 export enum Status {
     SUCCESS,
-    ERROR,
+    ERROR
 }
 
 export enum StatusCode {
@@ -60,7 +57,7 @@ export enum StatusCode {
     IncorrectPassword,
     ClientLogicError,
 
-    InternalServerError = 500,
+    InternalServerError = 500
 }
 
 /**
@@ -83,7 +80,7 @@ export class SuccessResponse<T> extends RestResponse {
             status: Status.SUCCESS,
             statusCode: StatusCode.Success,
             message,
-            result,
+            result
         });
     }
 }
@@ -126,13 +123,13 @@ const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
         console.warn("Received jarvis error response: " + response.data.message ?? "No message");
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
-}
+};
 
 // function used in request to get current firebase user
 const getCurrentUserToken = (): Promise<string | null> => {
     return new Promise((resolve, reject) => {
         try {
-            const unsubscribe = auth.onAuthStateChanged(user => {
+            const unsubscribe = auth.onAuthStateChanged((user) => {
                 unsubscribe();
 
                 if (user) {
@@ -142,19 +139,17 @@ const getCurrentUserToken = (): Promise<string | null> => {
                         })
                         .catch((err) => {
                             console.warn("Failed to retrieve firebase user token: " + err);
-                        })
+                        });
                 } else {
                     console.warn("Cannot retrieve token, no firebase user is signed in");
                 }
-
             }, reject);
         } catch (err) {
             console.log("Error in authState listener on token fetch: " + err);
             reject(err);
         }
-
     });
-}
+};
 
 /**
  * Utility method for error handling and normalizing response types.
@@ -163,12 +158,12 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
     if (authenticate) {
         // const token = await getCurrentUserToken();
 
-        let token = localStorage.getItem("idToken")
+        let token = localStorage.getItem("idToken");
 
         // TODO: remove firebase token fetch here once supported on jarvis-admin
         if (!token) {
             try {
-                token = await getCurrentUserToken()
+                token = await getCurrentUserToken();
             } catch (err) {
                 console.warn("Error retrieving firebase user token: " + err);
             }

@@ -41,13 +41,7 @@ export class StatsPerCategory {
         Object.assign(this, init);
     }
     checkInfo(): boolean {
-        return (
-            this.name !== undefined &&
-            this.name !== "" &&
-            this.count !== undefined &&
-            this.change !== undefined &&
-            this.amountChange !== undefined
-        );
+        return this.name !== undefined && this.name !== "" && this.count !== undefined && this.change !== undefined && this.amountChange !== undefined;
     }
 }
 

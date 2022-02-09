@@ -118,11 +118,4 @@ export interface AssetRiskQuery {
 
 export type AssetConcern = "Profitability" | "Damage/Loss" | "Safety/Harm" | "Operations/Downtime" | "Reputation" | "Environmental";
 
-export const AllAssetConcerns: AssetConcern[] = [
-    "Profitability",
-    "Damage/Loss",
-    "Safety/Harm",
-    "Operations/Downtime",
-    "Reputation",
-    "Environmental",
-];
+export const AllAssetConcerns: AssetConcern[] = ["Profitability", "Damage/Loss", "Safety/Harm", "Operations/Downtime", "Reputation", "Environmental"];

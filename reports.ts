@@ -82,7 +82,7 @@ export const AllReportTypes: reportType[] = [
     "Theft",
     "Vandalism",
     "Violent Crime",
-    "Other",
+    "Other"
 ];
 
 export type ClientReportActions = "Assisting" | "Observing" | "Coordinating" | "Following" | "No Actions";
@@ -121,14 +121,7 @@ export type NonViolentCategory =
     | "Property Damage"
     | "Fraud"
     | "Harassment";
-export type HazardCategory =
-    | "Dangerous Terrain"
-    | "Roadblock"
-    | "Fire"
-    | "Police"
-    | "Checkpoint"
-    | "Explosion (Accidental)"
-    | "Auto Accident";
+export type HazardCategory = "Dangerous Terrain" | "Roadblock" | "Fire" | "Police" | "Checkpoint" | "Explosion (Accidental)" | "Auto Accident";
 export type OtherCategory = "Other" | "Suspicious Activity" | "Suspicious Vehicle" | "Suspicious Object";
 export type EventType = ViolentCategory | NonViolentCategory | HazardCategory | OtherCategory;
 
@@ -155,7 +148,7 @@ export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | Non
         "Robbery",
         "Arms & Ammunition",
         "Terrorism",
-        "Rioting",
+        "Rioting"
     ],
     "Non-Violent": [
         "Protest",
@@ -171,10 +164,10 @@ export const ReportCategories: Record<CategoryTypes, Array<ViolentCategory | Non
         "Auto Theft",
         "Vandalism",
         "Disorderly Conduct",
-        "Property Damage",
+        "Property Damage"
     ],
     Hazard: ["Dangerous Terrain", "Roadblock", "Fire", "Police", "Checkpoint", "Explosion (Accidental)", "Auto Accident"],
-    Other: ["Other", "Suspicious Activity", "Suspicious Vehicle", "Suspicious Object"],
+    Other: ["Other", "Suspicious Activity", "Suspicious Vehicle", "Suspicious Object"]
 };
 
 export type PublicReportSourceType =

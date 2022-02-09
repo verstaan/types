@@ -142,7 +142,7 @@ export const AampUpdateMinimumPrivileges: {
     first_name: AdminPrivileges.MANAGER,
     last_name: AdminPrivileges.MANAGER,
     chat_messages: AdminPrivileges.MANAGER,
-    source_message: AdminPrivileges.MANAGER,
+    source_message: AdminPrivileges.MANAGER
 };
 
 /**
