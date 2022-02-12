@@ -121,6 +121,19 @@ const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
         return successResponse.result;
     } else {
         console.warn("Received jarvis error response: " + response.data.message ?? "No message");
+
+        if (response.data.message && response.data.message.includes("auth/id-token-expired") && auth.currentUser) {
+            console.log("Refreshing token due to jarvis error response...");
+            auth.currentUser
+                .getIdToken(true)
+                .then((token) => {
+                    console.log("Token refreshed on error response: " + token);
+                })
+                .catch((err) => {
+                    console.error("Failed to get new user IdToken on error response: " + err);
+                });
+        }
+
         throw new ErrorResponse(response.data.message ?? "No Message", response.data.statusCode);
     }
 };
