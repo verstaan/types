@@ -169,16 +169,17 @@ const getCurrentUserToken = (): Promise<string | null> => {
  */
 export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
     if (authenticate) {
-        // const token = await getCurrentUserToken();
-
         let token = localStorage.getItem("idToken");
 
-        // TODO: remove firebase token fetch here once supported on jarvis-admin
         if (!token) {
-            try {
-                token = await getCurrentUserToken();
-            } catch (err) {
-                console.warn("Error retrieving firebase user token: " + err);
+            // Only get token through authStateHandler when not in Orion (no fingerprint set)
+            const fingerprint = localStorage.getItem("fingerprint");
+            if (!fingerprint) {
+                try {
+                    token = await getCurrentUserToken();
+                } catch (err) {
+                    console.warn("Error retrieving firebase user token: " + err);
+                }
             }
         }
 
@@ -191,6 +192,7 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         } else {
             throw new ErrorResponse("No token in cache, user is signed out.", StatusCode.Unauthorized);
         }
+
     } else {
         return getResponse(config);
     }
