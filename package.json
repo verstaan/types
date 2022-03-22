@@ -12,6 +12,7 @@
         "@types/react": "^17.0.15",
         "@types/restify": "^8.4.2",
         "@types/spdy": "^3.4.4",
+        "axios": "^0.26.1",
         "firebase": "^9.1.1",
         "material-table": "^1.69.3"
     },
