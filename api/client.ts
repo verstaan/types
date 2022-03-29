@@ -290,3 +290,13 @@ export const inviteUser = (invite: PendingUserInvite): Promise<void> =>
             ...invite
         }
     });
+
+export const disableUser = (user_id: number, enable?: boolean): Promise<void> =>
+    request<void>(true, {
+        method: "post",
+        url: "client/disableUser",
+        data: {
+            user_id,
+            enable
+        }
+    });

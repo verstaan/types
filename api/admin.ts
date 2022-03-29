@@ -40,11 +40,14 @@ export const updateTeam = (data: TeamUpdate): Promise<void> =>
         data
     });
 
-export const deleteUser = (data: UserUpdate): Promise<void> =>
+export const disableUser = (user_id: number, enable?: boolean): Promise<void> =>
     request<void>(true, {
         method: "POST",
-        url: "/admin/deleteUser",
-        data
+        url: "/admin/disableUser",
+        data: {
+            user_id,
+            enable
+        }
     });
 
 export const updateClient = (data: ClientUpdate): Promise<void> =>
