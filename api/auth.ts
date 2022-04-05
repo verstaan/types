@@ -12,15 +12,6 @@ export const signIn = (email: string, password: string): Promise<Login> =>
         }
     });
 
-export const resetPasswordEmail = (email: string): Promise<void> =>
-    request<void>(false, {
-        method: "post",
-        url: "/auth/resetPasswordEmail",
-        data: {
-            email
-        }
-    });
-
 export const resetPassword = (email: string, code: string, newPassword: string): Promise<void> =>
     request<void>(false, {
         method: "post",
@@ -29,6 +20,17 @@ export const resetPassword = (email: string, code: string, newPassword: string):
             email,
             code,
             newPassword
+        }
+    });
+
+// forgotPassword is not yet implemented on the Jarvis side
+export const forgotPassword = (email: string, isPhone: boolean): Promise<any> =>
+    request<any>(false, {
+        method: "post",
+        url: "/auth/forgotPassword",
+        data: {
+            email,
+            isPhone
         }
     });
 
@@ -54,14 +56,6 @@ export const changePassword = (oldPassword: string, newPassword: string): Promis
             oldPassword,
             newPassword
         }
-    });
-
-// forgotPassword is not yet implemented on the Jarvis side
-export const forgotPassword = (): Promise<any> =>
-    request<any>(false, {
-        method: "post",
-        url: "/auth/forgotPassword",
-        data: {}
     });
 
 export const getPendingUserByEmail = (email: string) =>
