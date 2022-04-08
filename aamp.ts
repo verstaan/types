@@ -26,6 +26,7 @@ export interface NewForm {
     fields: AampReportFieldsSpecification;
     immediate_public?: boolean;
     name: string | undefined;
+    accepts_future_reports: boolean;
 }
 
 export interface NewVampReport {
@@ -50,6 +51,7 @@ export interface NewPendingAampReport {
     last_name?: string;
     email?: string;
     date_time?: Date;
+    end_date?: Date | null;
     address?: string;
     description: string;
     chat_messages?: number[];
@@ -58,6 +60,9 @@ export interface NewPendingAampReport {
     media?: string[];
     point?: Point;
     fields: AampReportFields;
+    impact_level: "Low" | "High" | "Priveliged Source";
+    analyst_notes?: string | null;
+    is_future: boolean;
 }
 
 /**
