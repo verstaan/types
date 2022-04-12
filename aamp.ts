@@ -1,4 +1,4 @@
-import { Point } from "geojson";
+import { Geometry, Point } from "geojson";
 import { AdminPrivileges } from "./admin";
 import { reportType } from "./reports";
 
@@ -58,7 +58,7 @@ export interface NewPendingAampReport {
     source_message?: number;
     bot_generated?: boolean;
     media?: string[];
-    point?: Point;
+    point?: Point | Geometry;
     fields: AampReportFields;
     impact_level: "Low" | "High" | "Priveliged Source";
     analyst_notes?: string | null;
