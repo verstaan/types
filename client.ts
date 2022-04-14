@@ -24,6 +24,8 @@ export interface UserProfile {
     features?: UserFeatureSelection | null;
     created_at?: Date;
     disabled?: boolean;
+    verif_code?: string;
+    verif_exp?: Date;
 }
 
 export type UserDesignation = "Medic" | "";
