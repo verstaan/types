@@ -89,11 +89,15 @@ export interface DisplayClient extends Client {
     full_reports: number;
     users: number;
     activity: number;
+    push_notif: number;
 }
 
 export type DisplayTeam = Omit<Team, "id"> & {
     id: number | null;
     type: "Team";
+    users: number;
+    activity: number;
+    push_notif: number;
 };
 
 export interface DisplayUserProfile extends UserProfile {
@@ -104,6 +108,7 @@ export interface DisplayUserProfile extends UserProfile {
     users: number;
     activity: number;
     last_active?: Date;
+    pn_enabled: boolean;
 }
 
 export interface ClientDisplayData {
