@@ -95,6 +95,7 @@ export interface DisplayClient extends Client {
 export type DisplayTeam = Omit<Team, "id"> & {
     id: number | null;
     type: "Team";
+    users: number;
     activity: number;
     push_notif: number;
 };
