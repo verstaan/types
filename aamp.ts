@@ -51,6 +51,7 @@ export interface NewPendingAampReport {
     last_name?: string;
     email?: string;
     date_time?: Date;
+    date_end?: Date | null;
     address?: string;
     description: string;
     chat_messages?: number[];
@@ -62,6 +63,27 @@ export interface NewPendingAampReport {
     impact_level?: "Low" | "High" | "Priveliged Source",
     analyst_notes?: string | null,
     is_future?: boolean,
+}
+
+
+export interface PeninsulaReport {
+    primary_key: Number,
+	id: Number;
+	description: String;
+    container_name: String;       // Will be Chicago for all in this case
+	region_name: String | null;
+	geography: Point | Polygon | LineString;   // GeoJSON format. Polygons only apply to future events
+    report_type: String;
+    actor: String;
+    target: String;
+    date_time: Date;              
+	date_end: Date | null;        // Applies to future event time range
+    is_future: boolean;
+    address: String | null;
+    impact_level: "Low" | "High" | "Privileged Source";
+    analyst_notes: String | null;
+    created_at: Date;
+    modified_at: Date | null;
 }
 
 /**
