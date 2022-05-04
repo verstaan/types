@@ -161,6 +161,8 @@ export const AampUpdateMinimumPrivileges: {
     address: AdminPrivileges.MANAGER,
     date_time: AdminPrivileges.MANAGER,
     description: AdminPrivileges.MANAGER,
+    analyst_notes: AdminPrivileges.MANAGER,
+    impact_level: AdminPrivileges.MANAGER,
     point: AdminPrivileges.MANAGER,
     fields: AdminPrivileges.MANAGER,
     archived: AdminPrivileges.MANAGER,
