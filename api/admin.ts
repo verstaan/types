@@ -393,3 +393,28 @@ export const getUserProfileByID = (user_id: number): Promise<UserProfile> =>
         url: "/admin/getUserProfile",
         data: { user_id }
     });
+
+export const getSummaryData = (date: string, dataset: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/getSummaryData",
+        data: { date, dataset }
+    });
+export const getPublicReports = (date: string | undefined, week: string | undefined, month: string, container: number, region: number | undefined, category: string, category_value: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/getPublicReports",
+        data: { date, week, month, container, region, category, category_value }
+    });
+export const getAllPublicReports = (date: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/getAllPublicReports",
+        data: { date }
+    });
+export const searchNewsDB = (searchterm: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/searchNewsDB",
+        data: { searchterm }
+    });
