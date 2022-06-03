@@ -418,3 +418,10 @@ export const searchNewsDB = (searchterm: string): Promise<any> =>
         url: "/admin/searchNewsDB",
         data: { searchterm }
     });
+
+export const getMonitoringData = (client_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/getMonitoringData",
+        data: { client_id }
+    });
