@@ -24,7 +24,7 @@ export interface Asset {
     team_id?: number;
     description?: string;
     geography: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
-    operation_interval?: string;
+    operation_interval?: {'weekdays': string[], 'time_bins': string[]};
     concerns?: AssetConcern[];
     relevant_event_types?: string[];
     value?: number;
@@ -78,17 +78,24 @@ export interface ClientNewAsset {
     scenario_asset_id?: number;
 }
 
+export interface Forecast {
+    date: Date;
+    h3_cell: string;
+    risk_score: number;
+    risk_index: number;
+}
+
 export interface Risk {
     asset_ids: number[];
     name: string;
     id?: number;
     relevant_event_types: string[];
-    risk_interval: string;
+    risk_interval: {'weekdays': string[], 'time_bins': string[]};
     created_at?: Date;
-    severity: number;
+    severity: any[];
     chance: number;
     updates: RiskUpdate[];
-    geography?: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
+    geography?: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon | string[];
     concerns: AssetConcern[]; // "Profitability" (See below definition)
     consequences: Consequence[]; // see below definition
     is_obsolete: boolean; // "true" indicates this risk is no longer relevant
