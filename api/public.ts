@@ -38,3 +38,10 @@ export const getReports = (): Promise<PublicReport[]> =>
         method: "get",
         url: "/public/getReports"
     });
+
+export const getReportsBounded = (container_id: number, pastXdays: number): Promise<PublicReport[]> =>
+    request<PublicReport[]>(false, {
+        method: "post",
+        url: "/public/getReportsBounded",
+        data: { container_id, pastXdays }
+    });
