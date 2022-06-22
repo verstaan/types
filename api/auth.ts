@@ -113,3 +113,11 @@ export const adminSignIn = (email: string, password: string): Promise<Login> =>
         url: "/auth/adminSignIn",
         data: { email, password }
     });
+
+
+export const caseSignIn = (email: string, password: string): Promise<Login> =>
+    request<Login>(false, {
+        method: "POST",
+        url: "/auth/caseSignIn",
+        data: { email, password }
+    });

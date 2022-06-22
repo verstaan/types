@@ -39,6 +39,7 @@ export const getReports = (): Promise<PublicReport[]> =>
         url: "/public/getReports"
     });
 
+
 export const getReportsBounded = (container_id: number, pastXdays: number): Promise<PublicReport[]> =>
     request<PublicReport[]>(false, {
         method: "post",

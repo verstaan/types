@@ -6,6 +6,34 @@ import { LineString, MultiLineString, MultiPoint, MultiPolygon, Point, Polygon }
  *
  */
 
+
+ export interface CaseUserProfile {
+    id: number;
+    email: string;
+    password: string;
+    privileges: CasePrivileges;
+    first_name: string;
+    last_name: string;
+    phone_primary?: string;
+    deleted?: boolean;
+}
+
+export enum CasePrivileges {
+    MANAGER = 0,
+    SUPERUSER = 1
+}
+
+
+export interface NewCaseUser {
+    email: string;
+    first_name: string;
+    last_name: string;
+    password: string | undefined;
+    privileges: CasePrivileges | undefined;
+    phone_primary?: string;
+}
+
+
 export interface AssetType {
     name: string;
     description: string;
@@ -21,7 +49,7 @@ export interface Asset {
     name: string;
     asset_type: string;
     client_id?: number;
-    team_id?: number;
+    group_id?: number;
     description?: string;
     geography: Point | MultiPoint | LineString | MultiLineString | Polygon | MultiPolygon;
     operation_interval?: {'weekdays': string[], 'time_bins': string[]};
@@ -88,7 +116,7 @@ export interface Forecast {
 export interface Risk {
     asset_ids: number[];
     name: string;
-    id?: number;
+    id: number;
     relevant_event_types: string[];
     risk_interval: {'weekdays': string[], 'time_bins': string[]};
     created_at?: Date;
@@ -126,3 +154,25 @@ export interface AssetRiskQuery {
 export type AssetConcern = "Profitability" | "Damage/Loss" | "Safety/Harm" | "Operations/Downtime" | "Reputation" | "Environmental";
 
 export const AllAssetConcerns: AssetConcern[] = ["Profitability", "Damage/Loss", "Safety/Harm", "Operations/Downtime", "Reputation", "Environmental"];
+
+export interface Association {
+    id: number;
+    obj1_id: number;
+    obj1_category: string;
+    obj2_id: number;
+    obj2_category: string;
+    notes: string | null;
+}
+
+export interface Severity {
+    weekday: string;
+    time_bin: string;
+    risk_score: number;
+    risk_index: number;
+}
+
+export interface Group {
+    id: number;
+    name: string;
+    client_id: number;
+}
