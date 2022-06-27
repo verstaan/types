@@ -230,3 +230,13 @@ export interface SubscriptionData {
     point: Point | undefined;
     modified_at: Date | undefined;
 }
+
+export interface ScheduledMesssage {
+    id: number;
+    created_at: Date;
+    scheduled_for: Date;
+    container_id: number;
+    text: string;
+    has_been_sent: Boolean;
+    sent_by: number; // admin user id of person who sent the message
+}
