@@ -197,16 +197,3 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         return getResponse(config);
     }
 };
-
-// export const request = ({ ...options }) => {
-//     let token = localStorage.getItem("idToken");
-//     api.defaults.headers.common.Authorization = `Bearer ${token}`;
-
-//     const onSuccess = (response: any) => response;
-//     const onError = (error: any) => {
-//         // optionaly catch errors and add some additional logging here
-//         return error;
-//     };
-
-//     return api(options).then(onSuccess).catch(onError);
-// };
