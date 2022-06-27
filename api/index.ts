@@ -184,6 +184,7 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         }
 
         if (token) {
+            api.defaults.headers.common.Authorization = `Bearer ${token}`;
             config.headers = {
                 Authorization: `Bearer ${token}`,
                 ...config.headers
@@ -192,8 +193,20 @@ export const request = async <T>(authenticate: boolean, config: AxiosRequestConf
         } else {
             throw new ErrorResponse("No token in cache, user is signed out.", StatusCode.Unauthorized);
         }
-
     } else {
         return getResponse(config);
     }
 };
+
+// export const request = ({ ...options }) => {
+//     let token = localStorage.getItem("idToken");
+//     api.defaults.headers.common.Authorization = `Bearer ${token}`;
+
+//     const onSuccess = (response: any) => response;
+//     const onError = (error: any) => {
+//         // optionaly catch errors and add some additional logging here
+//         return error;
+//     };
+
+//     return api(options).then(onSuccess).catch(onError);
+// };
