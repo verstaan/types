@@ -207,18 +207,18 @@ export interface UserFeatureSelection {
 
 export interface PublicInsight {
     id: number;
-    container_id: number;
+    container_ids: number[];
     default_region_id?: number;
     title: string;
-    content: Map<string, string | string[]>;
+    content: {};
     created_at: Date;
 }
 
 export interface NewPublicInsight {
-    container_id: number;
+    container_ids: number[];
     default_region_id?: number;
     title: string;
-    content: Map<string, string>;
+    content: {};
 }
 
 export interface SubscriptionData {
