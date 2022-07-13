@@ -895,6 +895,13 @@ export interface ReportNotificationData {
     id: string;
 }
 
+export interface BulletinNotificationData {
+    id: undefined;
+    type: string;
+    title: string;
+    text: string;
+}
+
 export interface CombinedClientReportItem {
     id: number;
     type: "Quick" | "Alert";
