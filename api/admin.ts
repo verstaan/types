@@ -426,9 +426,9 @@ export const getMonitoringData = (client_id: number): Promise<any> =>
         data: { client_id }
     });
 
-export const handleScheduledMessages = (mode: string, scheduled_for: Date | null, container_ids: number[] | null, title: string | null, text: string | null, sent_by: number | null, id_to_delete: number | null): Promise<any> =>
+export const handleScheduledMessages = (mode: string, scheduled_for: Date | null, container_ids: number[] | null, region_ids: number[] | null, title: string | null, text: string | null, sent_by: number | null, id_to_delete: number | null, is_test: Boolean): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/handleScheduledMessages",
-        data: { mode, scheduled_for, container_ids, title, text, sent_by, id_to_delete }
+        data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test }
     });
