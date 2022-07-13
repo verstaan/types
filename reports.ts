@@ -888,7 +888,7 @@ export interface ClientReportImportOne {
     summary?: string;
 }
 
-export type ReportNotificationType = "Public" | "Quick" | "Alert" | "Alert-Update" | "Alert-Cancel" | "Alert-Confirm";
+export type ReportNotificationType = "Public" | "Quick" | "Alert" | "Alert-Update" | "Alert-Cancel" | "Alert-Confirm" | "Bulletin";
 
 export interface ReportNotificationData {
     type: ReportNotificationType;

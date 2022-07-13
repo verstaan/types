@@ -203,12 +203,13 @@ export interface UserFeatureSelection {
     publicInsightsMenu?: boolean | null;
     newsfeedMenu?: boolean | null;
     tracking?: boolean | null;
+    requestedBulletinRegion?: number[] | null;
 }
 
 export interface PublicInsight {
     id: number;
     container_ids: number[];
-    default_region_id?: number;
+    default_region_ids?: number[];
     title: string;
     content: {};
     created_at: Date;
@@ -216,7 +217,7 @@ export interface PublicInsight {
 
 export interface NewPublicInsight {
     container_ids: number[];
-    default_region_id?: number;
+    default_region_ids?: number[];
     title: string;
     content: {};
 }
@@ -235,7 +236,8 @@ export interface ScheduledMesssage {
     id: number;
     created_at: Date;
     scheduled_for: Date;
-    container_id: number;
+    container_ids: number[];
+    default_region_ids: number[];
     text: string;
     has_been_sent: Boolean;
     sent_by: number; // admin user id of person who sent the message
