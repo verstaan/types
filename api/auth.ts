@@ -58,21 +58,23 @@ export const changePassword = (oldPassword: string, newPassword: string): Promis
         }
     });
 
-export const getPendingUserByEmail = (email: string) =>
+export const getPendingUserByEmail = (email: string, fingerprint?: string) =>
     request<PendingUser | null>(false, {
         method: "post",
         url: "/auth/signUp/getPendingUserByEmail",
         data: {
-            email
+            email,
+            fingerprint
         }
     });
 
-export const getPendingUserByPhone = (phone: string) =>
+export const getPendingUserByPhone = (phone: string, fingerprint?: string) =>
     request<PendingUser>(false, {
         method: "post",
         url: "/auth/signUp/getPendingUserByPhone",
         data: {
-            phone
+            phone,
+            fingerprint
         }
     });
 
