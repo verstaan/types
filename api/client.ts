@@ -300,3 +300,10 @@ export const disableUser = (user_id: number, enable?: boolean): Promise<void> =>
             enable
         }
     });
+
+export const customLogging = (routeMessage: string): Promise<void> =>
+    request<void>(true, {
+        method: "post",
+        url: "/client/customLogging",
+        data: {routeMessage}
+    });
