@@ -425,3 +425,10 @@ export const getMonitoringData = (client_id: number): Promise<any> =>
         url: "/admin/getMonitoringData",
         data: { client_id }
     });
+
+export const testUserNotifs = (user_id: number, report_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/testUserNotifs",
+        data: { user_id, report_id }
+    });
