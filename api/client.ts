@@ -307,3 +307,23 @@ export const customLogging = (routeMessage: string): Promise<void> =>
         url: "/client/customLogging",
         data: {routeMessage}
     });
+export const fetchUserPaymentInfo = (user_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "post",
+        url: "/client/fetchUserPaymentInfo",
+        data: { user_id }
+    });
+
+export const addUserPayment = (user_id: number, payment_amount: number, months_purchased: number): Promise<number> =>
+    request<number>(true, {
+        method: "post",
+        url: "/client/addUserPayment",
+        data: { user_id, payment_amount, months_purchased }
+    });
+
+export const checkForMpesaTransaction = (payment_id: number): Promise<boolean> =>
+    request<boolean>(true, {
+        method: "post",
+        url: "/client/checkForMpesaTransaction",
+        data: { payment_id }
+    });
