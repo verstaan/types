@@ -22,21 +22,21 @@ export const getClientAssetsRisks = (): Promise<AssetRiskQuery[]> =>
 
 export const fetchAssetsByClientOrGroup = (by: string, query_id: number): Promise<Asset[]> =>
     request<Asset[]>(true, {
-        method: "get",
+        method: "post",
         url: "/case-core/fetchAssetsByClientOrGroup",
         data: {by, query_id}
     });
 
 export const fetchGroupsByClient = (client_id: number): Promise<Group[]> =>
     request<Group[]>(true, {
-        method: "get",
+        method: "post",
         url: "/case-core/fetchGroupsByClient",
         data: { client_id }
     });
 
 export const fetchGroupById = (group_id: number): Promise<Group> =>
     request<Group>(true, {
-        method: "get",
+        method: "post",
         url: "/case-core/fetchGroupById",
         data: { group_id }
     });

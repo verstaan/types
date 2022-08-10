@@ -71,6 +71,13 @@ export const createAdminUser = (data: NewAdminUser): Promise<number> =>
         data
     });
 
+export const createCaseUser = (email: string, password: string, first_name: string, last_name: string): Promise<number> =>
+    request<number>(true, {
+        method: "POST",
+        url: "/admin/createCaseUser",
+        data: {email, password, first_name, last_name}
+    });
+
 export const createTeam = (data: NewTeamAdmin): Promise<number> =>
     request<number>(true, {
         method: "POST",
