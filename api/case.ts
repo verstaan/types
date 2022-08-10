@@ -1,5 +1,5 @@
 import { request } from "./index";
-import { Asset, AssetRiskQuery, AssetType, ClientNewAsset, Group } from "../case";
+import { Asset, AssetRiskQuery, AssetType, ClientNewAsset, Group, CaseUserProfile } from "../case";
 
 export const createAsset = (asset: ClientNewAsset): Promise<void> =>
     request<void>(true, {
@@ -39,4 +39,10 @@ export const fetchGroupById = (group_id: number): Promise<Group> =>
         method: "post",
         url: "/case-core/fetchGroupById",
         data: { group_id }
+    });
+
+export const getCaseUserProfile = (): Promise<CaseUserProfile> =>
+    request<CaseUserProfile>(true, {
+        method: "GET",
+        url: "/case-core/getCaseUserProfile"
     });
