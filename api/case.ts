@@ -43,6 +43,6 @@ export const fetchGroupById = (group_id: number): Promise<Group> =>
 
 export const getCaseUserProfile = (): Promise<CaseUserProfile> =>
     request<CaseUserProfile>(true, {
-        method: "GET",
+        method: "post",
         url: "/case-core/getCaseUserProfile"
     });

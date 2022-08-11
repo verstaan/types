@@ -16,6 +16,7 @@ import { LineString, MultiLineString, MultiPoint, MultiPolygon, Point, Polygon }
     last_name: string;
     phone_primary?: string;
     client_id: number;
+    current_container: number;
 }
 
 export enum CasePrivileges {
