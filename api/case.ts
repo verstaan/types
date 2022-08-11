@@ -1,5 +1,5 @@
 import { request } from "./index";
-import { Asset, AssetRiskQuery, AssetType, ClientNewAsset, Group, CaseUserProfile } from "../case";
+import { Asset, AssetRiskQuery, AssetType, ClientNewAsset, Group, CaseUserProfile, CaseClient } from "../case";
 
 export const createAsset = (asset: ClientNewAsset): Promise<void> =>
     request<void>(true, {
@@ -45,4 +45,10 @@ export const getCaseUserProfile = (): Promise<CaseUserProfile> =>
     request<CaseUserProfile>(true, {
         method: "post",
         url: "/case-core/getCaseUserProfile"
+    });
+
+export const getCaseClient = (): Promise<any> =>
+    request<any>(true, {
+        method: "post",
+        url: "/case-core/getCaseClient"
     });

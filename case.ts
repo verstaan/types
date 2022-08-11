@@ -19,6 +19,14 @@ import { LineString, MultiLineString, MultiPoint, MultiPolygon, Point, Polygon }
     current_container: number;
 }
 
+export interface CaseClient {
+    id: number;
+    name: string;
+    primary_email: string;
+    created_at: string;
+    enabled_containers: number[];
+}
+
 export enum CasePrivileges {
     MANAGER = 0,
     SUPERUSER = 1
