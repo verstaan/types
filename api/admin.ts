@@ -434,9 +434,9 @@ export const testUserNotifs = (user_id: number, report_id: number): Promise<any>
         data: { user_id, report_id }
     });
 
-export const handleScheduledMessages = (mode: string, scheduled_for: Date | null, container_ids: number[] | null, region_ids: number[] | null, title: string | null, text: string | null, sent_by: number | null, id_to_delete: number | null, is_test: Boolean | null): Promise<any> =>
+export const handleScheduledMessages = (mode: string, scheduled_for: Date | null, container_ids: number[] | null, region_ids: number[] | null, title: string | null, text: string | null, sent_by: number | null, id_to_delete: number | null, is_test: Boolean | null, custom_user_ids: number[]): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/handleScheduledMessages",
-        data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test }
+        data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test, custom_user_ids }
     });

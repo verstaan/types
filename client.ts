@@ -220,6 +220,7 @@ export interface NewPublicInsight {
     default_region_ids?: number[];
     title: string;
     content: {};
+    custom_user_ids: number[]
 }
 
 export interface SubscriptionData {
