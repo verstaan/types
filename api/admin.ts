@@ -13,12 +13,13 @@ import {
     ChatFormLink,
     QueryResult
 } from "../admin";
-import { AdminNewAsset, Asset, AssetType, Risk } from "../case";
+import { AdminNewAsset, Asset, AssetType, NewCaseClient, Risk } from "../case";
 import { CountedForm, FormUpdate, editHistory, PendingAampReport, PendingAampReportUpdate, TelegramChat, TelegramMessageDetails } from "../aamp";
 import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
+import { CaseClient, Group } from "../case";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -71,11 +72,18 @@ export const createAdminUser = (data: NewAdminUser): Promise<number> =>
         data
     });
 
-export const createCaseUser = (email: string, password: string, first_name: string, last_name: string): Promise<number> =>
+export const createCaseUser = (email: string, password: string, first_name: string, last_name: string, client_id: number): Promise<number> =>
     request<number>(true, {
         method: "POST",
         url: "/admin/createCaseUser",
-        data: {email, password, first_name, last_name}
+        data: {email, password, first_name, last_name, client_id}
+    });
+
+export const createCaseClient = (client: NewCaseClient): Promise<void> =>
+    request<void>(true, {
+        method: "POST",
+        url: "/admin/createCaseClient",
+        data: {client}
     });
 
 export const createTeam = (data: NewTeamAdmin): Promise<number> =>
@@ -446,4 +454,17 @@ export const handleScheduledMessages = (mode: string, scheduled_for: Date | null
         method: "POST",
         url: "/admin/handleScheduledMessages",
         data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test, custom_user_ids }
+    });
+
+export const getAllCaseClients = (): Promise<CaseClient[]> =>
+    request<any>(true, {
+        method: "post",
+        url: "/admin/getAllCaseClients"
+    });
+
+export const fetchGroupsByClient = (client_id: number): Promise<Group[]> =>
+    request<Group[]>(true, {
+        method: "post",
+        url: "/admin/fetchGroupsByClient",
+        data: { client_id }
     });

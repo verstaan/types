@@ -38,10 +38,16 @@ export interface NewCaseUser {
     first_name: string;
     last_name: string;
     password: string | undefined;
+    client_id: number;
     privileges: CasePrivileges | undefined;
     phone_primary?: string;
 }
 
+export interface NewCaseClient {
+    name: string;
+    primary_email: string;
+    enabled_containers: number[];
+}
 
 export interface AssetType {
     name: string;
