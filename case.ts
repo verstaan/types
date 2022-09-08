@@ -191,3 +191,9 @@ export interface Group {
     name: string;
     client_id: number;
 }
+
+export interface NewsfeedItem {
+    title: string;
+    type: string;
+    text: string;
+}

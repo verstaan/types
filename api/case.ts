@@ -52,3 +52,9 @@ export const getCaseClient = (): Promise<any> =>
         method: "post",
         url: "/case-core/getCaseClient"
     });
+
+export const generateClientNewsfeed = (): Promise<any> =>
+    request<any>(true, {
+        method: "post",
+        url: "/case-core/getClientNewsfeed"
+    });
