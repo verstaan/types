@@ -19,6 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
+import { TravelTrip } from "../travelApp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -439,4 +440,10 @@ export const handleScheduledMessages = (mode: string, scheduled_for: Date | null
         method: "POST",
         url: "/admin/handleScheduledMessages",
         data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test, custom_user_ids }
+    });
+
+export const getPendingTrips = (): Promise<TravelTrip> =>
+    request<TravelTrip>(false, {
+        method: "POST",
+        url: "/admin/travelApp/getPendingTrips",
     });
