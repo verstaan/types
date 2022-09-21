@@ -442,8 +442,29 @@ export const handleScheduledMessages = (mode: string, scheduled_for: Date | null
         data: { mode, scheduled_for, container_ids, region_ids, title, text, sent_by, id_to_delete, is_test, custom_user_ids }
     });
 
-export const getPendingTrips = (): Promise<TravelTrip> =>
-    request<TravelTrip>(false, {
+export const getPendingTrips = (): Promise<any> =>
+    request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/getPendingTrips",
+    });
+
+export const getTravelUserById = (user_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/getTravelUserById",
+        data: { user_id }
+    });
+
+export const getTripById = (trip_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/getTripById",
+        data: { trip_id }
+    });
+
+export const getTripDestinations = (trip_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/getTripDestinations",
+        data: { trip_id }
     });
