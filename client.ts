@@ -204,6 +204,7 @@ export interface UserFeatureSelection {
     newsfeedMenu?: boolean | null;
     tracking?: boolean | null;
     requestedBulletinRegion?: number[] | null;
+    premium?: boolean | null;
 }
 
 export interface PublicInsight {
