@@ -1,4 +1,4 @@
-import { MultiPolygon, Polygon, Point } from "geojson";
+import { MultiPolygon, Polygon, Point, FeatureCollection } from "geojson";
 
 export interface TripCharacteristics {
     has_children: boolean | null;
@@ -41,4 +41,10 @@ export interface TravelDestination {
     point_location: Point;
     destination_characteristics: DestinationCharacteristics;
     destination_type: string | null;
+}
+
+export interface DestinationOutputs {
+    kde_violent: FeatureCollection;
+    kde_nonviolent: FeatureCollection;
+    rt_prop: JSON;
 }

@@ -468,3 +468,10 @@ export const getTripDestinations = (trip_id: number): Promise<any> =>
         url: "/admin/travelApp/getTripDestinations",
         data: { trip_id }
     });
+
+export const compileDestinationOutputs = (user_id: number, trip_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/compileDestinationOutputs",
+        data: { user_id, trip_id }
+    });
