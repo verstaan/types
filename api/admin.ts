@@ -19,7 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
-import { TravelTrip } from "../travelApp";
+import { DestinationOutputs, TravelTrip } from "../travelApp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -474,4 +474,11 @@ export const compileDestinationOutputs = (user_id: number, trip_id: number): Pro
         method: "POST",
         url: "/admin/travelApp/compileDestinationOutputs",
         data: { user_id, trip_id }
+    });
+
+export const approveTrip = (user_id: number, trip_id: number, tripOutputs: DestinationOutputs[]): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/approveTrip",
+        data: { user_id, trip_id, tripOutputs }
     });
