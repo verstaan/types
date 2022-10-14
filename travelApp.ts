@@ -34,7 +34,6 @@ export interface TravelTrip {
     trip_start: Date;
     trip_end: Date;
     trip_characteristics: TripCharacteristics;
-    is_pending: Boolean;
     trip_owner: number;
     travel_group_id: number | null;
     attending_users: number[];
@@ -68,6 +67,7 @@ export interface TravelDestination {
     point_location: Point;
     destination_characteristics: DestinationCharacteristics;
     destination_type: string | null;
+    //country_abbv: string;
 }
 
 export interface SecondaryDestinationOutputs {
@@ -105,5 +105,28 @@ export interface TravelUserData {
     trips: TravelTrip[];
     destinations: TravelDestination[];
     outputs: DestinationOutputs[];
-    
+}
+
+export interface TravelIndex {
+    name: string;
+    value: string;
+    severity: number;
+    source: string;
+}
+
+export interface TravelCountryProfile {
+    id: number;
+    abbr: string;
+    name: string;
+    overall_safety_ranking: number;
+    indices: TravelIndex[];
+}
+
+export interface TravelOSINT {
+    id: number;
+    report_type_v2: string;
+    category: "violent" | "nonviolent";
+    point: Point;
+    description: string;
+    country_abbr: string;
 }
