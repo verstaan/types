@@ -113,3 +113,23 @@ export const adminSignIn = (email: string, password: string): Promise<Login> =>
         url: "/auth/adminSignIn",
         data: { email, password }
     });
+
+export const travelSignIn = (email: string, password: string): Promise<Login> =>
+    request<Login>(false, {
+        method: "post",
+        url: "/auth/travelSignIn",
+        data: {
+            email,
+            password
+        }
+    });
+
+export const travelForgotPassword = (email: string, isPhone: boolean): Promise<any> =>
+    request<any>(false, {
+        method: "post",
+        url: "/auth/travelForgotPassword",
+        data: {
+            email,
+            isPhone
+        }
+    });
