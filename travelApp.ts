@@ -1,20 +1,23 @@
 import { MultiPolygon, Polygon, Point, FeatureCollection } from "geojson";
 
 export interface TripCharacteristics {
-    has_children?: boolean | null;
+    has_children?: boolean;
+    party_size?: number;
 }
 
 export interface UserCharacteristics {
-    sex?: string | null;
-    bday?: string | null;
-    socioecon?: string | null;
-    socialstatus?: string | null;
-    sexualorientation?: string | null;
+    sex?: string;
+    bday?: string;
+    socioecon?: number; // from 1-5, how wealthy are you?
+    socialstatus?: "unknown" | "mildly wellknown" | "famous" | "very famous";
+    sexualorientation?: string;
 }
 
 export interface DestinationCharacteristics {
     crowded_factors?: string[];
-    time_in_public?: number // out of 10, 10 being the most time in public
+    time_in_public?: number; // out of 10, 10 being the most time in public
+    reason_for_going?: "business" | "personal";
+    time_windows?: string[];
 }
 
 export interface TravelPendingTrip {
@@ -61,13 +64,14 @@ export interface TravelNewDestination {
 }
 
 export interface TravelDestination {
+    id: number;
     name: string;
     trip_id: number;
     group_id: number | null;
     point_location: Point;
     destination_characteristics: DestinationCharacteristics;
     destination_type: string | null;
-    //country_abbv: string;
+    country_abbr: string;
 }
 
 export interface SecondaryDestinationOutputs {
@@ -94,7 +98,7 @@ export interface DestinationOutputs {
     kde_violent: FeatureCollection;
     kde_nonviolent: FeatureCollection;
     rt_prop: JSON;
-    indices: JSON[];
+    indices: TravelIndices;
     analyst_notes: string[];
     secondary: SecondaryDestinationOutputs;
 }
@@ -108,10 +112,18 @@ export interface TravelUserData {
 }
 
 export interface TravelIndex {
-    name: string;
-    value: string;
+    fullname: string;
+    score: string | number;
     severity: number;
     source: string;
+}
+
+export interface TravelIndices {
+    womenpeacesecurity?: TravelIndex; // Georgetown's Global Women Peace and Security Index
+    lgbt_asherlyric?: TravelIndex; // Asher and Lyric's LGBT Travel Safety Index (2022)
+    gini_index?: TravelIndex; // World Bank's Gini Index, measures income inequality
+    gpi?: TravelIndex; // From the Institute for Economics and Peace (IEP), the Global Peace Index (GPI)
+    humantrafficking?: TravelIndex; // Human Trafficking Index, Global Organized Crime Index
 }
 
 export interface TravelCountryProfile {
@@ -119,7 +131,7 @@ export interface TravelCountryProfile {
     abbr: string;
     name: string;
     overall_safety_ranking: number;
-    indices: TravelIndex[];
+    indices: TravelIndices;
 }
 
 export interface TravelOSINT {
