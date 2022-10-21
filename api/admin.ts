@@ -469,11 +469,11 @@ export const getTripDestinations = (trip_id: number): Promise<any> =>
         data: { trip_id }
     });
 
-export const compileDestinationOutputs = (user_id: number, trip_id: number): Promise<any> =>
+export const compileDestinationOutputs = (user_id: number, trip_id: number, radius: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/compileDestinationOutputs",
-        data: { user_id, trip_id }
+        data: { user_id, trip_id, radius }
     });
 
 export const approveTrip = (user_id: number, trip_id: number, tripOutputs: DestinationOutputs[]): Promise<any> =>

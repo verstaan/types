@@ -29,3 +29,10 @@ export const fetchTravelUserData = (user_id: number): Promise<any> =>
         url: "/travelApp/fetchTravelUserData",
         data: {user_id}
     });
+
+export const isDestinationSupported = (latitude: number, longitude: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/isDestinationSupported",
+        data: {latitude, longitude}
+    });
