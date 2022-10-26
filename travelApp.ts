@@ -42,6 +42,13 @@ export interface TravelTrip {
     attending_users: number[];
 }
 
+export interface EmergencyContact {
+    name: string;
+    email: string;
+    phone?: number;
+    relationship?: string;
+}
+
 export interface TravelUser {
     id: number;
     email: string;
@@ -53,7 +60,8 @@ export interface TravelUser {
     validation_code: string;
     validation_exp: Date;
     forgotpass_code: string;
-    forgotpass_exp: Date
+    forgotpass_exp: Date;
+    emergency_contacts: EmergencyContact[];
 }
 
 export interface TravelNewDestination {

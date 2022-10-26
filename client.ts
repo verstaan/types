@@ -234,6 +234,15 @@ export interface SubscriptionData {
     modified_at: Date | undefined;
 }
 
+export interface TravelSubscriptionData {
+    user_id: number | undefined;
+    token: string | undefined;
+    device_type: string | undefined;
+    device_fingerprint: string | undefined;
+    point: Point | undefined;
+    modified_at: Date | undefined;
+}
+
 export interface ScheduledMesssage {
     id: number;
     created_at: Date;
