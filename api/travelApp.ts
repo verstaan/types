@@ -1,5 +1,6 @@
 import { request } from "./index";
 import { TripCharacteristics, TravelNewDestination, UserCharacteristics } from "../travelApp";
+import { DeviceSubscription } from "../auth";
 
 
 export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripCharacteristics: TripCharacteristics, tripDestinations: TravelNewDestination[]): Promise<any> => 
@@ -35,4 +36,13 @@ export const isDestinationSupported = (latitude: number, longitude: number): Pro
         method: "post",
         url: "/travelApp/isDestinationSupported",
         data: {latitude, longitude}
+    });
+
+export const subscribeTravelDevice = (sub: DeviceSubscription): Promise<void> =>
+    request<void>(true, {
+        method: "post",
+        url: "/travelApp/subscribeTravelDevice",
+        data: {
+            ...sub
+        }
     });
