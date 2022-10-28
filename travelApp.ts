@@ -103,9 +103,9 @@ export interface DestinationOutputs {
     id: number // same as destination id for given destination
     user_id: number;
     trip_id: number;
-    kde_violent: FeatureCollection;
-    kde_nonviolent: FeatureCollection;
-    rt_prop: JSON;
+    kde_violent: FeatureCollection | null;
+    kde_nonviolent: FeatureCollection | null;
+    rt_prop: JSON[];
     indices: TravelIndices;
     analyst_notes: string[];
     secondary: SecondaryDestinationOutputs;
