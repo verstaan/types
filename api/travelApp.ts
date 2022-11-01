@@ -46,3 +46,10 @@ export const subscribeTravelDevice = (sub: DeviceSubscription): Promise<void> =>
             ...sub
         }
     });
+
+export const getTravelUserAuthStatus = (email: string): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/getTravelUserAuthStatus",
+        data: {email}
+    });
