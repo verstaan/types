@@ -482,3 +482,24 @@ export const approveTrip = (user_id: number, trip_id: number, tripOutputs: Desti
         url: "/admin/travelApp/approveTrip",
         data: { user_id, trip_id, tripOutputs }
     });
+
+export const insertUniversalGeometry = (newGeom: any): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/insertUniversalGeometry",
+        data: { newGeom }
+    });
+
+export const fetchUniversalGeometry = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/fetchUniversalGeometry",
+        //data: { newGeom }
+    });
+
+export const deleteUniversalGeometryById = (geom_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/insertUniversalGeometryById",
+        data: { geom_id }
+    });
