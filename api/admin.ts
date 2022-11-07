@@ -500,6 +500,6 @@ export const fetchUniversalGeometry = (): Promise<any> =>
 export const deleteUniversalGeometryById = (geom_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/insertUniversalGeometryById",
+        url: "/admin/travelApp/deleteUniversalGeometryById",
         data: { geom_id }
     });

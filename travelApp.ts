@@ -83,20 +83,31 @@ export interface TravelDestination {
 }
 
 export interface SecondaryDestinationOutputs {
-    geo_analyst_notes: {
-        note: string,
-        point: Point
+    analyst_polygons: {
+        type: "safety" | "nonviolent" | "violent",
+        category: string,
+        geometry: FeatureCollection,
+        description: string
     }[],
-    analyst_risk_polygons: {
-        type: "violent" | "nonviolent",
-        geometry: Polygon
+    analyst_points: {
+        type: "safety" | "nonviolent" | "violent" | "geo_news" | "analyst_note"
+        category: string,
+        geometry: FeatureCollection,
+        description: string,    
+        news_source?: string,
+        news_link?: string
     }[],
-    geolocated_news: {
-        title: string,
-        body: string,
-        point: Point,
-        source: string
-    }[]
+    universal_geom: TravelUniversalGeometry[]
+}
+
+export interface TravelUniversalGeometry {
+    type: "safety_polygon" | "violent_polygon" | "nonviolent_polygon" | "safety_point" | "violent_point" | "nonviolent_point" | "analystnote_point" | "geonews_point",
+    category: string,
+    geometry: FeatureCollection,
+    description: string,
+    news_source?: string,
+    news_link?: string,
+    country_abbr?: string,
 }
 
 export interface DestinationOutputs {
