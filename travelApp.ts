@@ -1,4 +1,4 @@
-import { MultiPolygon, Polygon, Point, FeatureCollection } from "geojson";
+import { MultiPolygon, Polygon, Point, FeatureCollection, GeometryCollection, Feature } from "geojson";
 
 export interface TripCharacteristics {
     has_children?: boolean;
@@ -160,4 +160,13 @@ export interface TravelOSINT {
     point: Point;
     description: string;
     country_abbr: string;
+}
+
+export interface TravelCityProfile {
+    id: number;
+    geometry: GeometryCollection | MultiPolygon | Polygon | FeatureCollection | Feature;
+    country_abbr: string;
+    name: string;
+    safety_insights: JSON;
+    safety_vendors?: JSON[];
 }

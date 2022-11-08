@@ -503,3 +503,10 @@ export const deleteUniversalGeometryById = (geom_id: number): Promise<any> =>
         url: "/admin/travelApp/deleteUniversalGeometryById",
         data: { geom_id }
     });
+
+export const fetchAllCities = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/fetchAllCities",
+        //data: { newGeom }
+    });
