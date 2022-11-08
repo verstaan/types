@@ -510,3 +510,10 @@ export const fetchAllCities = (): Promise<any> =>
         url: "/admin/travelApp/fetchAllCities",
         //data: { newGeom }
     });
+
+export const renderOsintData = (latitude: number, longitude: number, radius: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/renderOsintData",
+        data: { latitude, longitude, radius }
+    });
