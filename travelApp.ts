@@ -165,6 +165,7 @@ export interface TravelOSINT {
 export interface TravelCityProfile {
     id: number;
     geometry: GeometryCollection | MultiPolygon | Polygon | FeatureCollection | Feature;
+    center_coords: [number, number];
     country_abbr: string;
     name: string;
     safety_insights: JSON;
