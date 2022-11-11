@@ -82,32 +82,54 @@ export interface TravelDestination {
     country_abbr: string;
 }
 
+export interface CityVendorItem {
+	names: string;
+	contact_info: string;
+	description: string;
+}
+
+export interface CityInsightItem {
+	text: string;
+	tags: string[];
+}
+
+export interface TravelCityInsights {
+    emergency_services?: CityInsightItem[];
+	transportation?: CityInsightItem[];
+	communication?: CityInsightItem[];
+	scams?: CityInsightItem[];
+	finances?: CityInsightItem[];
+	women?: CityInsightItem[];
+	general_security?: CityInsightItem[];
+}
+
 export interface SecondaryDestinationOutputs {
     analyst_polygons: {
-        type: "safety" | "nonviolent" | "violent",
-        category: string,
-        geometry: FeatureCollection,
-        description: string
-    }[],
+        type: "safety" | "nonviolent" | "violent";
+        category: string;
+        geometry: FeatureCollection;
+        description: string;
+    }[];
     analyst_points: {
-        type: "safety" | "nonviolent" | "violent" | "geo_news" | "analyst_note"
-        category: string,
-        geometry: FeatureCollection,
-        description: string,    
-        news_source?: string,
-        news_link?: string
-    }[],
-    universal_geom: TravelUniversalGeometry[]
+        type: "safety" | "nonviolent" | "violent" | "geo_news" | "analyst_note";
+        category: string;
+        geometry: FeatureCollection;
+        description: string;
+        news_source?: string;
+        news_link?: string;
+    }[];
+    city_insights: TravelCityInsights;
+    city_vendors: CityVendorItem[];
 }
 
 export interface TravelUniversalGeometry {
     type: "safety_polygon" | "violent_polygon" | "nonviolent_polygon" | "safety_point" | "violent_point" | "nonviolent_point" | "analystnote_point" | "geonews_point",
-    category: string,
-    geometry: FeatureCollection,
-    description: string,
-    news_source?: string,
-    news_link?: string,
-    country_abbr?: string,
+    category: string;
+    geometry: FeatureCollection;
+    description: string;
+    news_source?: string;
+    news_link?: string;
+    country_abbr?: string;
 }
 
 export interface DestinationOutputs {
@@ -168,6 +190,16 @@ export interface TravelCityProfile {
     center_coords: [number, number];
     country_abbr: string;
     name: string;
-    safety_insights: JSON;
-    safety_vendors?: JSON[];
+    safety_insights: TravelCityInsights;
+    safety_vendors?: CityVendorItem[];
+}
+
+export interface TravelNewsHeadlines {
+    headline: string;
+    description: string;
+    source: string;
+    link: string;
+    pubDate: Date;
+    img_url?: string;
+    country: string;
 }
