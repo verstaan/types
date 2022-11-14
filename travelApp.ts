@@ -8,7 +8,7 @@ export interface TripCharacteristics {
 export interface UserCharacteristics {
     sex?: string;
     bday?: string;
-    socioecon?: number; // from 1-5, how wealthy are you?
+    socioecon?: number; // from 1-5, how wealthy are they? could be a slider input on the FE?
     socialstatus?: "unknown" | "mildly wellknown" | "famous" | "very famous";
     sexualorientation?: string;
 }
@@ -44,8 +44,8 @@ export interface TravelTrip {
 
 export interface EmergencyContact {
     name: string;
-    email: string;
-    phone?: number;
+    email?: string;
+    phone: number;
     relationship?: string;
 }
 

@@ -53,3 +53,10 @@ export const getTravelUserAuthStatus = (email: string): Promise<any> =>
         url: "/travelApp/getTravelUserAuthStatus",
         data: {email}
     });
+
+export const alertEmergencyContacts = (user_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/alertEmergencyContacts",
+        data: {user_id}
+    });
