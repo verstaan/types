@@ -24,11 +24,11 @@ export const validatePendingTravelUser = (user_id: number, verif_code: string): 
         data: {user_id, verif_code}
     });
 
-export const fetchTravelUserData = (user_id: number): Promise<any> => 
+export const fetchTravelUserData = (): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/fetchTravelUserData",
-        data: {user_id}
+        //data: {user_id}
     });
 
 export const isDestinationSupported = (latitude: number, longitude: number): Promise<any> => 

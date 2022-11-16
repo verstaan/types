@@ -157,6 +157,7 @@ export interface TravelIndex {
     score: string | number;
     severity: number;
     source: string;
+    rank?: number
 }
 
 export interface TravelIndices {
