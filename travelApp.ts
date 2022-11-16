@@ -103,21 +103,19 @@ export interface TravelCityInsights {
 	general_security?: CityInsightItem[];
 }
 
+export interface AnalystGeometry {
+    type: "safety_point" | "safety_polygon" | "nonviolent_point" | "nonviolent_polygon" | "violent_point" | "violent_polygon" | "geonews_point" | "analystnote_point";
+    category: string;
+    geometry: any;
+    description: string;
+    news_source?: string;
+    news_link?: string;
+    tags?: string;
+    time_bins?: string
+}
+
 export interface SecondaryDestinationOutputs {
-    analyst_polygons: {
-        type: "safety" | "nonviolent" | "violent";
-        category: string;
-        geometry: FeatureCollection;
-        description: string;
-    }[];
-    analyst_points: {
-        type: "safety" | "nonviolent" | "violent" | "geo_news" | "analyst_note";
-        category: string;
-        geometry: FeatureCollection;
-        description: string;
-        news_source?: string;
-        news_link?: string;
-    }[];
+    analyst_geometry: AnalystGeometry[];
     city_insights: TravelCityInsights;
     city_vendors: CityVendorItem[];
 }
