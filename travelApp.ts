@@ -7,8 +7,6 @@ export interface UserCharacteristics {
     socioecon?: number; // from 1-5, how wealthy are they? could be a slider input on the FE?
     socialstatus?: "unknown" | "mildly wellknown" | "famous" | "very famous";
     sexualorientation?: string;
-    has_children?: boolean;
-    party_size?: number;
 }
 
 export interface DestinationCharacteristics {
@@ -16,6 +14,8 @@ export interface DestinationCharacteristics {
     time_in_public?: number; // out of 10, 10 being the most time in public
     reason_for_going?: "business" | "personal";
     time_windows?: string[];
+    has_children?: boolean;
+    party_size?: number;
 }
 
 export interface TravelPendingTrip {
