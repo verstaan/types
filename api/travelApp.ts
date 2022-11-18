@@ -1,13 +1,13 @@
 import { request } from "./index";
-import { TripCharacteristics, TravelNewDestination, UserCharacteristics } from "../travelApp";
+import { TravelNewDestination, UserCharacteristics } from "../travelApp";
 import { DeviceSubscription } from "../auth";
 
 
-export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripCharacteristics: TripCharacteristics, tripDestinations: TravelNewDestination[]): Promise<any> => 
+export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripDestinations: TravelNewDestination[]): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/createPendingTrip",
-        data: {userId, tripName, tripStart, tripEnd, tripCharacteristics, tripDestinations}
+        data: {userId, tripName, tripStart, tripEnd, tripDestinations}
     });
 
 export const submitPendingTravelUser = (email: string, password: string, first_name: string, last_name: string, userCharacteristics: UserCharacteristics): Promise<any> => 

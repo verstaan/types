@@ -1,9 +1,5 @@
 import { MultiPolygon, Polygon, Point, FeatureCollection, GeometryCollection, Feature } from "geojson";
 
-export interface TripCharacteristics {
-    has_children?: boolean;
-    party_size?: number;
-}
 
 export interface UserCharacteristics {
     sex?: string;
@@ -11,6 +7,8 @@ export interface UserCharacteristics {
     socioecon?: number; // from 1-5, how wealthy are they? could be a slider input on the FE?
     socialstatus?: "unknown" | "mildly wellknown" | "famous" | "very famous";
     sexualorientation?: string;
+    has_children?: boolean;
+    party_size?: number;
 }
 
 export interface DestinationCharacteristics {
@@ -36,10 +34,10 @@ export interface TravelTrip {
     name: string;
     trip_start: Date;
     trip_end: Date;
-    trip_characteristics: TripCharacteristics;
     trip_owner: number;
     travel_group_id: number | null;
     attending_users: number[];
+    singular_dest: boolean;
 }
 
 export interface EmergencyContact {
@@ -64,11 +62,22 @@ export interface TravelUser {
     emergency_contacts: EmergencyContact[];
 }
 
+export interface TravelAccommodation {
+    name: string;
+    point: Point;
+    accommodation_type?: string;
+    acc_start: Date;
+    acc_end: Date;
+}
+
 export interface TravelNewDestination {
     name: string;
     pointLocation: Point;
     destinationCharacteristics: DestinationCharacteristics;
-    destinationType: string;
+    destinationType?: string;
+    accomodations: TravelAccommodation[];
+    dest_start: Date;
+    dest_end: Date;
 }
 
 export interface TravelDestination {
@@ -78,8 +87,10 @@ export interface TravelDestination {
     group_id: number | null;
     point_location: Point;
     destination_characteristics: DestinationCharacteristics;
-    destination_type: string | null;
     country_abbr: string;
+    accommodations: TravelAccommodation[];
+    dest_start: Date;
+    dest_end: Date;
 }
 
 export interface CityVendorItem {
