@@ -75,7 +75,7 @@ export interface TravelNewDestination {
     pointLocation: Point;
     destinationCharacteristics: DestinationCharacteristics;
     destinationType?: string;
-    accomodations: TravelAccommodation[];
+    accommodations: TravelAccommodation[];
     dest_start: Date;
     dest_end: Date;
 }
