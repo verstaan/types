@@ -148,7 +148,7 @@ export interface DestinationOutputs {
     kde_violent: FeatureCollection | null;
     kde_nonviolent: FeatureCollection | null;
     rt_prop: JSON[];
-    indices: TravelIndices;
+    indices: TravelIndex[];
     analyst_notes: string[];
     secondary: SecondaryDestinationOutputs;
 }
@@ -162,6 +162,7 @@ export interface TravelUserData {
 }
 
 export interface TravelIndex {
+    name: string;
     fullname: string;
     score: string | number;
     severity: number;
@@ -169,20 +170,20 @@ export interface TravelIndex {
     rank?: number
 }
 
-export interface TravelIndices {
-    womenpeacesecurity?: TravelIndex; // Georgetown's Global Women Peace and Security Index
-    lgbt_asherlyric?: TravelIndex; // Asher and Lyric's LGBT Travel Safety Index (2022)
-    gini_index?: TravelIndex; // World Bank's Gini Index, measures income inequality
-    gpi?: TravelIndex; // From the Institute for Economics and Peace (IEP), the Global Peace Index (GPI)
-    humantrafficking?: TravelIndex; // Human Trafficking Index, Global Organized Crime Index
-}
+// export interface TravelIndices {
+//     womenpeacesecurity?: TravelIndex; // Georgetown's Global Women Peace and Security Index
+//     lgbt_asherlyric?: TravelIndex; // Asher and Lyric's LGBT Travel Safety Index (2022)
+//     gini_index?: TravelIndex; // World Bank's Gini Index, measures income inequality
+//     gpi?: TravelIndex; // From the Institute for Economics and Peace (IEP), the Global Peace Index (GPI)
+//     humantrafficking?: TravelIndex; // Human Trafficking Index, Global Organized Crime Index
+// }
 
 export interface TravelCountryProfile {
     id: number;
     abbr: string;
     name: string;
     overall_safety_ranking: number;
-    indices: TravelIndices;
+    indices: TravelIndex[];
 }
 
 export interface TravelOSINT {
