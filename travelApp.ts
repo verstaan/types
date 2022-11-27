@@ -127,6 +127,7 @@ export interface AnalystGeometry {
 
 export interface SecondaryDestinationOutputs {
     analyst_geometry: AnalystGeometry[];
+    combined_feed: TravelPriorityFeedItem[];
     city_insights: TravelCityInsights;
     city_vendors: CityVendorItem[];
 }
@@ -164,19 +165,11 @@ export interface TravelUserData {
 export interface TravelIndex {
     name: string;
     fullname: string;
-    score: string | number;
+    score: string;
     severity: number;
     source: string;
     rank?: number
 }
-
-// export interface TravelIndices {
-//     womenpeacesecurity?: TravelIndex; // Georgetown's Global Women Peace and Security Index
-//     lgbt_asherlyric?: TravelIndex; // Asher and Lyric's LGBT Travel Safety Index (2022)
-//     gini_index?: TravelIndex; // World Bank's Gini Index, measures income inequality
-//     gpi?: TravelIndex; // From the Institute for Economics and Peace (IEP), the Global Peace Index (GPI)
-//     humantrafficking?: TravelIndex; // Human Trafficking Index, Global Organized Crime Index
-// }
 
 export interface TravelCountryProfile {
     id: number;
@@ -213,4 +206,12 @@ export interface TravelNewsHeadlines {
     pubDate: Date;
     img_url?: string;
     country: string;
+}
+
+export interface TravelPriorityFeedItem {
+    id: number;
+    header: string;
+    text: string;
+    type: "analyst_note" | "index";
+    severity?: number;
 }
