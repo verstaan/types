@@ -141,6 +141,7 @@ export interface TravelUniversalGeometry {
     news_source?: string;
     news_link?: string;
     country_abbr?: string;
+    internal_memo?: string;
 }
 
 export interface DestinationOutputs {
