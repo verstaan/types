@@ -60,3 +60,17 @@ export const alertEmergencyContacts = (user_id: number): Promise<any> =>
         url: "/travelApp/alertEmergencyContacts",
         data: {user_id}
     });
+
+export const createStripeCheckoutSession = (user_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/createStripeCheckoutSession",
+        data: {user_id}
+    });
+
+export const fetchStripeCheckoutSession = (): Promise<any> => 
+    request<any>(true, {
+        method: "get",
+        url: "/travelApp/fetchStripeCheckoutSession/:id",
+        //data: {user_id}
+    });
