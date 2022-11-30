@@ -525,9 +525,9 @@ export const renderOsintData = (latitude: number, longitude: number, radius: num
         data: { latitude, longitude, radius }
     });
 
-export const submitSafetyInsightEdits = (newInsights: any[], category: string): Promise<any> =>
+export const submitSafetyInsightEdits = (newInsights: any[], category: string, abbr: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/submitSafetyInsightEdits",
-        data: { newInsights, category }
+        data: { newInsights, category, abbr }
     });
