@@ -524,3 +524,10 @@ export const renderOsintData = (latitude: number, longitude: number, radius: num
         url: "/admin/travelApp/renderOsintData",
         data: { latitude, longitude, radius }
     });
+
+export const submitSafetyInsightEdits = (newInsights: any[], category: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/submitSafetyInsightEdits",
+        data: { newInsights, category }
+    });
