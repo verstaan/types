@@ -19,7 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
-import { DestinationOutputs, TravelTrip } from "../travelApp";
+import { CityVendorItem, DestinationOutputs, TravelTrip } from "../travelApp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -532,7 +532,7 @@ export const submitSafetyInsightEdits = (newInsights: any[], category: string, a
         data: { newInsights, category, abbr }
     });
 
-export const submitSafetyVendorEdits = (newVendors: any[], abbr: string): Promise<any> =>
+export const submitSafetyVendorEdits = (newVendors: CityVendorItem[], abbr: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/submitSafetyVendorEdits",
