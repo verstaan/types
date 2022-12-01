@@ -19,7 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
-import { CityVendorItem, DestinationOutputs, TravelTrip } from "../travelApp";
+import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../travelApp";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -543,4 +543,11 @@ export const fetchAllCountries = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/fetchAllCountries",
+    });
+
+export const submitIndexEdits = (newIndices: TravelIndex[], abbr: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/submitIndexEdits",
+        data: { newIndices, abbr }
     });
