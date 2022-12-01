@@ -74,3 +74,10 @@ export const fetchStripeCheckoutSession = (): Promise<any> =>
         url: "/travelApp/fetchStripeCheckoutSession/:id",
         //data: {user_id}
     });
+
+export const isTripPending = (user_id: number, trip_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "get",
+        url: "/travelApp/isTripPending",
+        data: {user_id, trip_id}
+    });
