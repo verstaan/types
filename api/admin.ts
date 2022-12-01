@@ -538,3 +538,9 @@ export const submitSafetyVendorEdits = (newVendors: CityVendorItem[], abbr: stri
         url: "/admin/travelApp/submitSafetyVendorEdits",
         data: { newVendors, abbr }
     });
+
+export const fetchAllCountries = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/fetchAllCountries",
+    });
