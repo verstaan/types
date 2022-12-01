@@ -531,3 +531,10 @@ export const submitSafetyInsightEdits = (newInsights: any[], category: string, a
         url: "/admin/travelApp/submitSafetyInsightEdits",
         data: { newInsights, category, abbr }
     });
+
+export const submitSafetyVendorEdits = (newVendors: any[], abbr: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/submitSafetyVendorEdits",
+        data: { newVendors, abbr }
+    });

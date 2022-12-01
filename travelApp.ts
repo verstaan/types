@@ -177,7 +177,7 @@ export interface TravelCountryProfile {
     id: number;
     abbr: string;
     name: string;
-    overall_safety_ranking: number;
+    //overall_safety_ranking: number;
     indices: TravelIndex[];
 }
 
