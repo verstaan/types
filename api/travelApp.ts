@@ -61,23 +61,37 @@ export const alertEmergencyContacts = (user_id: number): Promise<any> =>
         data: {user_id}
     });
 
-export const createStripeCheckoutSession = (user_id: number): Promise<any> => 
+export const saveStripePaymentMethod = (user_id: number, success_url: string, cancel_url: string): Promise<any> => 
     request<any>(true, {
         method: "post",
-        url: "/travelApp/createStripeCheckoutSession",
-        data: {user_id}
+        url: "/travelApp/saveStripePaymentMethod",
+        data: {user_id, success_url, cancel_url}
     });
 
-export const fetchStripeCheckoutSession = (): Promise<any> => 
-    request<any>(true, {
-        method: "get",
-        url: "/travelApp/fetchStripeCheckoutSession/:id",
-        //data: {user_id}
-    });
+// export const fetchStripeCheckoutSession = (): Promise<any> => 
+//     request<any>(true, {
+//         method: "get",
+//         url: "/travelApp/fetchStripeCheckoutSession/:id",
+//         //data: {user_id}
+//     });
 
 export const isTripPending = (user_id: number, trip_id: number): Promise<any> => 
     request<any>(true, {
         method: "get",
         url: "/travelApp/isTripPending",
         data: {user_id, trip_id}
+    });
+
+export const fetchStripePaymentMethods = (user_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/fetchStripePaymentMethods",
+        data: {user_id}
+    });
+
+export const chargeStripePayment = (user_id: number, payment_method_id: string, amount: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/chargeStripePayment",
+        data: {user_id, payment_method_id, amount}
     });

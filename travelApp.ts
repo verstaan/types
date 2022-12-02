@@ -60,7 +60,7 @@ export interface TravelUser {
     forgotpass_code: string;
     forgotpass_exp: Date;
     emergency_contacts: EmergencyContact[];
-    stripe_customer_id?: number;
+    stripe_customer_id?: string;
 }
 
 export interface TravelAccommodation {
