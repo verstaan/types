@@ -102,3 +102,10 @@ export const saveDraftTrip = (newDraft: TravelDraftTrip): Promise<any> =>
         url: "/travelApp/saveDraftTrip",
         data: {newDraft}
     });
+
+export const retrieveLatestDraftTrip = (user_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/retrieveLatestDraftTrip",
+        data: {user_id}
+    });
