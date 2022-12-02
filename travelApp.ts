@@ -144,6 +144,11 @@ export interface TravelUniversalGeometry {
     internal_memo?: string;
 }
 
+export interface AnalystNote {
+    title: string;
+    text: string;
+}
+
 export interface DestinationOutputs {
     id: number // same as destination id for given destination
     user_id: number;
@@ -152,7 +157,7 @@ export interface DestinationOutputs {
     kde_nonviolent: FeatureCollection | null;
     rt_prop: JSON[];
     indices: TravelIndex[];
-    analyst_notes: string[];
+    analyst_notes: AnalystNote[];
     secondary: SecondaryDestinationOutputs;
 }
 
