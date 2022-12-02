@@ -1,5 +1,5 @@
 import { request } from "./index";
-import { TravelNewDestination, UserCharacteristics } from "../travelApp";
+import { TravelDraftTrip, TravelNewDestination, UserCharacteristics } from "../travelApp";
 import { DeviceSubscription } from "../auth";
 
 
@@ -94,4 +94,11 @@ export const chargeStripePayment = (user_id: number, payment_method_id: string, 
         method: "post",
         url: "/travelApp/chargeStripePayment",
         data: {user_id, payment_method_id, amount}
+    });
+
+export const saveDraftTrip = (newDraft: TravelDraftTrip): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/saveDraftTrip",
+        data: {newDraft}
     });

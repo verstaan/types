@@ -217,3 +217,29 @@ export interface TravelPriorityFeedItem {
     type: "analyst_note" | "index";
     severity?: number;
 }
+
+
+export interface TravelDraftTrip {
+    //id: number;
+    user_id: number;
+    datetime_saved: Date;
+    trip_name?: string;
+    trip_start?: Date;
+    trip_end?: Date;
+    trip_destinations?: {
+        name?: string;
+        pointLocation?: Point;
+        destinationCharacteristics?: DestinationCharacteristics;
+        destinationType?: string;
+        accommodations?: {
+            name?: string;
+            point?: Point;
+            accommodation_type?: string;
+            acc_start?: Date;
+            acc_end?: Date;
+        }[];
+        dest_start?: Date;
+        dest_end?: Date;
+    }[]
+
+}
