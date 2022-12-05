@@ -1,6 +1,7 @@
 import { request } from "./index";
 import { TravelDraftTrip, TravelNewDestination, UserCharacteristics } from "../travelApp";
 import { DeviceSubscription } from "../auth";
+import { Point } from "geojson";
 
 
 export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripDestinations: TravelNewDestination[]): Promise<any> => 
@@ -108,4 +109,24 @@ export const retrieveLatestDraftTrip = (user_id: number): Promise<any> =>
         method: "post",
         url: "/travelApp/retrieveLatestDraftTrip",
         data: {user_id}
+    });
+
+export const updateTravelSubscription = (token: string, device_fingerprint: string, point?: Point): Promise<void> =>
+    request<void>(true, {
+        method: "post",
+        url: "/travelApp/updateTravelSubscriptionToken",
+        data: {
+            token,
+            device_fingerprint,
+            point
+        }
+    });
+
+export const removeTravelSubscription = (device_fingerprint: string): Promise<void> =>
+    request<void>(true, {
+        method: "post",
+        url: "/travelApp/removeTravelSubscriptionToken",
+        data: {
+            device_fingerprint
+        }
     });
