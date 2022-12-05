@@ -1,4 +1,5 @@
 import { MultiPolygon, Polygon, Point, FeatureCollection, GeometryCollection, Feature } from "geojson";
+import { DeviceType } from "./auth";
 
 
 export interface UserCharacteristics {
@@ -247,4 +248,14 @@ export interface TravelDraftTrip {
         dest_end?: Date;
     }[]
 
+}
+
+export interface TravelDevice {
+    user_id: number;
+    token: string | null;
+    device_type: DeviceType;
+    device_fingerprint: string;
+    point?: Point;
+    modified_at?: Date;
+    user_name?: string;
 }
