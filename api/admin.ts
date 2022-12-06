@@ -504,11 +504,11 @@ export const deleteUniversalGeometryById = (geom_id: number): Promise<any> =>
         data: { geom_id }
     });
 
-export const editUniversalGeometry = (geom_id: number, newCategory: string, newDesc: string, newTags: string, newNewsLink: string, newNewsSource: string): Promise<any> =>
+export const editUniversalGeometry = (geom_id: number, newCategory: string, newDesc: string, newTags: string, newNewsLink: string, newNewsSource: string, newReview: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/editUniversalGeometry",
-        data: { geom_id, newCategory, newDesc, newTags, newNewsLink, newNewsSource }
+        data: { geom_id, newCategory, newDesc, newTags, newNewsLink, newNewsSource, newReview }
     });
 
 export const fetchAllCities = (): Promise<any> =>
