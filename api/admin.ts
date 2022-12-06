@@ -525,18 +525,18 @@ export const renderOsintData = (latitude: number, longitude: number, radius: num
         data: { latitude, longitude, radius }
     });
 
-export const submitSafetyInsightEdits = (newInsights: any[], category: string, abbr: string): Promise<any> =>
+export const submitSafetyInsightEdits = (newInsights: any[], category: string, city_name: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/submitSafetyInsightEdits",
-        data: { newInsights, category, abbr }
+        data: { newInsights, category, city_name }
     });
 
-export const submitSafetyVendorEdits = (newVendors: CityVendorItem[], abbr: string): Promise<any> =>
+export const submitSafetyVendorEdits = (newVendors: CityVendorItem[], city_name: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
         url: "/admin/travelApp/submitSafetyVendorEdits",
-        data: { newVendors, abbr }
+        data: { newVendors, city_name }
     });
 
 export const fetchAllCountries = (): Promise<any> =>
