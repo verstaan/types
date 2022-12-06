@@ -124,7 +124,8 @@ export interface AnalystGeometry {
     news_source?: string;
     news_link?: string;
     tags?: string;
-    time_bins?: string
+    time_bins?: string;
+    reason_for_including?: string;
 }
 
 export interface SecondaryDestinationOutputs {
@@ -145,7 +146,6 @@ export interface TravelUniversalGeometry {
     internal_memo?: string;
     link_id?: number;
     local_review?: string;
-    reason_for_including?: string;
 }
 
 export interface AnlaystNoteLink {
