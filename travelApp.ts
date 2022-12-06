@@ -214,7 +214,7 @@ export interface TravelCityProfile {
     country_abbr: string;
     name: string;
     safety_insights: TravelCityInsights;
-    safety_vendors?: CityVendorItem[];
+    safety_vendors: CityVendorItem[];
 }
 
 export interface TravelNewsHeadlines {
