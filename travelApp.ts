@@ -144,6 +144,8 @@ export interface TravelUniversalGeometry {
     country_abbr?: string;
     internal_memo?: string;
     link_id?: number;
+    local_review?: string;
+    reason_for_including?: string;
 }
 
 export interface AnlaystNoteLink {
