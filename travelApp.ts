@@ -144,20 +144,15 @@ export interface TravelUniversalGeometry {
     news_link?: string;
     country_abbr?: string;
     internal_memo?: string;
-    link_id?: number;
+    links: number[];
     local_review?: string;
 }
 
-export interface AnlaystNoteLink {
-    type: "index" | "geometry" | "news_headline" | "other_analyst_note";
-    id: number;
-}
 
 export interface AnalystNote {
     title: string;
     text: string;
-    links?: AnlaystNoteLink[];
-    link_id?: number;
+    links: number[];
 }
 
 export interface DestinationOutputs {
@@ -187,7 +182,7 @@ export interface TravelIndex {
     severity: number;
     source: string;
     rank?: number;
-    link_id?: number;
+    links: number[];
 }
 
 export interface TravelCountryProfile {
@@ -233,6 +228,7 @@ export interface TravelPriorityFeedItem {
     text: string;
     type: "analyst_note" | "index";
     severity?: number;
+    links: number[]
 }
 
 
