@@ -39,6 +39,7 @@ export interface TravelTrip {
     travel_group_id: number | null;
     attending_users: number[];
     singular_dest: boolean;
+    status: "pending" | "confirmed" | "payment_failed";
 }
 
 export interface EmergencyContact {
@@ -183,7 +184,7 @@ export interface TravelIndex {
     severity: number;
     source: string;
     links: number[];
-    description?: string;
+    description: string;
 }
 
 export interface TravelCountryProfile {
