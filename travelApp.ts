@@ -181,8 +181,8 @@ export interface TravelIndex {
     score: string;
     severity: number;
     source: string;
-    rank?: number;
     links: number[];
+    description?: string;
 }
 
 export interface TravelCountryProfile {
