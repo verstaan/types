@@ -130,3 +130,10 @@ export const removeTravelSubscription = (device_fingerprint: string): Promise<vo
             device_fingerprint
         }
     });
+
+export const getHeadlines = (country_abbr: string): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/getHeadlines",
+        data: {country_abbr}
+    });

@@ -80,6 +80,7 @@ export interface TravelNewDestination {
     accommodations: TravelAccommodation[];
     dest_start: Date;
     dest_end: Date;
+    country_abbr: string;
 }
 
 export interface TravelDestination {
