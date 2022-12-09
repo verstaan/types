@@ -193,6 +193,7 @@ export interface TravelCountryProfile {
     name: string;
     //overall_safety_ranking: number;
     indices: TravelIndex[];
+    highlights?: string;
 }
 
 export interface TravelOSINT {
@@ -212,6 +213,7 @@ export interface TravelCityProfile {
     name: string;
     safety_insights: TravelCityInsights;
     safety_vendors: CityVendorItem[];
+    highlights?: string;
 }
 
 export interface TravelNewsHeadlines {
@@ -232,7 +234,6 @@ export interface TravelPriorityFeedItem {
     severity?: number;
     links: number[]
 }
-
 
 export interface TravelDraftTrip {
     //id: number;
