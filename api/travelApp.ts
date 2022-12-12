@@ -4,11 +4,11 @@ import { DeviceSubscription } from "../auth";
 import { Point } from "geojson";
 
 
-export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripDestinations: TravelNewDestination[]): Promise<any> => 
+export const createPendingTrip = (userId: number, tripName: string, tripDestinations: TravelNewDestination[], paymentMethodId: string, price: number): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/createPendingTrip",
-        data: {userId, tripName, tripStart, tripEnd, tripDestinations}
+        data: {userId, tripName, tripDestinations, paymentMethodId, price}
     });
 
 export const submitPendingTravelUser = (email: string, password: string, first_name: string, last_name: string, userCharacteristics: UserCharacteristics): Promise<any> => 
@@ -83,11 +83,11 @@ export const isTripPending = (user_id: number, trip_id: number): Promise<any> =>
         data: {user_id, trip_id}
     });
 
-export const fetchStripePaymentMethods = (user_id: number): Promise<any> => 
+export const fetchStripePaymentMethods = (): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/fetchStripePaymentMethods",
-        data: {user_id}
+        data: {}
     });
 
 export const chargeStripePayment = (user_id: number, payment_method_id: string, amount: number): Promise<any> => 
