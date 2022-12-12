@@ -73,6 +73,7 @@ export interface TravelAccommodation {
     accommodation_type?: string;
     acc_start: Date;
     acc_end: Date;
+    address: string;
 }
 
 export interface TravelNewDestination {
