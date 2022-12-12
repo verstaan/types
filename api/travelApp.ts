@@ -83,11 +83,11 @@ export const isTripPending = (user_id: number, trip_id: number): Promise<any> =>
         data: {user_id, trip_id}
     });
 
-export const fetchStripePaymentMethods = (): Promise<any> => 
+export const fetchStripePaymentMethods = (user_id: number): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/fetchStripePaymentMethods",
-        data: {}
+        data: {user_id}
     });
 
 export const chargeStripePayment = (user_id: number, payment_method_id: string, amount: number): Promise<any> => 
@@ -136,4 +136,11 @@ export const fetchCountryHeadlines = (country_abbr: string): Promise<any> =>
         method: "post",
         url: "/travelApp/fetchCountryHeadlines",
         data: {country_abbr}
+    });
+
+export const retrieveDraftTripById = (draft_id: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/retrieveDraftTripById",
+        data: {draft_id}
     });

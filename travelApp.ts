@@ -28,6 +28,8 @@ export interface TravelPendingTrip {
     still_pending: boolean;
     trip_name: string;
     user_name: string;
+    payment_method_id: string;
+    price: number;
 }
 
 export interface TravelTrip {
