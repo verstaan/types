@@ -18,11 +18,11 @@ export const submitPendingTravelUser = (email: string, password: string, first_n
         data: {email, password, first_name, last_name, userCharacteristics}
     });
 
-export const validatePendingTravelUser = (user_id: number, verif_code: string): Promise<any> => 
+export const validatePendingTravelUser = (email: string, verif_code: string): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/validatePendingTravelUser",
-        data: {user_id, verif_code}
+        data: {email, verif_code}
     });
 
 export const fetchTravelUserData = (): Promise<any> => 
