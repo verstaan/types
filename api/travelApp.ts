@@ -4,11 +4,11 @@ import { DeviceSubscription } from "../auth";
 import { Point } from "geojson";
 
 
-export const createPendingTrip = (userId: number, tripName: string, tripDestinations: TravelNewDestination[], paymentMethodId: string, price: number): Promise<any> => 
+export const createPendingTrip = (userId: number, tripName: string, tripStart: Date, tripEnd: Date, tripDestinations: TravelNewDestination[], paymentMethodId: string, price: number): Promise<any> => 
     request<any>(true, {
         method: "post",
         url: "/travelApp/createPendingTrip",
-        data: {userId, tripName, tripDestinations, paymentMethodId, price}
+        data: {userId, tripName, tripStart, tripEnd, tripDestinations, paymentMethodId, price}
     });
 
 export const submitPendingTravelUser = (email: string, password: string, first_name: string, last_name: string, userCharacteristics: UserCharacteristics): Promise<any> => 
