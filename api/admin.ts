@@ -20,6 +20,7 @@ import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } 
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
 import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../travelApp";
+import { Point } from "geojson";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
     request<ClientDisplayData>(true, {
@@ -550,4 +551,11 @@ export const submitIndexEdits = (newIndices: TravelIndex[], abbr: string): Promi
         method: "POST",
         url: "/admin/travelApp/submitIndexEdits",
         data: { newIndices, abbr }
+    });
+
+export const queryPlacesByPoint = (point: Point, radius: number, type: string): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/queryPlacesByPoint",
+        data: { point, radius, type }
     });
