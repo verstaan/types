@@ -235,8 +235,9 @@ export interface TravelPriorityFeedItem {
     header: string;
     text: string;
     type: "analyst_note" | "index";
-    severity?: number;
+    severity?: number; // severity for indices
     links: number[]
+    description?: string // description for indices
 }
 
 export interface TravelDraftTrip {
