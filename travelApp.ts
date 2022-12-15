@@ -65,6 +65,7 @@ export interface TravelUser {
     forgotpass_exp: Date;
     emergency_contacts: EmergencyContact[];
     stripe_customer_id?: string;
+    free_trip_tickets?: number;
 }
 
 export interface TravelAccommodation {
