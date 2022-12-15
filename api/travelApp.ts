@@ -144,3 +144,10 @@ export const retrieveDraftTripById = (draft_id: number): Promise<any> =>
         url: "/travelApp/retrieveDraftTripById",
         data: {draft_id}
     });
+
+export const priceTrip = (user_id: number, num_of_days: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/priceTrip",
+        data: {user_id, num_of_days}
+    });
