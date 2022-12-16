@@ -4,7 +4,7 @@ import { DeviceType } from "./auth";
 
 export interface UserCharacteristics {
     sex?: string;
-    bday?: string;
+    bday?: Date;
     socioecon?: number; // from 1-5, how wealthy are they? could be a slider input on the FE?
     socialstatus?: "unknown" | "mildly wellknown" | "famous" | "very famous";
     sexualorientation?: string;
