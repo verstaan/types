@@ -449,6 +449,12 @@ export const getPendingTrips = (): Promise<any> =>
         url: "/admin/travelApp/getPendingTrips",
     });
 
+export const getActiveTripData = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/getActiveTripData",
+    });
+
 export const getTravelUserById = (user_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
@@ -558,4 +564,17 @@ export const queryPlacesByPoint = (point: Point, radius: number, type: string): 
         method: "POST",
         url: "/admin/travelApp/queryPlacesByPoint",
         data: { point, radius, type }
+    });
+
+export const getTravelUsers = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/getTravelUsers",
+    });
+
+export const fetchActiveTripData = (user_id: number, trip_id: number): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/fetchActiveTripData",
+        data: {user_id, trip_id}
     });
