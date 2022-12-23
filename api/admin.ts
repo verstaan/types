@@ -582,6 +582,6 @@ export const fetchActiveTripData = (user_id: number, trip_id: number): Promise<a
 export const submitOutputChanges = (newOutputs: DestinationOutputs): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/fetchActiveTripData",
+        url: "/admin/travelApp/submitOutputChanges",
         data: {newOutputs}
     });
