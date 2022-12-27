@@ -585,3 +585,10 @@ export const submitOutputChanges = (newOutputs: DestinationOutputs): Promise<any
         url: "/admin/travelApp/submitOutputChanges",
         data: {newOutputs}
     });
+
+export const getHomepageData = (): Promise<any> =>
+    request<any>(true, {
+        method: "POST",
+        url: "/admin/travelApp/submitOutputChanges"
+        //data: {newOutputs}
+    });
