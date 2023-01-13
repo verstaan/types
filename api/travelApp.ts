@@ -151,3 +151,10 @@ export const priceTrip = (user_id: number, num_of_days: number): Promise<any> =>
         url: "/travelApp/priceTrip",
         data: {user_id, num_of_days}
     });
+
+export const resendSignupActivationCode = (email: string): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/resendSignupActivationCode",
+        data: {email}
+    });
