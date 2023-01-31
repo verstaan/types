@@ -168,6 +168,7 @@ const getCurrentUserToken = (): Promise<string | null> => {
  * Utility method for error handling and normalizing response types.
  */
 export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
+    console.log("TOUCHED OLD REQUEST")
     if (authenticate) {
         let token = localStorage.getItem("idToken");
 

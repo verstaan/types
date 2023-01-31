@@ -102,6 +102,7 @@ export class ConnectionError extends Error {
 
 // function used in request to send response
 const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
+    console.log("getResponse func")
     let response: AxiosResponse<RestResponse>;
 
     try {
@@ -123,7 +124,7 @@ const getResponse = async <T>(config: AxiosRequestConfig): Promise<T> => {
         console.warn("Received jett backend error response: " + response.data.message ?? "No message");
 
         if (response.data.message && response.data.message.includes("auth/id-token-expired") && auth.currentUser) {
-            console.log("Refreshing token due to jarvis error response...");
+            console.log("Refreshing token due to jett backend error response...");
             auth.currentUser
                 .getIdToken(true)
                 .then((token) => {
@@ -168,6 +169,7 @@ const getCurrentUserToken = (): Promise<string | null> => {
  * Utility method for error handling and normalizing response types.
  */
 export const request = async <T>(authenticate: boolean, config: AxiosRequestConfig): Promise<T> => {
+    console.log("TOUCH REQUEST")
     if (authenticate) {
         let token = localStorage.getItem("idToken");
 
