@@ -19,7 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
-import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../travelApp";
+import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../jett";
 import { Point } from "geojson";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>

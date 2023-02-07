@@ -141,6 +141,7 @@ export interface SecondaryDestinationOutputs {
     city_vendors: CityVendorItem[];
 }
 
+/*
 export interface TravelUniversalGeometry {
     type: "safety_polygon" | "violent_polygon" | "nonviolent_polygon" | "safety_point" | "violent_point" | "nonviolent_point" | "analystnote_point" | "geonews_point",
     category: string;
@@ -152,6 +153,31 @@ export interface TravelUniversalGeometry {
     internal_memo?: string;
     links: number[];
     local_review?: string;
+}
+*/
+
+
+export interface SafeLocation {
+    type: "safe" | "unsafe"
+    name: string; // Name of the location (ex. "Joe's Hot Dog Store")
+    coordinates: number[]; // Coords of the location
+    description: string; // Description of the location (ex. "Have fun at Joe's Hot Dog Store!")
+    country_abbr: string; // Two letter country code (ex. "US"), used for backend filtering and organizing
+    tags: string[]; // Array of identifier tags (Restaurant, Event, Bar) and descriptive tags (Upscale, Quiet, Family-Friendly)
+    photo_url: string; // Photo URL for the location
+    hours_of_operation: string; // Hours the location operates which is used to calculate if location is open
+    price_level: string; // Price level on a relative scale (ex. "$$$")
+    contact_phone_number: number; // Location's contact phone number
+    gplaces_id: number; // Google places location id
+    internal_memo: string; // Internal note regarding the location
+}
+
+
+export interface SafetyArea {
+    type: "safe" | "unsafe" | "mildly unsafe";
+    geometry: FeatureCollection;
+    description: string;
+    country_abbr: string;
 }
 
 

@@ -1,5 +1,5 @@
 import { request } from "./index";
-import { TravelDraftTrip, TravelNewDestination, UserCharacteristics } from "../travelApp";
+import { TravelDraftTrip, TravelNewDestination, UserCharacteristics } from "../jett";
 import { DeviceSubscription } from "../auth";
 import { Point } from "geojson";
 
@@ -157,4 +157,12 @@ export const resendSignupActivationCode = (email: string): Promise<any> =>
         method: "post",
         url: "/travelApp/resendSignupActivationCode",
         data: {email}
+    });
+
+
+export const fetchGeometryByLocation = (lat: number, long: number): Promise<any> => 
+    request<any>(true, {
+        method: "post",
+        url: "/travelApp/fetchGeometryByLocation",
+        data: {lat, long}
     });
