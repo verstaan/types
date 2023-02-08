@@ -160,9 +160,9 @@ export const resendSignupActivationCode = (email: string): Promise<any> =>
     });
 
 
-export const fetchGeometryByLocation = (lat: number, long: number): Promise<any> => 
+export const fetchAreasByLocation = (lat: number, long: number): Promise<any> => 
     request<any>(true, {
         method: "post",
-        url: "/travelApp/fetchGeometryByLocation",
+        url: "/travelApp/fetchAreasByLocation",
         data: {lat, long}
     });
