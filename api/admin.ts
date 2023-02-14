@@ -19,7 +19,7 @@ import { Container, ContainerResponseItem, DefaultRegion } from "../geo";
 import { Client, ClientDisplayData, Team, TeamUpdate, UserProfile, UserUpdate } from "../client";
 import { PublicReport } from "../reports";
 import { Device } from "../auth";
-import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../travelApp";
+import { CityVendorItem, DestinationOutputs, TravelIndex, TravelTrip } from "../jett";
 import { Point } from "geojson";
 
 export const getClientDisplayData = (): Promise<ClientDisplayData> =>
@@ -446,149 +446,149 @@ export const handleScheduledMessages = (mode: string, scheduled_for: Date | null
 export const getPendingTrips = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getPendingTrips",
+        url: "/admin/jett/getPendingTrips",
     });
 
 export const getActiveTripData = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getActiveTripData",
+        url: "/admin/jett/getActiveTripData",
     });
 
 export const getTravelUserById = (user_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getTravelUserById",
+        url: "/admin/jett/getTravelUserById",
         data: { user_id }
     });
 
 export const getTripById = (trip_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getTripById",
+        url: "/admin/jett/getTripById",
         data: { trip_id }
     });
 
 export const getTripDestinations = (trip_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getTripDestinations",
+        url: "/admin/jett/getTripDestinations",
         data: { trip_id }
     });
 
 export const compileDestinationOutputs = (user_id: number, trip_id: number, radius: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/compileDestinationOutputs",
+        url: "/admin/jett/compileDestinationOutputs",
         data: { user_id, trip_id, radius }
     });
 
 export const approveTrip = (user_id: number, trip_id: number, tripOutputs: DestinationOutputs[]): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/approveTrip",
+        url: "/admin/jett/approveTrip",
         data: { user_id, trip_id, tripOutputs }
     });
 
 export const insertUniversalGeometry = (newGeom: any): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/insertUniversalGeometry",
+        url: "/admin/jett/insertUniversalGeometry",
         data: { newGeom }
     });
 
 export const fetchUniversalGeometry = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/fetchUniversalGeometry",
+        url: "/admin/jett/fetchUniversalGeometry",
         //data: { newGeom }
     });
 
 export const deleteUniversalGeometryById = (geom_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/deleteUniversalGeometryById",
+        url: "/admin/jett/deleteUniversalGeometryById",
         data: { geom_id }
     });
 
 export const editUniversalGeometry = (geom_id: number, newCategory: string, newDesc: string, newTags: string, newNewsLink: string, newNewsSource: string, newReview: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/editUniversalGeometry",
+        url: "/admin/jett/editUniversalGeometry",
         data: { geom_id, newCategory, newDesc, newTags, newNewsLink, newNewsSource, newReview }
     });
 
 export const fetchAllCities = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/fetchAllCities",
+        url: "/admin/jett/fetchAllCities",
         //data: { newGeom }
     });
 
 export const renderOsintData = (latitude: number, longitude: number, radius: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/renderOsintData",
+        url: "/admin/jett/renderOsintData",
         data: { latitude, longitude, radius }
     });
 
 export const submitSafetyInsightEdits = (newInsights: any[], category: string, city_name: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/submitSafetyInsightEdits",
+        url: "/admin/jett/submitSafetyInsightEdits",
         data: { newInsights, category, city_name }
     });
 
 export const submitSafetyVendorEdits = (newVendors: CityVendorItem[], city_name: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/submitSafetyVendorEdits",
+        url: "/admin/jett/submitSafetyVendorEdits",
         data: { newVendors, city_name }
     });
 
 export const fetchAllCountries = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/fetchAllCountries",
+        url: "/admin/jett/fetchAllCountries",
     });
 
 export const submitIndexEdits = (newIndices: TravelIndex[], abbr: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/submitIndexEdits",
+        url: "/admin/jett/submitIndexEdits",
         data: { newIndices, abbr }
     });
 
 export const queryPlacesByPoint = (point: Point, radius: number, type: string): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/queryPlacesByPoint",
+        url: "/admin/jett/queryPlacesByPoint",
         data: { point, radius, type }
     });
 
 export const getTravelUsers = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getTravelUsers",
+        url: "/admin/jett/getTravelUsers",
     });
 
 export const fetchActiveTripData = (user_id: number, trip_id: number): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/fetchActiveTripData",
+        url: "/admin/jett/fetchActiveTripData",
         data: {user_id, trip_id}
     });
 
 export const submitOutputChanges = (newOutputs: DestinationOutputs): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/submitOutputChanges",
+        url: "/admin/jett/submitOutputChanges",
         data: {newOutputs}
     });
 
 export const getHomepageData = (): Promise<any> =>
     request<any>(true, {
         method: "POST",
-        url: "/admin/travelApp/getHomepageData"
+        url: "/admin/jett/getHomepageData"
         //data: {newOutputs}
     });
