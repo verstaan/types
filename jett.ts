@@ -171,6 +171,7 @@ export interface SafetyLocation {
     gplaces_id: number | null; // Google places location id
     internal_memo: string; // Internal note regarding the location
     expiry_date: Date | null; // Optional date field where the location is nullified afterward
+    is_bookmarked?: Boolean;
 }
 
 
@@ -179,6 +180,7 @@ export interface SafetyArea {
     geometry: FeatureCollection;
     description: string;
     country_abbr: string;
+    is_bookmarked?: Boolean;
 }
 
 
